@@ -1,0 +1,212 @@
+#User-defined values for ML build system
+#Copy me to Makefile.user, keeping ONLY the options that you want to customize
+
+UNAME:=$(shell uname)
+
+ifeq ($(UNAME), Darwin)
+	# Variable declaration for Mac OS X
+	UMOUNT=hdiutil unmount
+	CF_CARD="/Volumes/EOS_DIGITAL"
+	STAT_CMD=stat -f "%N: %z bytes"
+else
+	# Default settings for remaining operating systems
+	UMOUNT=umount
+	# CF_CARD=/media/EOS_DIGITAL
+	CF_CARD:=$(shell mount | grep -oE "[^ ]+/EOS_DIGITAL[^ ]*")
+	STAT_CMD=stat -c "%n: %s bytes"
+endif
+
+# change this if you have to mount the card every time you run "make install"
+# examples:
+# MOUNT_CARD=gvfs-mount -d /dev/mmcblk0p1
+# MOUNT_CARD=gvfs-mount dav://192.168.0.1/
+MOUNT_CARD=
+
+# Experimental setup for Wi-Fi SD cards
+# to enable, run this before "make install":
+#    export WIFI_SD=y
+# alternatives: "make install WIFI_SD=y", "WIFI_SD=y make install"
+# override network names and IP address in Makefile.user
+# fixme: how to enable it from Makefile.user?
+ifeq ($(WIFI_SD),y)
+  # fill in the name of your regular wifi network
+  # leave this empty to disable wifi after installation
+  WIFI_MAIN_NETWORK=<your regular wifi network>
+  
+  # these are for Toshiba FlashAir; you may have to change them for other wifi cards
+  # note: if the wifi card connects directly to a router and gets a fixed IP,
+  # just enter your regular wifi network name here as well
+  WIFI_CARD_NETWORK=flashair
+  WIFI_CARD_IP=192.168.0.1
+  CF_CARD=/run/user/1000/gvfs/dav:host=$(WIFI_CARD_IP),ssl=false
+  
+  # executed before installation
+  # connect to WIFI_CARD_NETWORK if not already,
+  # and mount card directory via WebDAV
+  INSTALL_PREPARE=$(call build,WIFI_SET,\
+    if !(nmcli conn show --active | grep $(WIFI_CARD_NETWORK) > /dev/null); then \
+      while !(nmcli device wifi list | grep $(WIFI_CARD_NETWORK)); do \
+        if [ `nmcli radio wifi` = disabled ]; \
+          then nmcli radio wifi on; sleep 5; \
+          else nmcli dev wifi rescan 2>/dev/null || true; sleep 2; \
+        fi; \
+        echo -n "."; \
+      done; \
+      nmcli conn up $(WIFI_CARD_NETWORK); \
+    fi; \
+    if (ping -c 3 -l 3 $(WIFI_CARD_IP) > /dev/null) ; then \
+      if !(gvfs-mount -l | grep "dav://$(WIFI_CARD_IP)/"); then \
+        gvfs-mount dav://$(WIFI_CARD_IP)/ ; \
+      fi; \
+    else \
+      echo "$(WIFI_CARD_IP) appears to be offline." ; \
+      exit 1; \
+    fi; )
+  
+  # restore connection to your main wifi network
+  # or just turn it off if you are using a wired network
+  WIFI_RESTORE=$(call build,WIFI_END,\
+    if [ "$(WIFI_MAIN_NETWORK)" = "" ]; then \
+      echo "Turning off Wi-Fi..."; \
+      nmcli radio wifi off; \
+    elif !(nmcli conn show --active | grep $(WIFI_MAIN_NETWORK) > /dev/null); then \
+      echo "Connecting to $(WIFI_MAIN_NETWORK)..."; \
+      nmcli conn up $(WIFI_MAIN_NETWORK); \
+    fi; )
+  
+  UMOUNT_CARD=$(call build,UNMOUNT,while !(gvfs-mount -u dav://$(WIFI_CARD_IP)/); do sleep 2; done)
+  
+  # executed after installation
+  define INSTALL_FINISH =
+	$(UMOUNT_CARD)
+	$(WIFI_RESTORE)
+	@echo "\nFinished.\nMake sure the camera will not write anything to the card until restart."
+  endef
+endif
+
+# Supported camera models
+SUPPORTED_MODELS:=50D 60D 550D 600D 500D 5D2 5D3 7D 650D 700D EOSM 1100D 6D
+
+# Supported camera models for "UNIFIED" builds (Digic IV only)
+SUPPORTED_UNIFIED_MODELS:=50D 60D 550D 600D 500D 5D2 1100D
+
+# GCC-related stuff
+# for yagarto or the official ARM toolchain use ARM_ABI=none-eabi otherwise use ARM_ABI=elf
+ARM_ABI=none-eabi
+GCC_VERSION=-4.8.3
+DIETLIB_VERSION=0.33
+
+NEWLIB_OPT_LEVEL=O3
+DIETLIBC_OPT_LEVEL=Os
+
+ARM_PATH=~/gcc-arm-none-eabi-4_8-2013q4
+ARM_BINPATH=$(ARM_PATH)/bin
+ARM_LIBGCC_PATH=$(ARM_PATH)/lib/gcc/arm-$(ARM_ABI)/$(subst -,,$(GCC_VERSION))
+NEWLIB_PATH=$(SRC_DIR)/libs/arm-$(ARM_ABI)-$(NEWLIB_OPT_LEVEL)
+DIETLIBC_PATH=$(SRC_DIR)/libs/dietlib-$(DIETLIB_VERSION)-$(ARM_ABI)-$(DIETLIBC_OPT_LEVEL)
+
+# Static libraries used
+ARM_LIBGCC_A=$(ARM_LIBGCC_PATH)/libgcc.a
+NEWLIB_LIBM_A=$(NEWLIB_PATH)/libm.a
+NEWLIB_LIBC_A=$(NEWLIB_PATH)/libc.a
+DIETLIBC_A=$(DIETLIBC_PATH)/dietlibc.a
+
+ML_LIBC = dietlibc.a newlib-libc.a newlib-libm.a gcc-libgcc.a
+
+CROSS_COMPILE=$(ARM_BINPATH)/arm-$(ARM_ABI)-
+
+ifeq ($(OS),Windows_NT)
+CC=$(CROSS_COMPILE)gcc$(GCC_VERSION).exe
+else
+CC=$(CROSS_COMPILE)gcc$(GCC_VERSION)
+endif
+
+OBJCOPY=$(CROSS_COMPILE)objcopy
+OBJDUMP=$(CROSS_COMPILE)objdump
+AR=$(CROSS_COMPILE)ar
+RANLIB=$(CROSS_COMPILE)ranlib
+READELF=$(CROSS_COMPILE)readelf
+LD=$(CROSS_COMPILE)ld
+STRIP=$(CROSS_COMPILE)strip
+
+#
+# Host compiler settings
+# 
+HOST_CC=$(shell which gcc)
+HOST_LD=$(shell which ld)
+HOST_AR=$(shell which ar)
+
+# You can customize CFLAG here
+HOST_CFLAGS=-g -O3 -W -Wall -fms-extensions -std=c99 
+HOST_LFLAGS=
+HOST_LIBS=
+
+# large file support
+# you can also get them with $(shell getconf LFS_CFLAGS)
+HOST_LFS_FLAGS=-DLARGEFILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 
+
+
+#
+# mingw cross compiler settings
+# 
+MINGW=i686-w64-mingw32
+MINGW_GCC=$(MINGW)-gcc
+MINGW_AR=$(MINGW)-ar
+
+MINGW_CFLAGS=-g -O3 -W -Wall -fms-extensions -std=c99 -m32
+MINGW_LFLAGS=
+MINGW_LIBS=
+MINGW_LFS_FLAGS=-DLARGEFILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 
+
+#
+# Additional binaries
+#
+CCACHE=ccache
+GREP=grep
+AWK=awk
+PYTHON=python2
+RST2LATEX=rst2latex.py
+
+# Naming convention for Magic Lantern builds:
+# General rules:
+# - Always specify the camera and its firmware version number in the build name (e.g. 550d.fw109)
+# - For non-release builds, specify the build date and author's (nick)name.
+# - For experimental builds, add a short keyword indicating the particular feature tested.
+
+# Examples for experimental builds:
+# magiclantern-2010dec07.550d.fw108.cropmarks.a1ex.zip 
+# magiclantern-2010nov23.550d.fw108.selectable-audio.piers.zip 
+
+# Example for pre-release builds:
+# magiclantern-2010dec17.550d.fw109.PRERELEASE.alex.zip
+
+# Release builds:
+# magiclantern-0.2.0.rc1.550d.fw109.zip
+#~ VERSION=0.2.0.rc1.550d.fw109
+BUILDVER=$(shell whoami).$(shell hg id -i -r .)
+VERSION:=Nightly.$(shell LC_TIME=EN date +'%Y%b%d').$(MODEL)$(FW_VERSION)
+
+# Build configuration - untested and debug stuff handy for devs
+CONFIG_PTP          = n
+CONFIG_PTP_CHDK     = n
+CONFIG_PTP_ML       = n
+ifndef CONFIG_GDB
+CONFIG_GDB          = n
+endif
+CONFIG_GDBSTUB      = n
+ifndef CONFIG_CONSOLE
+CONFIG_CONSOLE      = y
+endif
+CONFIG_DEBUGMSG     = 0
+CONFIG_CCACHE       = n
+CONFIG_TCC          = y
+CONFIG_MODULES      = y
+CONFIG_TINYPY       = n
+
+# Work in progress - would be nice to run the unmodified autoexec.bin in QEMU, but we are not there yet
+# so, for now, we'll just hack the source code to work around the limitations of the emulator
+CONFIG_QEMU         = n
+CONFIG_QEMU_MENU_SCREENSHOTS = n
+
+# Work in progress - load ML as position-independent code (PIC)
+CONFIG_PIC          = n

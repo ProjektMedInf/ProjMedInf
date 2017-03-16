@@ -1,0 +1,40 @@
+PLATFORM_MAP = \
+	5D2.212 \
+	7D.203 \
+	7D_MASTER.203 \
+	50D.109 \
+	60D.111 \
+	500D.111 \
+	550D.109 \
+	600D.102 \
+	650D.104 \
+	700D.114 \
+	EOSM.202 \
+	1100D.105 \
+	6D.116
+
+PLATFORM_MAP_CONFUSES_THE_MAKEFILES = \
+	5D3.113 \
+	5D3.123 \
+
+
+PLATFORM_MAP_UNMAINTAINED = \
+	40D.111 \
+	5DC.111 \
+	100D.100 \
+
+platform_map = $(filter $(1).%, $(PLATFORM_MAP))
+
+make_platform_dirs = $(foreach elem,$(1),$(call platform_map,$(elem)))
+
+ALL_SUPPORTED_MODELS=$(basename $(PLATFORM_MAP))
+
+platform_version = $(patsubst $(strip $(1)).%,%,$(call platform_map, $(1)))
+
+PLATFORM_CLEAN_ALL_TARGETS = $(call targets_rules, $(ALL_SUPPORTED_MODELS), clean)
+
+PLATFORM_INSTALL_ALL_TARGETS = $(call targets_rules, $(ALL_SUPPORTED_MODELS), install)
+
+PLATFORM_INSTALL_SUPPORTED_TARGETS = $(call targets_rules, $(SUPPORTED_MODELS), install)
+
+call_make_platform = $(call call_make_rule_ex, platform_map, $(PLATFORM_PATH))
