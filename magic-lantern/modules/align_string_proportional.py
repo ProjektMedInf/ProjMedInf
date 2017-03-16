@@ -54,4 +54,4 @@ if __name__ == '__main__':
     # wrap to 80 columns
     lines = word_wrap(text, 80, extent_func)
     for line in lines:
-        print line
+        print(line)

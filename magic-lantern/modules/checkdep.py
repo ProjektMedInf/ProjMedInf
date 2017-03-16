@@ -35,7 +35,12 @@ cameras = [c for c in cameras if "." in c and c[0] == c[0].upper() and "MASTER" 
 cameras.sort()
 
 # what symbols does this module need?
-deps = read_dep(os.path.join(module, module + ".dep"))
+# deps = read_dep(os.path.join(module, module + ".dep"))
+path = os.path.join(module, module + ".dep")
+if os.path.isfile(path):
+    deps = read_dep(path)
+else:
+    deps = []
 
 # other modules exporting these symbols?
 module_deps = []

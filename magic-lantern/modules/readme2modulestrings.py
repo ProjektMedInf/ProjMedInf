@@ -110,7 +110,7 @@ rst2htmlCommand = get_command_of(rst2htmlCommands)
 
 # render the RST as html -> txt without the metadata tags
 # sed command at end is because Windows inserts CR characters all over the place. Removing them should be benign on other platforms. 
-txt = run('cat README.rst | grep -v -E "^:([^:])+:.+$" | ' + rst2htmlCommand + ' | python ../html2text.py -b 700 | sed "s/\r$//"')
+txt = run('cat README.rst | grep -v -E "^:([^:])+:.+$" | ' + rst2htmlCommand + ' | python2 ../html2text.py -b 700 | sed "s/\r$//"')
 
 desc = ""
 last_str = "Description"
