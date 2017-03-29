@@ -104,5 +104,6 @@ tipps_and_trics
 *.fdb_latexmk
 *.fls
 *.blg
+*.aux
 proposal/makepdf.sh
 syntax: regexp
