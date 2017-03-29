@@ -99,4 +99,8 @@ magic-lantern/modules/mlv_rec/raw2dng
 magic-lantern/modules/io_crypt/io_decrypt
 
 tipps_and_trics
+
+*.dvi
+*.fdb_latexmk
+*.fls
 syntax: regexp
