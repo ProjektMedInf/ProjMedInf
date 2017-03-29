@@ -103,4 +103,6 @@ tipps_and_trics
 *.dvi
 *.fdb_latexmk
 *.fls
+*.blg
+proposal/makepdf.sh
 syntax: regexp
