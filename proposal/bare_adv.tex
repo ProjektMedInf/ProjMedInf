@@ -715,7 +715,7 @@ Computer Society, IEEEtran, journal, \LaTeX, paper, template.
 % 
 % Here we have the typical use of a "T" for an initial drop letter
 % and "HIS" in caps to complete the first word.
-\IEEEPARstart{T}{his} demo file is intended to serve as a ``starter file''
+\IEEEPARstart{T}{his} demo file \cite{lin1973} is intended \cite{hallo124} to serve \cite{hallo123} as a ``starter file''
 for IEEE Computer Society journal papers produced under \LaTeX\ using
 IEEEtran.cls version 1.8 and later.
 % You must have at least 2 lines in the paragraph with the drop letter
@@ -756,7 +756,7 @@ Subsubsection text here.
 % and a .pdf suffix will be assumed for pdflatex; or what has been declared
 % via \DeclareGraphicsExtensions.
 %\caption{Simulation Results.}
-%\label{fig_sim}
+%\label{fig_sim}B
 %\end{figure}
 
 % Note that IEEE typically puts floats only at the top, even when this
@@ -896,17 +896,8 @@ The authors would like to thank...
 %\bibliographystyle{IEEEtran}
 % argument is your BibTeX string definitions and bibliography database(s)
 %\bibliography{IEEEabrv,../bib/paper}
-%
-% <OR> manually copy in the resultant .bbl file
-% set second argument of \begin to the number of references
-% (used to reserve space for the reference number labels box)
-\begin{thebibliography}{1}
-
-\bibitem{IEEEhowto:kopka}
-H.~Kopka and P.~W. Daly, \emph{A Guide to {\LaTeX}}, 3rd~ed.\hskip 1em plus
-  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
-
-\end{thebibliography}
+\bibliographystyle{plain}
+\bibliography{bibliography}
 
 % biography section
 % 
