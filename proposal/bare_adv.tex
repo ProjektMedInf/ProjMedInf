@@ -722,7 +722,7 @@ Journalists may take pictures in
 % form to use if you need the single drop letter followed by
 % normal text (unknown if ever used by IEEE):
 % \IEEEPARstart{A}{}demo file is ....
-% 
+%  
 % Some journals put the first two words in caps:
 % \IEEEPARstart{T}{his demo} file is ....
 % 
@@ -745,7 +745,22 @@ Subsection text here.
 Subsubsection text here.
 
 \section{Method}
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+To be able to evaluate and compare the results, how the previously mentioned methods work, we are going to create for each of them a prototype.
+This means we are going to write a module for the Magic Lantern project, which will replace the current implementation with a stronger encryption algorithm.
+Based on the work of Davidsson et. al. \cite{Davidsson2016} we are going to create a modified SD-Card which includes an FPGA modules between the SD-Card controller and the mass storage. 
+As what the smartphone setup concerns, we are going to write an android app, for handling the datatransfer between the DSLR and the smartphone, with the help of an SD-Card with on-board WiFi capabilities.
+For the Intel Edison solution, we plan to use the General Purpose Input Output (GPIO) ports to fake an SD-Card for the DSLR-Camera.
+And to implement the encryption feature we are going to write a hook for the GPIO ports, meaning if there is a request from the camera to save an image on the mass storage the interconnected Intel Edison will the image and encrypt it, and on the other side it will send back a response for the camera, that the image has been successfully saved.
+
+The decryption of the files, apart from the smartphone solution, where the smartphone takes care of the crypto, will be realized as an external program which is independently runs on a desktop PC, or any similar architecture.
+This means there will be no on board solution for the decryption, because this would jeopardize the goal of the encryption.
+
+The planned steps for realizing this project would be the following.
+First we are going to perform a state of the art analysis to get a better view about the current situation regarding the hardware and software solutions of encryption in the field of embedded systems.
+As the software solutions seem to be easier to accomplish, firstly we are going to implement the Magic Lantern modul.
+Following that we will implement the smartphone solution with the WiFi-capable SD-Card.
+Next we will take care of the implementation of the Intel Edison solution.
+And last but not least we are going to implement the FPGA tweaked SD-Card.
 
 \section{References}
 

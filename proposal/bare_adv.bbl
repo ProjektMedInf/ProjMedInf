@@ -1,5 +1,11 @@
 \begin{thebibliography}{1}
 
+\bibitem{Davidsson2016}
+Alexander Davidsson and Torbjörn Rasmusson.
+\newblock A vhdl architecture for auto encrypting sd cards.
+\newblock Master's thesis, 2016.
+\newblock 36.
+
 \bibitem{lin1973}
 Shen Lin and Brian~W. Kernighan.
 \newblock An effective heuristic algorithm for the travelling-salesman problem.
