@@ -1,5 +1,11 @@
 \begin{thebibliography}{1}
 
+\bibitem{OxforddictPlausibleDen}
+plausible deniability - oxford dictionaries.
+\newblock
+  \href{https://en.oxforddictionaries.com/definition/plausible_deniability}{Oxford
+  dictionaries - plausible deniability} Online; Accessed: 30.03.2017.
+
 \bibitem{Davidsson2016}
 Alexander Davidsson and Torbjörn Rasmusson.
 \newblock A vhdl architecture for auto encrypting sd cards.

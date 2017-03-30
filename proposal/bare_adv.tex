@@ -80,6 +80,7 @@
 % draft mode.
 %
 \documentclass[12pt,journal,compsoc]{IEEEtran}
+\usepackage{hyperref}
 % The Computer Society requires 12pt.
 % If IEEEtran.cls has not been installed into the LaTeX system files,
 % manually specify the path to it like:
@@ -734,7 +735,30 @@ IEEEtran.cls version 1.8 and later.
 
 
 \section{Expected Results}
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+Our goal is to evaluate different possibilities, to make on-the fly encryption for Digital single-lens reflex (DSLR) cameras possible.
+Our final goal is to create a method which can evolve to a best practice, which gives the medical and journalist community the possiblity to protect their data with the help of encryption.
+
+To make this happen we found four different solutions which could be used to make DSLR camera encryption possible.
+For Canon cameras there is an open source project called Magic Lantern, which enables the extension of the stock firmware with new functionalities, like encryption or better autofocus.
+This project already has an encryption module, however this module uses relativle weak algorithms. It also makes possible the use of stronger algorithms (RSA), however these are very slow.
+Our plan is to create a new encryption module with better and faster encryption algorithm (like Chacha20 with Poly1305).
+During this task we are going to learn about how the encryption in Magic Lantern works, and how different kind of algorithms perform.
+Additionally we also going to test, if there is a possibility to implement this feature to enable the plausible deniability.
+Plausible deniability, according to the Oxford dictionary, ist "the possiblity of denying a fact, especially a discreditable action without arousing suspicion".\cite{OxforddictPlausibleDen}
+It worth mentioning, that the plausible deniability, is not really important in the medical context, however it might help for the journalist community.
+
+As a second method we found, that there is way to implement a special SD-Controller, which is connected to a field programmable gateway array (FPGA), which is again connected to a mass storage.
+In this setup the FPGA is responsible for the encryption process.
+Our goal is to find out how such a special SD-FPGA interface performs in a DSLR camera.
+And how the encryption algorithm performs on an FPGA.
+And as in the previous setup we are going to try to evaluate if there is a possibility to implement such a system in a way, where the user has an option for plausible deniability.
+
+The third option would be to use a special WiFi capable SD-Card which in turn would send the photos directly to the users smartphone (or other smart device), which would take care about the encryption.
+The questions we ask regarding this method, and try to answer is how to transform images from the DSLR camera to the smart device and how to delete securly the data after the transmission was done.
+We are also going to evaluate the preformance and the possibility to implement the option for plausible deniability.
+
+The last method we will consider is to place a whole PC between the mass storage and the camera in the form of an Intel Edison, which a fully functional PC in the size of an SD-Card.
+As in the previous setups we will evaluate the performance and the option for plausible deniability.
 \subsection{Subsection Heading Here}
 Subsection text here.
 
