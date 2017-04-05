@@ -681,71 +681,79 @@ Photo Encryption, Image, Encryption, Medicine
 
 
 \section{Problem Description}
-\IEEEPARstart{P}{rivacy} is becoming more important day by day.
+\IEEEPARstart{P}{rivacy} is one of the key issues of the information age.
+Especially in the post-Snowden era this fact has become clear to the most individuals around the globe. 
 Numerous regulations and laws require it across all kinds of use cases and industries.
-A well known way to achieve privacy is through encryption, \todo{bla bla bla define encryption maybe insert source?. }
-As encryption requires computational resources, its performance is dependent on the platform it is used on.
-To fullfil the requirements of privacy in photography, it might be necessary to encrypt photographs right after they are taken.
+A well known way to achieve privacy is through encryption, which means encoding an information in such a way that only authorized parties can access it. 
+Hardly any efforts on implementing encryption can be found in photography, which is a remarkable finding, keeping in mind that photographs are generally among the most private media.
+This statement becomes even more astonishing considering the year, when the first patent for such a solution was registered: 1999. \cite{steinberg1999method}
+To fulfill the requirements of privacy in photography without a gap it might be necessary to encrypt photographs right after they are taken.
 
-Especially in the context of medicine this is very important as health data is considered the most private data \todo{fill reference here}.
+Especially in the context of medicine this is very important as health data is considered the most private data \cite{williams2013}.
 Medical photographs show a patients body, they are used to document visual properties of the skin, the state of a wound or the progress of a plastic surgery. 
 All of the above mentioned photographs document very private information about an individual, which is only to be seen by authorized persons.
 
 Another important application for encryption of photographs is journalism.
-Journalists may take pictures in 
-% Computer Society journal papers do something a tad strange with the very
-% first section heading (almost always called "Introduction"). They place it
-% ABOVE the main text! IEEEtran.cls currently does not do this for you.
-% However, You can achieve this effect by making LaTeX jump through some
-% hoops via something like:
-%
-%\ifCLASSOPTIONcompsoc
-%  \noindent\raisebox{2\baselineskip}[0pt][0pt]%
-%  {\parbox{\columnwidth}{\section{Introduction}\label{sec:introduction}%
-%  \global\everypar=\everypar}}%
-%  \vspace{-1\baselineskip}\vspace{-\parskip}\par
-%\else
-%  \section{Introduction}\label{sec:introduction}\par
-%\fi
-%
-% Admittedly, this is a hack and may well be fragile, but seems to do the
-% trick for me. Note the need to keep any \label that may be used right
-% after \section in the above as the hack puts \section within a raised box.
+Journalists are looking for possibilities to hide any traces of sensitive material on their devices, for obvious reasons.
+Journalists take big risks on them when taking sensitive pictures in countries with authoritarian governments, where such actions are considered as act of crime and punished with imprisonment.
+So it could be possible that encryption would not be enough to keep the journalists safe, as a trace of encrypted images could already lead to punishments.
+Encryption is a first step to achieve this, this is why in December 2016, 150 journalists wrote an open letter to camera manufacturers, asking them to implement such a feature.\cite{fp2016}
 
+So we can state that there is a demand for digital single-lens reflex (DSLR) photo encryption feature which is not (yet) satisfied by state of the art devices.
+This fact may lead physicians or journalists to take their private devices, which support encryption, for taking photographs, which is no real option for professional privacy.
+Privacy is strictly regulated by law, the most important regulations may be found in the general protected data regulation of the EU \cite{EuropeanParliament2016}, the European convention of human rights \cite{EuropeanCourtofHumanRights2010} or the respective national law.
 
+Another issue that may  be stated here is that even if custom solutions for encryption do exist, they are not implemented to be turned on and off again easily.
+This leads to the conclusion that it is not possible to perform image encryption without a required amount of previous knowledge and expertise with such solutions.
 
-% The very first letter is a 2 line initial drop letter followed
-% by the rest of the first word in caps (small caps for compsoc).
-% 
-% form to use if the first word consists of a single letter:
-% \IEEEPARstart{A}{demo} file is ....
-% 
-% form to use if you need the single drop letter followed by
-% normal text (unknown if ever used by IEEE):
-% \IEEEPARstart{A}{}demo file is ....
-%  
-% Some journals put the first two words in caps:
-% \IEEEPARstart{T}{his demo} file is ....
-% 
-% Here we have the typical use of a "T" for an initial drop letter
-% and "HIS" in caps to complete the first word.
-\IEEEPARstart{T}{his} demo file \cite{lin1973} is intended \cite{hallo124} to serve \cite{hallo123} as a ``starter file''
-for IEEE Computer Society journal papers produced under \LaTeX\ using
-IEEEtran.cls version 1.8 and later.
+A good example for this is the Magic Lantern encryption module, which will be explained in the next section.
+The weaknesses of this solution are as follows:
+\begin{enumerate}
+\item The usage of Magic Lantern is limited to less than 10 models of canon cameras.
+\item The encryption algorithm used in this module is considered weak, even by the developer.
+\item Plausible deniability is not assured, as the encrypted photos may be found on the SD card.
+\end{enumerate}
 
+The goal of this project is to find a solution for the encryption of photographs on DSLR cameras.
+Additionally, the proposed solution should represent a best practice solution for the introduced problem.
+This enables a solid base for further research on this topic.
 
 \section{Expected Results}
-Our goal is to evaluate different possibilities, to make on-the fly encryption for Digital single-lens reflex (DSLR) cameras possible.
-Our final goal is to create a method which can evolve to a best practice, which gives the medical and journalist community the possiblity to protect their data with the help of encryption.
+\IEEEPARstart{O}{ur} goal is to evaluate different possibilities, to make on-the fly encryption for Digital single-lens reflex (DSLR) cameras possible.
+To ensure comparability between the introduced possibilities it is inevitable to define measurable parameters.
+
+As encryption requires computational resources, its performance is dependent on the platform it is used on.
+Considering this fact it is essential to be aware of the limited hardware resources of DSLRs that can be used for encryption.
+So we can state that the performance of the implemented algorithm may be measured by the time, the encryption process takes (t\textsubscript{encryption}).
+Furthermore, a threshold must be found that determines the critical time (t\textsubscript{critical}) for the duration of the encryption process.
+
+Additionally, it must be assured that the encrypted information may only be decrypted by authorized persons.
+For this reason, the used encryption algorithm must be considered safe, according to a definition which needs to be defined in the course of the project.
+
+To ensure a specific degree of performance it is necessary that the evaluated solution does rely on as little proprietary soft- and hardware as possible.
+An important information which is not known to us for now: whether or not it is better to perform encryption on DSLRs with software or hardware.
+In the first place, this is a performance related topic, but it has big impact on portability.
+
+Another parameter worth mentioning is, whether the proposed solution supports plausible deniability.
+Plausible deniability, according to the Oxford dictionary, is the possibility of denying a fact, especially a discreditable action without arousing suspicion".\cite{OxforddictPlausibleDen}
+It worth mentioning, that the plausible deniability, is not really important in the medical context, however it might help for the journalist community.
+
+Our final goal is to create a method which can evolve to a best practice, which gives the medical and journalist community the possibility to protect their data with the help of encryption.
+A best practice solution should fulfill the following requirements in the best possible way.
+\begin{enumerate}
+\item The duration of the encryption process must not extend the defined threshold (t\textsubscript{encryption} $\leq$ t\textsubscript{critical});
+\item The used encryption algorithm must be considered safe.
+\item The solution must not be limited to one DSLR manufacturer.
+\item Plausible deniability must be assured.
+\end{enumerate}
 
 To make this happen we found four different solutions which could be used to make DSLR camera encryption possible.
 For Canon cameras there is an open source project called Magic Lantern, which enables the extension of the stock firmware with new functionalities, like encryption or better autofocus.
-This project already has an encryption module, however this module uses relativle weak algorithms. It also makes possible the use of stronger algorithms (RSA), however these are very slow.
+This project already has an encryption module, however this module uses relatively weak algorithms. 
+It also makes possible the use of stronger algorithms (RSA), however these are very slow.
 Our plan is to create a new encryption module with better and faster encryption algorithm (like Chacha20 with Poly1305).
 During this task we are going to learn about how the encryption in Magic Lantern works, and how different kind of algorithms perform.
 Additionally we also going to test, if there is a possibility to implement this feature to enable the plausible deniability.
-Plausible deniability, according to the Oxford dictionary, ist "the possiblity of denying a fact, especially a discreditable action without arousing suspicion".\cite{OxforddictPlausibleDen}
-It worth mentioning, that the plausible deniability, is not really important in the medical context, however it might help for the journalist community.
 
 As a second method we found, that there is way to implement a special SD-Controller, which is connected to a field programmable gateway array (FPGA), which is again connected to a mass storage.
 In this setup the FPGA is responsible for the encryption process.
@@ -754,22 +762,14 @@ And how the encryption algorithm performs on an FPGA.
 And as in the previous setup we are going to try to evaluate if there is a possibility to implement such a system in a way, where the user has an option for plausible deniability.
 
 The third option would be to use a special WiFi capable SD-Card which in turn would send the photos directly to the users smartphone (or other smart device), which would take care about the encryption.
-The questions we ask regarding this method, and try to answer is how to transform images from the DSLR camera to the smart device and how to delete securly the data after the transmission was done.
-We are also going to evaluate the preformance and the possibility to implement the option for plausible deniability.
+The questions we ask regarding this method, and try to answer is how to transform images from the DSLR camera to the smart device and how to securely delete the data after the transmission is completed.
+We are also going to evaluate the performance and the possibility to implement the option for plausible deniability.
 
 The last method we will consider is to place a whole PC between the mass storage and the camera in the form of an Intel Edison, which a fully functional PC in the size of an SD-Card.
 As in the previous setups we will evaluate the performance and the option for plausible deniability.
-\subsection{Subsection Heading Here}
-Subsection text here.
-
-% needed in second column of first page if using \IEEEpubid
-%\IEEEpubidadjcol
-
-\subsubsection{Subsubsection Heading Here}
-Subsubsection text here.
 
 \section{Method}
-To be able to evaluate and compare the results, how the previously mentioned methods work, we are going to create for each of them a prototype.
+\IEEEPARstart{T}{o} be able to evaluate and compare the results, how the previously mentioned methods work, we are going to create for each of them a prototype.
 This means we are going to write a module for the Magic Lantern project, which will replace the current implementation with a stronger encryption algorithm.
 Based on the work of Davidsson et. al. \cite{Davidsson2016} we are going to create a modified SD-Card which includes an FPGA modules between the SD-Card controller and the mass storage. 
 As what the smartphone setup concerns, we are going to write an android app, for handling the datatransfer between the DSLR and the smartphone, with the help of an SD-Card with on-board WiFi capabilities.
@@ -781,7 +781,7 @@ This means there will be no on board solution for the decryption, because this w
 
 The planned steps for realizing this project would be the following.
 First we are going to perform a state of the art analysis to get a better view about the current situation regarding the hardware and software solutions of encryption in the field of embedded systems.
-As the software solutions seem to be easier to accomplish, firstly we are going to implement the Magic Lantern modul.
+As the software solutions seem to be easier to accomplish, firstly we are going to implement the Magic Lantern module.
 Following that we will implement the smartphone solution with the WiFi-capable SD-Card.
 Next we will take care of the implementation of the Intel Edison solution.
 And last but not least we are going to implement the FPGA tweaked SD-Card.
