@@ -695,7 +695,7 @@ All of the above mentioned photographs document very private information about a
 
 Another important application for encryption of photographs is journalism.
 Journalists are looking for possibilities to hide any traces of sensitive material on their devices, for obvious reasons.
-Journalists take big risks on them when taking sensitive pictures in countries with authoritarian governments, where such actions are considered as act of crime and punished with imprisonment.
+Journalists take big risks on them when taking sensitive pictures in countries with authoritarian governments, where such actions are considered as act of crime and punished with imprisonment or even death penalty \cite{Amnesty2016}.
 So it could be possible that encryption would not be enough to keep the journalists safe, as a trace of encrypted images could already lead to punishments.
 Encryption is a first step to achieve this, this is why in December 2016, 150 journalists wrote an open letter to camera manufacturers, asking them to implement such a feature.\cite{fp2016}
 
@@ -719,7 +719,7 @@ Additionally, the proposed solution should represent a best practice solution fo
 This enables a solid base for further research on this topic.
 
 \section{Expected Results}
-\IEEEPARstart{O}{ur} goal is to evaluate different possibilities, to make on-the fly encryption for Digital single-lens reflex (DSLR) cameras possible.
+\IEEEPARstart{O}{ur} goal is to evaluate different possibilities, to make on-the fly encryption for DSLR cameras possible.
 To ensure comparability between the introduced possibilities it is inevitable to define measurable parameters.
 
 As encryption requires computational resources, its performance is dependent on the platform it is used on.
@@ -735,7 +735,7 @@ An important information which is not known to us for now: whether or not it is 
 In the first place, this is a performance related topic, but it has big impact on portability.
 
 Another parameter worth mentioning is, whether the proposed solution supports plausible deniability.
-Plausible deniability, according to the Oxford dictionary, is the possibility of denying a fact, especially a discreditable action without arousing suspicion".\cite{OxforddictPlausibleDen}
+Plausible deniability, according to the Oxford dictionary, is "the possibility of denying a fact, especially a discreditable action without arousing suspicion".\cite{OxforddictPlausibleDen}
 It worth mentioning, that the plausible deniability, is not really important in the medical context, however it might help for the journalist community.
 
 Our final goal is to create a method which can evolve to a best practice, which gives the medical and journalist community the possibility to protect their data with the help of encryption.
@@ -771,13 +771,13 @@ As in the previous setups we will evaluate the performance and the option for pl
 \section{Method}
 \IEEEPARstart{T}{o} be able to evaluate and compare the results, how the previously mentioned methods work, we are going to create for each of them a prototype.
 This means we are going to write a module for the Magic Lantern project, which will replace the current implementation with a stronger encryption algorithm.
-Based on the work of Davidsson et. al. \cite{Davidsson2016} we are going to create a modified SD-Card which includes an FPGA modules between the SD-Card controller and the mass storage. 
+Based on the work of Davidsson et. al. \cite{Davidsson2016} we are going to create a modified SD-Card which includes an FPGA module between the SD-Card controller and the mass storage. 
 As what the smartphone setup concerns, we are going to write an android app, for handling the datatransfer between the DSLR and the smartphone, with the help of an SD-Card with on-board WiFi capabilities.
 For the Intel Edison solution, we plan to use the General Purpose Input Output (GPIO) ports to fake an SD-Card for the DSLR-Camera.
-And to implement the encryption feature we are going to write a hook for the GPIO ports, meaning if there is a request from the camera to save an image on the mass storage the interconnected Intel Edison will the image and encrypt it, and on the other side it will send back a response for the camera, that the image has been successfully saved.
+And to implement the encryption feature we are going to write a hook for the GPIO ports, meaning if there is a request from the camera to save an image on the mass storage the interconnected Intel Edison will take the image and encrypt it, and on the other side it will send back a response for the camera, that the image has been successfully saved.
 
 The decryption of the files, apart from the smartphone solution, where the smartphone takes care of the crypto, will be realized as an external program which is independently runs on a desktop PC, or any similar architecture.
-This means there will be no on board solution for the decryption, because this would jeopardize the goal of the encryption.
+This means there will be no on-board solution for the decryption, because this would jeopardize the goal of the encryption.
 
 The planned steps for realizing this project would be the following.
 First we are going to perform a state of the art analysis to get a better view about the current situation regarding the hardware and software solutions of encryption in the field of embedded systems.
