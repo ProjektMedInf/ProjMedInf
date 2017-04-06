@@ -81,6 +81,7 @@
 %
 \documentclass[12pt,journal,compsoc]{IEEEtran}
 \usepackage{hyperref}
+\usepackage[noadjust]{cite}
 % The Computer Society requires 12pt.
 % If IEEEtran.cls has not been installed into the LaTeX system files,
 % manually specify the path to it like:
@@ -681,25 +682,27 @@ Photo Encryption, Image, Encryption, Medicine
 \section{Problem Description}
 \IEEEPARstart{P}{rivacy} is one of the key issues of the information age.
 Especially in the post-Snowden era this fact has become clear to the most individuals around the globe. 
-Numerous regulations and laws require it across all kinds of use cases and industries.
+Numerous regulations and laws \cite{EHG2015, DSG2000, ELGA2012, EuropeanParliament2016, EuropeanCourtofHumanRights2010} require it across all kinds of use cases and industries.
 A well known way to achieve privacy is through encryption, which means encoding an information in such a way that only authorized parties can access it. 
 Hardly any efforts on implementing encryption can be found in photography, which is a remarkable finding, keeping in mind that photographs are generally among the most private media.
 This statement becomes even more astonishing considering the year, when the first patent for such a solution was registered: 1999. \cite{steinberg1999method}
-To fulfill the requirements of privacy in photography without a gap it might be necessary to encrypt photographs right after they are taken.
+To fulfill the requirements of privacy in photography it might be necessary to encrypt photographs right after they are taken.
 
-Especially in the context of medicine this is very important as health data is considered the most private data \cite{williams2013}.
+Especially in the context of medicine this is very important as health data is considered the most private data. \cite{williams2013}
 Medical photographs show a patients body, they are used to document visual properties of the skin, the state of a wound or the progress of a plastic surgery. 
 All of the above mentioned photographs document very private information about an individual, which is only to be seen by authorized persons.
 
 Another important application for encryption of photographs is journalism.
 Journalists are looking for possibilities to hide any traces of sensitive material on their devices, for obvious reasons.
-Journalists take big risks on them when taking sensitive pictures in countries with authoritarian governments, where such actions are considered as act of crime and punished with imprisonment or even death penalty \cite{Amnesty2016}.
+Journalists take big risks on them when taking precarious pictures in countries with authoritarian governments, where such actions are considered as act of crime and punished with imprisonment or even death penalty \cite{Amnesty2016}.
 So it could be possible that encryption would not be enough to keep the journalists safe, as a trace of encrypted images could already lead to punishments.
-Encryption is a first step to achieve this, this is why in December 2016, 150 journalists wrote an open letter to camera manufacturers, asking them to implement such a feature.\cite{fp2016}
+Encryption is a first step to achieve this level of privacy.
+For this reason 150 journalists wrote an open letter to camera manufacturers, asking them to implement such a feature, in December 2016.\cite{fp2016}
 
 So we can state that there is a demand for digital single-lens reflex (DSLR) photo encryption feature which is not (yet) satisfied by state of the art devices.
 This fact may lead physicians or journalists to take their private devices, which support encryption, for taking photographs, which is no real option for professional privacy.
-Privacy is strictly regulated by law, the most important regulations may be found in the general protected data regulation of the EU \cite{EuropeanParliament2016}, the European convention of human rights \cite{EuropeanCourtofHumanRights2010} or the respective national law.
+
+Privacy is strictly regulated by law, the most important regulations may be found in the general protected data regulation of the EU \cite{EuropeanParliament2016}, the European convention of human rights \cite{EuropeanCourtofHumanRights2010} or the respective national law. \cite{EHG2015, DSG2000, ELGA2012}
 
 Another issue that may  be stated here is that even if custom solutions for encryption do exist, they are not implemented to be turned on and off again easily.
 This leads to the conclusion that it is not possible to perform image encryption without a required amount of previous knowledge and expertise with such solutions.
@@ -707,26 +710,26 @@ This leads to the conclusion that it is not possible to perform image encryption
 A good example for this is the Magic Lantern encryption module, which will be explained in the next section.
 The weaknesses of this solution are as follows:
 \begin{enumerate}
-\item The usage of Magic Lantern is limited to less than 10 models of canon cameras.
-\item The encryption algorithm used in this module is considered weak, even by the developer.
-\item Plausible deniability is not assured, as the encrypted photos may be found on the SD card.
+  \item The usage of Magic Lantern is limited to a few models of canon DSLRs.
+  \item The encryption algorithm used in this module is considered weak, even by the developer.
+  \item Plausible deniability is not assured, as the encrypted photos may be found on the SD card.
 \end{enumerate}
 
 The goal of this project is to find a solution for the encryption of photographs on DSLR cameras.
-Additionally, the proposed solution should represent a best practice solution for the introduced problem.
+Additionally, the proposed solution should represent a best practice for the introduced problem.
 This enables a solid base for further research on this topic.
 
 \section{Expected Results}
-Our goal is to evaluate different possibilities, to make on-the fly encryption for DSLR cameras possible.
+Our goal is to evaluate different possibilities, to make on-the-fly encryption for DSLR cameras possible.
 To ensure comparability between the introduced possibilities it is inevitable to define measurable parameters.
 
 As encryption requires computational resources, its performance is dependent on the platform it is used on.
 Considering this fact it is essential to be aware of the limited hardware resources of DSLRs that can be used for encryption.
-So we can state that the performance of the implemented algorithm may be measured by the time, the encryption process takes (t\textsubscript{encryption}).
-Furthermore, a threshold must be found that determines the critical time (t\textsubscript{critical}) for the duration of the encryption process.
+So we can state that the performance of the implemented algorithm may be measured by the speed of the encryption process (v\textsubscript{encryption}).
+Furthermore, a threshold must be found that determines the minimal speed (v\textsubscript{min}) of the encryption process.
 
 Additionally, it must be assured that the encrypted information may only be decrypted by authorized persons.
-For this reason, the used encryption algorithm must be considered safe, according to a definition which needs to be defined in the course of the project.
+For this reason, the used encryption algorithm must be considered safe, according to the state of the art.
 
 To ensure a specific degree of performance it is necessary that the evaluated solution does rely on as little proprietary soft- and hardware as possible.
 An important information which is not known to us for now: whether or not it is better to perform encryption on DSLRs with software or hardware.
@@ -734,15 +737,15 @@ In the first place, this is a performance related topic, but it has big impact o
 
 Another parameter worth mentioning is, whether the proposed solution supports plausible deniability.
 Plausible deniability, according to the Oxford dictionary, is "the possibility of denying a fact, especially a discreditable action without arousing suspicion".\cite{OxforddictPlausibleDen}
-It worth mentioning, that the plausible deniability, is not really important in the medical context, however it might help for the journalist community.
+It is worth mentioning, that the plausible deniability, is not really important in the medical context, however it would help the journalist community.
 
 Our final goal is to create a method which can evolve to a best practice, which gives the medical and journalist community the possibility to protect their data with the help of encryption.
 A best practice solution should fulfill the following requirements in the best possible way.
 \begin{enumerate}
-\item The duration of the encryption process must not extend the defined threshold (t\textsubscript{encryption} $\leq$ t\textsubscript{critical});
-\item The used encryption algorithm must be considered safe.
-\item The solution must not be limited to one DSLR manufacturer.
-\item Plausible deniability must be assured.
+  \item The speed of the encryption process must be greater than the defined threshold (v\textsubscript{encryption} $\geq$ v\textsubscript{min});
+  \item The used encryption algorithm must be considered safe.
+  \item The solution must not be limited to one DSLR manufacturer.
+  \item Plausible deniability must be assured.
 \end{enumerate}
 
 To make this happen we found four different solutions which could be used to make DSLR camera encryption possible.
@@ -750,8 +753,8 @@ For Canon cameras there is an open source project called Magic Lantern, which en
 This project already has an encryption module, however this module uses relatively weak algorithms. 
 It also makes possible the use of stronger algorithms (RSA), however these are very slow.
 Our plan is to create a new encryption module with better and faster encryption algorithm (like Chacha20 with Poly1305).
-During this task we are going to learn about how the encryption in Magic Lantern works, and how different kind of algorithms perform.
-Additionally we also going to test, if there is a possibility to implement this feature to enable the plausible deniability.
+During this task we are going to learn about how the encryption in Magic Lantern works, and how different kind of algorithms perform in such an environment.
+Additionally we also going to test, if there is a possibility to implement this feature to ensure the plausible deniability.
 
 As a second method we found, that there is way to implement a special SD-Controller, which is connected to a field programmable gateway array (FPGA), which is again connected to a mass storage.
 In this setup the FPGA is responsible for the encryption process.
@@ -759,11 +762,11 @@ Our goal is to find out how such a special SD-FPGA interface performs in a DSLR 
 And how the encryption algorithm performs on an FPGA.
 And as in the previous setup we are going to try to evaluate if there is a possibility to implement such a system in a way, where the user has an option for plausible deniability.
 
-The third option would be to use a special WiFi capable SD-Card which in turn would send the photos directly to the users smartphone (or other smart device), which would take care about the encryption.
-The questions we ask regarding this method, and try to answer is how to transform images from the DSLR camera to the smart device and how to securely delete the data after the transmission is completed.
+The third option would be to use a special WiFi capable SD-Card which in turn would send the photos directly to the users smartphone (or other external devices), which would take care about the encryption.
+The questions we ask regarding this method, and try to answer is how to transfer images from the DSLR camera to the external device and how to securely delete the data on the DSLR after the transmission is completed.
 We are also going to evaluate the performance and the possibility to implement the option for plausible deniability.
 
-The last method we will consider is to place a whole PC between the mass storage and the camera in the form of an Intel Edison, which a fully functional PC in the size of an SD-Card.
+The last method we will consider is to place a whole PC between the mass storage and the camera in the form of an Intel Edison, which is a fully functional PC in the size of an SD-Card.
 As in the previous setups we will evaluate the performance and the option for plausible deniability.
 
 \section{Method}
@@ -774,7 +777,7 @@ As what the smartphone setup concerns, we are going to write an android app, for
 For the Intel Edison solution, we plan to use the General Purpose Input Output (GPIO) ports to fake an SD-Card for the DSLR-Camera.
 And to implement the encryption feature we are going to write a hook for the GPIO ports, meaning if there is a request from the camera to save an image on the mass storage the interconnected Intel Edison will take the image and encrypt it, and on the other side it will send back a response for the camera, that the image has been successfully saved.
 
-The decryption of the files, apart from the smartphone solution, where the smartphone takes care of the crypto, will be realized as an external program which is independently runs on a desktop PC, or any similar architecture.
+The decryption of the files, apart from the smartphone solution, where the smartphone takes care of the crypto, will be realized as an external program which is running independently on a desktop PC, or any similar architecture.
 This means there will be no on-board solution for the decryption, because this would jeopardize the goal of the encryption.
 
 The planned steps for realizing this project would be the following.
