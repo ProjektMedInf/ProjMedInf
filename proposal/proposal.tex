@@ -480,10 +480,10 @@
 \newcommand\MYhyperrefoptions{bookmarks=true,bookmarksnumbered=true,
 pdfpagemode={UseOutlines},plainpages=false,pdfpagelabels=true,
 colorlinks=true,linkcolor={black},citecolor={black},urlcolor={black},
-pdftitle={Photo encryption in medicine},%<!CHANGE!
-pdfsubject={Typesetting},%<!CHANGE!
-pdfauthor={Georg Bernold, Gabor Szivos},%<!CHANGE!
-pdfkeywords={photo encryption, image, encryotion, medicine}}%<^!CHANGE!
+pdftitle={Photo encryption in medicine},
+pdfsubject={Typesetting},
+pdfauthor={Georg Bernold (1325845), Gabor Szivos (1227443)},
+pdfkeywords={photo encryption, image, encryotion, medicine}}
 %\ifCLASSINFOpdf
 %\usepackage[\MYhyperrefoptions,pdftex]{hyperref}
 %\else
@@ -572,17 +572,15 @@ pdfkeywords={photo encryption, image, encryotion, medicine}}%<^!CHANGE!
 % journal papers have the author affiliations above the "Manuscript
 % received ..."  text while in non-compsoc journals this is reversed. Sigh.
 
-\author{Georg~Bernold,
-        Gabor~Szivos% <-this % stops a space
-%\IEEEcompsocitemizethanks{\IEEEcompsocthanksitem M. Shell is with the Department
-%of Electrical and Computer Engineering, Georgia Institute of Technology, Atlanta,
-%GA, 30332.\protect\\
-%% note need leading \protect in front of \\ to get a newline within \thanks as
-%% \\ is fragile and will error, could use \hfil\break instead.
-%E-mail: see http://www.michaelshell.org/contact.html
-%\IEEEcompsocthanksitem J. Doe and J. Doe are with Anonymous University.}% <-this % stops a space
-%\thanks{Manuscript received April 19, 2005; revised December 27, 2012.}}
-        }
+\author{Georg~Bernold~(1325845),
+        Gabor~Szivos~(1227443)% <-this % stops a space
+\IEEEcompsocitemizethanks{
+\IEEEcompsocthanksitem 188.948 SE - Seminar aus Medizinischer Informatik
+\IEEEcompsocthanksitem Seminar
+% note need leading \protect in front of \\ to get a newline within \thanks as
+% \\ is fragile and will error, could use \hfil\break instead.
+\IEEEcompsocthanksitem Supervisor: Univ.Prof. Mag. Dr. Silvia Miksch}% <-this % stops a space
+\thanks{\today}}
 
 % note the % following the last \IEEEmembership and also \thanks - 
 % these prevent an unwanted space from occurring between the last author name
