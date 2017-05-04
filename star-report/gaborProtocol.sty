@@ -1,0 +1,233 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Institut für Rechnergestuetzte Automation
+% Forschungsgruppe Industrial Software
+% Arbeitsgruppe ESSE
+% http://security.inso.tuwien.ac.at/
+% lva.security@inso.tuwien.ac.at
+%
+% Version 2015-08-06
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% packages
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\typearea[current]{calc}        % neuberechnung des textsatzes
+\usepackage[a4paper,left=25mm,right=25mm,top=23mm,bottom=35mm]{geometry} % rand einstellungen
+
+\usepackage{fancyhdr}
+%\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+
+\usepackage{ifthen}
+\ifthenelse{\equal{\lang}{de}}{\usepackage[naustrian]{babel}}{}
+
+\usepackage[colorlinks]{hyperref} % fuer links im inhaltsverzeichnis und bei siehe...
+\usepackage[all]{hypcap} % zu den bildern und nicht zur bildunterschrift springen
+% \usepackage{hyperref}
+
+\usepackage{fancyhdr}
+\usepackage{calc}
+\usepackage[usenames]{color}
+\usepackage{moreverb}
+\usepackage{amssymb}
+\usepackage[final]{graphicx}
+\usepackage{multicol}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{comment}
+\usepackage{lastpage}
+\usepackage{listings}
+
+\usepackage{marvosym}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% for listings
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage[usenames]{xcolor}
+
+\definecolor{dgreen}{RGB}{30,71,21}
+\definecolor{codegray}{RGB}{240,240,240}
+
+\usepackage{listings}
+\lstset{
+	language=bash,                  % choose the language of the code
+	basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+	numbers=left,                   % where to put the line-numbers
+	numberstyle=\footnotesize,      % the size of the fonts that are used for the line-numbers
+	stepnumber=2,                   % the step between two line-numbers. If it's 1 each line 
+		                        % will be numbered
+	numbersep=5pt,                  % how far the line-numbers are from the code
+	backgroundcolor=\color{codegray},  % choose the background color. You must add \usepackage{color}
+	showspaces=false,               % show spaces adding particular underscores
+	showstringspaces=false,         % underline spaces within strings
+	showtabs=false,                 % show tabs within strings adding particular underscores
+	frame=single,	                % adds a frame around the code
+	tabsize=2,	                % sets default tabsize to 2 spaces
+	captionpos=b,                   % sets the caption-position to bottom
+	breaklines=true,                % sets automatic line breaking
+	breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+	basicstyle=\ttfamily
+}
+
+\lstdefinestyle{simple}{
+	language=bash,                  % choose the language of the code
+	basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+	numbers=left,                   % where to put the line-numbers
+	numberstyle=\footnotesize,      % the size of the fonts that are used for the line-numbers
+	stepnumber=2,                   % the step between two line-numbers. If it's 1 each line 
+		                        % will be numbered
+	numbersep=5pt,                  % how far the line-numbers are from the code
+	backgroundcolor=\color{codegray},  % choose the background color. You must add \usepackage{color}
+	showspaces=false,               % show spaces adding particular underscores
+	showstringspaces=false,         % underline spaces within strings
+	showtabs=false,                 % show tabs within strings adding particular underscores
+	frame=single,	                % adds a frame around the code
+	tabsize=2,	                % sets default tabsize to 2 spaces
+	captionpos=b,                   % sets the caption-position to bottom
+	breaklines=true,                % sets automatic line breaking
+	breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+	basicstyle=\ttfamily,
+	prebreak={\Righttorque}
+}
+
+\lstdefinestyle{c}{
+	language=C,
+	backgroundcolor=\color{codegray},
+	basicstyle=\linespread{1.0}\ttfamily\scriptsize,
+	keywordstyle=\bfseries\ttfamily\scriptsize\color[rgb]{0,0,1},
+        identifierstyle=\color{dgreen},
+	commentstyle=\textit,
+	tabsize=2,
+	float=ph,
+	extendedchars,
+	breaklines,
+        breakatwhitespace=true,
+	prebreak={\space\hbox{\ensuremath\hookleftarrow}},,
+	numbers=left,
+	numberstyle=\tiny,
+        numbersep=5pt,
+	stringstyle=\textsl,
+	showstringspaces=false,
+	captionpos=b,
+	aboveskip=24pt,
+	prebreak={\Righttorque}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% provide default values for MatrNr
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\studentAMatrnr}{0}
+\newcommand{\studentBMatrnr}{0}
+\newcommand{\studentCMatrnr}{0}
+\newcommand{\studentDMatrnr}{0}
+\newcommand{\studentEMatrnr}{0}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% some size definitions and counter settings
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\floatpagefraction}{0.9}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\topfraction}{1.0}
+\renewcommand{\bottomfraction}{1.0}
+\renewcommand{\figurename}{\ifthenelse{\equal{\lang}{de}}{Abbildung}{Figure}}
+
+\setcounter{totalnumber}{3}
+\setcounter{bottomnumber}{3}
+\setcounter{topnumber}{3}
+
+\setlength{\unitlength}{1mm}
+\setlength{\parindent}{6mm}
+\setlength{\parskip}{12pt plus2pt minus2pt}
+
+\newenvironment{qa}{
+  \begin{list}{}{\leftmargin=0em}
+}{
+  \end{list}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% fuszzeile
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{fancy}
+\fancyhf{}
+
+%Kopfzeile mittig mit Kaptilname
+\fancyhead[C]{}
+%Linie oben
+\renewcommand{\headrulewidth}{0.0pt}
+ 
+%Fußzeile links bzw. innen
+\fancyfoot[L]{Gabor Szivos 1227443}
+%Fußzeile mittig (Seitennummer)
+\fancyfoot[C]{\ifthenelse{\equal{\lang}{de}}{Seite}{Page} \thepage\ \ifthenelse{\equal{\lang}{de}}{von}{of} \pageref*{LastPage}}
+\fancyfoot[R]{\lvanr, \semester, \lab}
+%Linie unten
+\renewcommand{\footrulewidth}{0.5pt}
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% define variables used on titlepage
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\setcounter{footnote}{0} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% titlepage
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\maketitle{
+\begin{center}
+\vspace{2.5cm}
+{\LARGE\textbf{\dokumenttyp}\\}
+\vspace{0.5cm}
+{\LARGE\textbf{\lvaname}\\}
+\vspace{0.5cm}
+{\LARGE Gabor Szivos -- 1227443\\}
+\vspace{0.5cm}
+{\LARGE \lvanr\ -- \semester\\}
+\vspace{1.0cm}
+{\LARGE \datum}
+\vspace{1.5cm}
+
+\end{center}
+
+\vspace{1.5cm}
+%}}}
+
+
+
+\newpage
+} % \def\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
