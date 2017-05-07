@@ -105,5 +105,5 @@ tipps_and_trics
 *.fls
 *.blg
 *.aux
-proposal/makepdf.sh
+makepdf.sh
 syntax: regexp
