@@ -3,23 +3,90 @@
 \usepackage{gaborProtocol}
 
 \newcommand{\datum}{\today}
-\newcommand{\lab}{Exercise 1}
-\newcommand{\lvaname}{Software Security}
-\newcommand{\lvanr}{188.959}
+\newcommand{\lvaname}{Seminar aus Medizinischer Informatik}
+\newcommand{\lvanr}{188.948}
 \newcommand{\semester}{SS 2017}
-
 \newcommand{\colormode}{color}
-\newcommand{\dokumenttyp}{Report \lab}
+\newcommand{\dokumenttyp}{Image Encryption in Medicine}
+\usepackage{xcolor}
+\newcommand\todo[1]{\textcolor{red}{#1}}
 
 \begin{document}
 \maketitle
 \setcounter{section}{0}
 \setcounter{tocdepth}{2}
 \tableofcontents
+\newpage
 
 ABSTRACT
 
 \section{Introduction}
+
+\todo{introduction to the general topic}
+Privacy is one of the key issues of the information age.
+Especially in the post-Snowden era this fact has become clear to the most individuals around the globe. 
+Numerous regulations and laws \cite{EHG2015, DSG2000, ELGA2012, EuropeanParliament2016, EuropeanCourtofHumanRights2010} require it across all kinds of use cases and industries.
+A well known way to achieve privacy is through encryption, which means encoding an information in such a way that only authorized parties can access it. 
+Hardly any efforts on implementing encryption can be found in photography, which is a remarkable finding, keeping in mind that photographs are generally among the most private media.
+This statement becomes even more astonishing considering the year, when the first patent for such a solution was registered: 1999. \cite{steinberg1999method}
+To fulfill the requirements of privacy in photography it might be necessary to encrypt photographs right after they are taken.
+
+\todo{background and motivation}
+Especially in the context of medicine this is very important as health data is considered the most private data. \cite{williams2013}
+Medical photographs show a patients body, they are used to document visual properties of the skin, the state of a wound or the progress of a plastic surgery. 
+All of the above mentioned photographs document very private information about an individual, which is only to be seen by authorized persons.
+
+Another important application for encryption of photographs is journalism.
+Journalists are looking for possibilities to hide any traces of sensitive material on their devices, for obvious reasons.
+This is called ``plausible deniability'', or to be more precise, according to the Oxford dictionary, plausible deniability is ``the possibility of denying a fact, especially a discreditable action without arousing suspicion''.\cite{OxforddictPlausibleDen}
+Journalists take big risks on them when taking precarious pictures in countries with authoritarian governments, where such actions are considered as act of crime and punished with imprisonment or even death penalty \cite{Amnesty2016}.
+So it could be possible that encryption would not be enough to keep the journalists safe, as a trace of encrypted images could already lead to punishments.
+Encryption is a first step to achieve this level of privacy.
+For this reason 150 journalists wrote an open letter to camera manufacturers, asking them to implement such a feature, in December 2016.\cite{fp2016}
+
+\todo{description of the addressed scientific problem}
+So we can state that there is a demand for digital single-lens reflex (DSLR) photo encryption feature which is not (yet) satisfied by state of the art devices.
+This fact may lead physicians or journalists to take their private devices, which support encryption, for taking photographs, which is no real option for neither professional privacy nor professional image quality.
+
+Privacy is strictly regulated by law, the most important regulations may be found in the general protected data regulation of the EU \cite{EuropeanParliament2016}, the European convention of human rights \cite{EuropeanCourtofHumanRights2010} or the respective national law. \cite{EHG2015, DSG2000, ELGA2012}
+
+Another issue that may  be stated here is that even if custom solutions for encryption do exist, they are not implemented to be turned on and off again easily.
+This leads to the conclusion that it is not possible to perform image encryption without a required amount of previous knowledge and expertise with such solutions.
+
+Our goal is to evaluate different possibilities, to make on-the-fly encryption for DSLR cameras possible.
+To ensure comparability between the introduced possibilities it is inevitable to define measurable parameters.
+
+As encryption requires computational resources, its performance is dependent on the platform it is used on.
+Considering this fact it is essential to be aware of the limited hardware resources of DSLRs that can be used for encryption.
+So we can state that the performance of the implemented algorithm may be measured by the speed of the encryption process (v\textsubscript{encryption}).
+Furthermore, a threshold must be found that determines the minimal speed (v\textsubscript{min}) of the encryption process.
+
+Additionally, it must be assured that the encrypted information may only be decrypted by authorized persons.
+For this reason, the used encryption algorithm must be considered safe, according to the state of the art.
+
+To ensure a specific degree of performance it is necessary that the evaluated solution does rely on as little proprietary soft- and hardware as possible.
+An important information which is not known to us for now: whether or not it is better to perform encryption on DSLRs with software or hardware.
+In the first place, this is a performance related topic, but it has big impact on portability.
+
+
+
+Our final goal is to create a method which can evolve to a best practice, which gives the medical and journalist community the possibility to protect their data with the help of encryption.
+A best practice solution should fulfil the following requirements in the best possible way.
+\begin{enumerate}
+  \item The speed of the encryption process must be greater than the defined threshold (v\textsubscript{encryption} $\geq$ v\textsubscript{min});
+  \item The used encryption algorithm must be considered safe.
+  \item The solution must not be limited to one DSLR manufacturer.
+  \item Plausible deniability must be assured.
+\end{enumerate}
+
+\todo{explanation of fundamental terms and basic definitions}
+PD
+
+Encryption
+\todo{outline of the manuscript}
+
+
+\newpage
 \section{Related Work}
 As it is likely when getting in touch with state of the art technology, the number of related scientific papers seems to be limited.
 The most important research done on this field that could have been obtained is briefly described in this section, to give readers a short introduction on the existing literature. 
@@ -79,11 +146,15 @@ From the other point of view it might not be sufficient enough for a journalist 
 What is missing in this approach is the universality of the solution.
 The clear advantage of the approach of Davidsson et. al \cite{Davidsson2016} is that the SD-card may be used in any device, regardless of DSLR or smartphone.
 
-
+\newpage
 \section{Method}
+\newpage
 \section{Results}
+\newpage
 \section{Discussion}
+\newpage
 \section{Conclusion}
+\newpage
 
 % Add a bibliography.
 \bibliographystyle{alpha}

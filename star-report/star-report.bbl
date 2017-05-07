@@ -1,4 +1,10 @@
-\begin{thebibliography}{DR16}
+\begin{thebibliography}{otPF16}
+
+\bibitem[Bun15]{EHG2015}
+Deutsche Bundestag.
+\newblock Gesetz f\"ur sichere digitale kommunikation und anwendungen im
+  gesundheitswesen sowie zur \"anderung weiterer gesetze, 2015.
+\newblock Version 06.04.2017.
 
 \bibitem[DR16]{Davidsson2016}
 Alexander Davidsson and Torbjörn Rasmusson.
@@ -6,9 +12,58 @@ Alexander Davidsson and Torbjörn Rasmusson.
 \newblock Master's thesis, 2016.
 \newblock 36.
 
+\bibitem[Int16]{Amnesty2016}
+Amnesty International.
+\newblock Egyptian photojournalist at risk of death penalty.
+\newblock
+  \url{https://www.amnesty.org/en/get-involved/take-action/journalism-is-not-a-crime-free-shawkan/},
+  2016.
+\newblock Online; Accessed: 06.04.2017.
+
+\bibitem[Nat99]{DSG2000}
+\"Osterreichischer Nationalrat.
+\newblock Datenschutgesetz 2000, 1999.
+\newblock Version 06.04.2017.
+
+\bibitem[Nat12]{ELGA2012}
+\"Osterreichischer Nationalrat.
+\newblock Gesundheitstelematikgesetz 2012, 2012.
+\newblock Version 06.04.2017.
+
+\bibitem[oHR10]{EuropeanCourtofHumanRights2010}
+European~Court of~Human~Rights.
+\newblock European convention on human rights, 2010.
+
+\bibitem[otPF16]{fp2016}
+Freedom of~the Press~Foundation.
+\newblock Camera encryption letter.
+\newblock Open Letter to Camera Manufacturers, December 2016.
+
+\bibitem[Oxf]{OxforddictPlausibleDen}
+plausible deniability - oxford dictionaries.
+\newblock
+  \url{https://en.oxforddictionaries.com/definition/plausible_deniability}.
+\newblock Online; Accessed: 30.03.2017.
+
+\bibitem[PC16]{EuropeanParliament2016}
+European Parliament and European Council.
+\newblock General data protection regulation, 2016.
+
 \bibitem[SM13]{skillen2013implementing}
 Adam Skillen and Mohammad Mannan.
 \newblock On implementing deniable storage encryption for mobile devices.
 \newblock 2013.
+
+\bibitem[SY99]{steinberg1999method}
+E.~Steinberg and V.~Yeremenko.
+\newblock Method and apparatus for in-camera encryption, January~19 1999.
+\newblock US Patent 5,862,217.
+
+\bibitem[WH13]{williams2013}
+Patricia Williams and Emma Hossack.
+\newblock It will never happen to us: the likelihood and impact of privacy
+  breaches on health data in australia.
+\newblock In {\em Health Informatics: Digital Health Service Delivery - The
+  Future is Now}, pages 155--161, 2013.
 
 \end{thebibliography}
