@@ -1,10 +1,20 @@
 \begin{thebibliography}{otPF16}
 
+\bibitem[Ber08]{bernstein2008chacha}
+Daniel~J Bernstein.
+\newblock Chacha, a variant of salsa20.
+\newblock In {\em Workshop Record of SASC}, volume~8, 2008.
+
 \bibitem[Bun15]{EHG2015}
 Deutsche Bundestag.
 \newblock Gesetz f\"ur sichere digitale kommunikation und anwendungen im
   gesundheitswesen sowie zur \"anderung weiterer gesetze, 2015.
 \newblock Version 06.04.2017.
+
+\bibitem[DR13]{daemen2013design}
+Joan Daemen and Vincent Rijmen.
+\newblock {\em The design of Rijndael: AES-the advanced encryption standard}.
+\newblock Springer Science \& Business Media, 2013.
 
 \bibitem[DR16]{Davidsson2016}
 Alexander Davidsson and Torbjörn Rasmusson.
@@ -39,7 +49,12 @@ Freedom of~the Press~Foundation.
 \newblock Camera encryption letter.
 \newblock Open Letter to Camera Manufacturers, December 2016.
 
-\bibitem[Oxf]{OxforddictPlausibleDen}
+\bibitem[Oxfa]{OxforddictEncrypt}
+encrypt - oxford dictionaries.
+\newblock \url{https://en.oxforddictionaries.com/definition/encrypt}.
+\newblock Online; Accessed: 07.05.2017.
+
+\bibitem[Oxfb]{OxforddictPlausibleDen}
 plausible deniability - oxford dictionaries.
 \newblock
   \url{https://en.oxforddictionaries.com/definition/plausible_deniability}.

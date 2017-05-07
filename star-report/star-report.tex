@@ -9,6 +9,7 @@
 \newcommand{\colormode}{color}
 \newcommand{\dokumenttyp}{Image Encryption in Medicine}
 \usepackage{xcolor}
+\usepackage{amsmath}
 \newcommand\todo[1]{\textcolor{red}{#1}}
 
 \begin{document}
@@ -82,7 +83,46 @@ A best practice solution should fulfil the following requirements in the best po
 \todo{explanation of fundamental terms and basic definitions}
 PD
 
-Encryption
+\subsection{Encryption}
+As in this document we are going to write about solutions, which use encryption, we think it would be good to provide the reader some basic information about encryption.
+According to the Oxford Dictionary encryption is the process of converting information or data into a code with the goal to prevent unauthorized access. \cite{OxforddictEncrypt}
+
+In the field of cryptography there are two ways to encrypt something.
+Either asymmetric or symmetric encryption algorithms can be used.
+The main difference in the two methods are, that in case of the asymmetric encryption two keys are beeing used.
+One for the encryption and a second one for the decryption.
+On the other hand in case of the symmetric encryption there is onlye one key used both for the de- and encryption.
+As we, during our project, mostly used symmetric-key schemes, we are going to focus on this, and we will not write about public-key schemes.
+
+There are two major groups of symmetric encryption algorithms.
+These are the block- and streamciphers.
+Blockcipher algorithms devide the data into equal size blocks, and with the help of the encryption-key they perform the encryption on each blocks individually.
+Streamciphers are a special kind of blockcipher, where the blocksize is one byte.
+Further classification of block- and streamciphers will not be included, as it would go beyond the scope of this paper.
+
+\subsubsection{Advanced encryption Standard}
+The currently used algorithm for encryption is the Advanced encryption standard (AES), which was defined in 2000, to replace the previous one, which were considered unsecure.
+
+AES uses the Rijndael algorithm with some restrictions.
+Rijndael was invented by Daemen et. al. \cite{daemen2013design}
+
+As Rijndael is a blockcipher the round transformations will be applied on the datablocks in round number (N\textsubscript{r}) of times, which can either be plaintextblocks or cipherblocks.
+The input for the algorithm is the key and the plaintextblock, and the output is the cipherblock, or the cipherblock with the key, and the output is in this case the plaintextblock. \cite{daemen2013design}
+
+First the algorithm derives the round key from the userkey, which will be used during the inital key addition.
+After this, the round tranformations will be applied N\textsubscript{r}-1 times, and finally during the final round the encryption considered done.
+One round consits of four trandformations,
+\begin{labeling}{AddRoundkey}
+\item [SubBytes] This is the only non-linear transformation of the algorithm. Every byte will be mapped on an other with the help of a Substitution-Box (S-Box).
+\item [ShiftRows] During this step every row of the state (which is a 2D-array representation of the block) will be shifted cycliically over different offsets.
+\item [MixColumns] In this step every column will be multipied by the following polynome \begin{math} c(x) = 03 * x^3 + 01 * x^2 + 01 * x + 02 \mod x^4 + 1 \end{math}
+\item [AddRoundkey] In this final step we apply bitwise XOR to the current block with the roundkey.
+\end{labeling}
+The decryption uses the inverse of the round transformation, which means they do the same, only in the other direction. \cite{daemen2013design}
+
+\subsubsection{ChaCha20}
+\todo{use this:} \cite{bernstein2008chacha}
+
 \todo{outline of the manuscript}
 
 
