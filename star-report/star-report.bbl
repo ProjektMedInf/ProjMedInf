@@ -6,4 +6,9 @@ Alexander Davidsson and Torbjörn Rasmusson.
 \newblock Master's thesis, 2016.
 \newblock 36.
 
+\bibitem[SM13]{skillen2013implementing}
+Adam Skillen and Mohammad Mannan.
+\newblock On implementing deniable storage encryption for mobile devices.
+\newblock 2013.
+
 \end{thebibliography}
