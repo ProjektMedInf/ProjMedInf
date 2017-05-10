@@ -254,6 +254,10 @@ which ones were excluded? why?
 were there any other constraints (e.g., year of publication, particular application area, etc.)?
 
 \section{Results}
+At this point, we have obtained all the papers that are valuable for our research.
+In the following sections, the results of our research are discussed and even more importantly, compared to each other.
+The state of the art in the selected topic is described by the entirety of the gained knowledge that is compressed in these results.
+Furthermore, we will give a short overview of our comparison at the end of this chapter.
 
 \subsection{Speed}
 A critical factor for the quality of the solution is the speed of the encryption process.
@@ -269,7 +273,8 @@ We start with the analysis the approach of Davidsson et. al.
 In their paper three bottlenecks are stated that define the speed of the encryption process.
 The first one, the processor operation is stated to not affect the speed of the data transfer.
 Secondly the encryption reaches a speed of 20MB/s and is therefore non critical for the success of the implementation.
-Finally, the speed of the data transfer to the SD-card is mentioned, which does not meet our speed requirement. 
+Finally, the speed of the data transfer to the SD-card is mentioned, which does not meet our speed requirement.
+This is caused by the used SPI interface, which only supports a maximum speed of \todo{MB??? http://ieeexplore.ieee.org/abstract/document/4762946/}.
 
 Mobiflage, the solution described by Skillen et. al \cite{skillen2013implementing} is hardware dependent.
 The performance tests described in the paper were carried out on a Nexus S smartphone running Android 4.
@@ -293,7 +298,7 @@ As this solution is designed as an Android app, it is of course limited to Andro
 Considering that Android is the prevailing operating system for mobile devices Mobiflage is a promising application in terms of universality, at least for non-professional usage.
 Anyway, porting this application for usage on professional DSLR devices will nearly be impossible unless the DSLR is powered by an Android powered operating system.
 
-
+\todo{OVERVIEW/TABLE: WHICH APPROACH IS THE BEST}
 
 \newpage
 \section{Discussion}
