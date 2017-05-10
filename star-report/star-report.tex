@@ -97,7 +97,7 @@ As we, during our project, mostly used symmetric-key schemes, we are going to fo
 There are two major groups of symmetric encryption algorithms.
 These are the block- and streamciphers.
 Blockcipher algorithms devide the data into equal size blocks, and with the help of the encryption-key they perform the encryption on each blocks individually.
-Streamciphers are a special kind of blockcipher, where the blocksize is one byte.
+Streamciphers are a special kind of blockcipher, where the blocksize is one byte. \cite{menezes1996handbook}
 Further classification of block- and streamciphers will not be included, as it would go beyond the scope of this paper.
 
 \subsubsection{Advanced encryption Standard}
@@ -121,7 +121,30 @@ One round consits of four trandformations,
 The decryption uses the inverse of the round transformation, which means they do the same, only in the other direction. \cite{daemen2013design}
 
 \subsubsection{ChaCha20}
-\todo{use this:} \cite{bernstein2008chacha}
+Without beeing too detaild, we are shortly going to introduce the ChaCha20 encryption algorithm, as we are going to use it later.
+
+ChaCha20 is a derivate of the Salsa20 algorithm family. 
+The Salsa20 algorithm is a stream cipher, so according to our previous deffinition by Menzenes et al. in \cite{menezes1996handbook} we are talking about a cipher where the blocksize is one byte.
+However according to Bernstein, Salsa20 "generates the stream in 64-byte blocks". \cite{bernstein2008salsa20}
+
+But without beeing cought up too long with the categorization of an algorithm lets jump to the description of how Salsa20 and ChaCha20 work.
+Salsa20 uses a 256-bytes key, which will be expanded with a 64-bit unique message number to a \begin{math} 2^{70} \end{math}-bytes stream.
+To encrypt \textit{b}-byte of plaintext it takes the first \textit{b}-bytes of the stream and xors it with the plaintext.
+The rest of the stream will not be used.
+The decryption works just like the encryption.
+Salsa20 works only with 3 kind of operations on 32-bit words.
+These are addition of two numbers modulo \begin{math} 2^{32} \end{math}, xoring two numbers and rotating a number by some constant bits.
+These three operations can be run on every CPU very efficiently, without needing and dedicated hardware like in the case of AES. \cite{bernstein2008salsa20}
+
+ChaCha20, as mentioned before is a derivate of the Salsa20-family.
+There are three differences:
+\begin{enumerate}
+  \item Due to performance effects the order of the words within the output block are permutated.
+  \item The initial matrix which is used during the encryption and decryption is built in a slightly different way.
+    In the case of Salsa20 the user inputs are scattered within the matrix, wheres in ChaCha these reside in the last row of the matrix.
+  \item "ChaCha sweeps through the rows in the same order in every round."
+\end{enumerate}
+\cite{bernstein2008chacha}
 
 \todo{outline of the manuscript}
 
@@ -197,7 +220,7 @@ The clear advantage of the approach of Davidsson et. al \cite{Davidsson2016} is 
 \newpage
 
 % Add a bibliography.
-\bibliographystyle{alpha}
+\bibliographystyle{ieeetr}
 
 \bibliography{star-report}
 \end{document}

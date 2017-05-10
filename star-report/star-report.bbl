@@ -1,84 +1,80 @@
-\begin{thebibliography}{otPF16}
+\begin{thebibliography}{10}
 
-\bibitem[Ber08]{bernstein2008chacha}
-Daniel~J Bernstein.
-\newblock Chacha, a variant of salsa20.
-\newblock In {\em Workshop Record of SASC}, volume~8, 2008.
-
-\bibitem[Bun15]{EHG2015}
-Deutsche Bundestag.
-\newblock Gesetz f\"ur sichere digitale kommunikation und anwendungen im
-  gesundheitswesen sowie zur \"anderung weiterer gesetze, 2015.
+\bibitem{EHG2015}
+D.~Bundestag, ``Gesetz f\"ur sichere digitale kommunikation und anwendungen im
+  gesundheitswesen sowie zur \"anderung weiterer gesetze,'' 2015.
 \newblock Version 06.04.2017.
 
-\bibitem[DR13]{daemen2013design}
-Joan Daemen and Vincent Rijmen.
-\newblock {\em The design of Rijndael: AES-the advanced encryption standard}.
-\newblock Springer Science \& Business Media, 2013.
+\bibitem{DSG2000}
+O.~Nationalrat, ``Datenschutgesetz 2000,'' 1999.
+\newblock Version 06.04.2017.
 
-\bibitem[DR16]{Davidsson2016}
-Alexander Davidsson and Torbjörn Rasmusson.
-\newblock A vhdl architecture for auto encrypting sd cards.
-\newblock Master's thesis, 2016.
-\newblock 36.
+\bibitem{ELGA2012}
+O.~Nationalrat, ``Gesundheitstelematikgesetz 2012,'' 2012.
+\newblock Version 06.04.2017.
 
-\bibitem[Int16]{Amnesty2016}
-Amnesty International.
-\newblock Egyptian photojournalist at risk of death penalty.
-\newblock
+\bibitem{EuropeanParliament2016}
+E.~Parliament and E.~Council, ``General data protection regulation,'' 2016.
+
+\bibitem{EuropeanCourtofHumanRights2010}
+E.~C. of~Human~Rights, ``European convention on human rights,'' 2010.
+
+\bibitem{steinberg1999method}
+E.~Steinberg and V.~Yeremenko, ``Method and apparatus for in-camera
+  encryption,'' Jan.~19 1999.
+\newblock US Patent 5,862,217.
+
+\bibitem{williams2013}
+P.~Williams and E.~Hossack, ``It will never happen to us: the likelihood and
+  impact of privacy breaches on health data in australia.,'' in {\em Health
+  Informatics: Digital Health Service Delivery - The Future is Now},
+  pp.~155--161, 2013.
+
+\bibitem{OxforddictPlausibleDen}
+``plausible deniability - oxford dictionaries.''
+  \url{https://en.oxforddictionaries.com/definition/plausible_deniability}.
+\newblock Online; Accessed: 30.03.2017.
+
+\bibitem{Amnesty2016}
+A.~International, ``Egyptian photojournalist at risk of death penalty.''
   \url{https://www.amnesty.org/en/get-involved/take-action/journalism-is-not-a-crime-free-shawkan/},
   2016.
 \newblock Online; Accessed: 06.04.2017.
 
-\bibitem[Nat99]{DSG2000}
-\"Osterreichischer Nationalrat.
-\newblock Datenschutgesetz 2000, 1999.
-\newblock Version 06.04.2017.
+\bibitem{fp2016}
+F.~of~the Press~Foundation, ``Camera encryption letter.'' Open Letter to Camera
+  Manufacturers, December 2016.
 
-\bibitem[Nat12]{ELGA2012}
-\"Osterreichischer Nationalrat.
-\newblock Gesundheitstelematikgesetz 2012, 2012.
-\newblock Version 06.04.2017.
-
-\bibitem[oHR10]{EuropeanCourtofHumanRights2010}
-European~Court of~Human~Rights.
-\newblock European convention on human rights, 2010.
-
-\bibitem[otPF16]{fp2016}
-Freedom of~the Press~Foundation.
-\newblock Camera encryption letter.
-\newblock Open Letter to Camera Manufacturers, December 2016.
-
-\bibitem[Oxfa]{OxforddictEncrypt}
-encrypt - oxford dictionaries.
-\newblock \url{https://en.oxforddictionaries.com/definition/encrypt}.
+\bibitem{OxforddictEncrypt}
+``encrypt - oxford dictionaries.''
+  \url{https://en.oxforddictionaries.com/definition/encrypt}.
 \newblock Online; Accessed: 07.05.2017.
 
-\bibitem[Oxfb]{OxforddictPlausibleDen}
-plausible deniability - oxford dictionaries.
-\newblock
-  \url{https://en.oxforddictionaries.com/definition/plausible_deniability}.
-\newblock Online; Accessed: 30.03.2017.
+\bibitem{menezes1996handbook}
+A.~J. Menezes, P.~C. Van~Oorschot, and S.~A. Vanstone, {\em Handbook of applied
+  cryptography}.
+\newblock CRC press, 1996.
 
-\bibitem[PC16]{EuropeanParliament2016}
-European Parliament and European Council.
-\newblock General data protection regulation, 2016.
+\bibitem{daemen2013design}
+J.~Daemen and V.~Rijmen, {\em The design of Rijndael: AES-the advanced
+  encryption standard}.
+\newblock Springer Science \& Business Media, 2013.
 
-\bibitem[SM13]{skillen2013implementing}
-Adam Skillen and Mohammad Mannan.
-\newblock On implementing deniable storage encryption for mobile devices.
-\newblock 2013.
+\bibitem{bernstein2008salsa20}
+D.~J. Bernstein, ``The salsa20 family of stream ciphers,'' in {\em New stream
+  cipher designs}, pp.~84--97, Springer, 2008.
 
-\bibitem[SY99]{steinberg1999method}
-E.~Steinberg and V.~Yeremenko.
-\newblock Method and apparatus for in-camera encryption, January~19 1999.
-\newblock US Patent 5,862,217.
+\bibitem{bernstein2008chacha}
+D.~J. Bernstein, ``Chacha, a variant of salsa20,'' in {\em Workshop Record of
+  SASC}, vol.~8, 2008.
 
-\bibitem[WH13]{williams2013}
-Patricia Williams and Emma Hossack.
-\newblock It will never happen to us: the likelihood and impact of privacy
-  breaches on health data in australia.
-\newblock In {\em Health Informatics: Digital Health Service Delivery - The
-  Future is Now}, pages 155--161, 2013.
+\bibitem{Davidsson2016}
+A.~Davidsson and T.~Rasmusson, ``A vhdl architecture for auto encrypting sd
+  cards,'' Master's thesis, 2016.
+\newblock 36.
+
+\bibitem{skillen2013implementing}
+A.~Skillen and M.~Mannan, ``On implementing deniable storage encryption for
+  mobile devices,'' 2013.
 
 \end{thebibliography}
