@@ -1,9 +1,10 @@
 \contentsline {section}{\numberline {1}Introduction}{3}{section.1}
 \contentsline {subsection}{\numberline {1.1}Encryption}{4}{subsection.1.1}
 \contentsline {subsubsection}{\numberline {1.1.1}Advanced encryption Standard}{5}{subsubsection.1.1.1}
-\contentsline {subsubsection}{\numberline {1.1.2}ChaCha20}{6}{subsubsection.1.1.2}
+\contentsline {subsubsection}{\numberline {1.1.2}ChaCha}{6}{subsubsection.1.1.2}
 \contentsline {section}{\numberline {2}Related Work}{7}{section.2}
 \contentsline {section}{\numberline {3}Method}{9}{section.3}
 \contentsline {section}{\numberline {4}Results}{10}{section.4}
+\contentsline {subsection}{\numberline {4.1}Security}{10}{subsection.4.1}
 \contentsline {section}{\numberline {5}Discussion}{11}{section.5}
 \contentsline {section}{\numberline {6}Conclusion}{12}{section.6}

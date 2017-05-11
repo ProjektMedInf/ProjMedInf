@@ -120,14 +120,14 @@ One round consits of four trandformations,
 \end{labeling}
 The decryption uses the inverse of the round transformation, which means they do the same, only in the other direction. \cite{daemen2013design}
 
-\subsubsection{ChaCha20}
-Without beeing too detaild, we are shortly going to introduce the ChaCha20 encryption algorithm, as we are going to use it later.
+\subsubsection{ChaCha}
+Without beeing too detaild, we are shortly going to introduce the ChaCha encryption algorithm, as we are going to use it later.
 
-ChaCha20 is a derivate of the Salsa20 algorithm family. 
+ChaCha is a derivate of the Salsa20 algorithm family. 
 The Salsa20 algorithm is a stream cipher, so according to our previous deffinition by Menzenes et al. in \cite{menezes1996handbook} we are talking about a cipher where the blocksize is one byte.
 However according to Bernstein, Salsa20 "generates the stream in 64-byte blocks". \cite{bernstein2008salsa20}
 
-But without beeing cought up too long with the categorization of an algorithm lets jump to the description of how Salsa20 and ChaCha20 work.
+But without beeing cought up too long with the categorization of an algorithm lets jump to the description of how Salsa20 and ChaCha work.
 Salsa20 uses a 256-bytes key, which will be expanded with a 64-bit unique message number to a \begin{math} 2^{70} \end{math}-bytes stream.
 To encrypt \textit{b}-byte of plaintext it takes the first \textit{b}-bytes of the stream and xors it with the plaintext.
 The rest of the stream will not be used.
@@ -136,7 +136,7 @@ Salsa20 works only with 3 kind of operations on 32-bit words.
 These are addition of two numbers modulo \begin{math} 2^{32} \end{math}, xoring two numbers and rotating a number by some constant bits.
 These three operations can be run on every CPU very efficiently, without needing and dedicated hardware like in the case of AES. \cite{bernstein2008salsa20}
 
-ChaCha20, as mentioned before is a derivate of the Salsa20-family.
+ChaCha, as mentioned before is a derivate of the Salsa20-family.
 There are three differences:
 \begin{enumerate}
   \item Due to performance effects the order of the words within the output block are permutated.
@@ -164,7 +164,7 @@ A speciality about this approach is that the design aims the SD-card to be used 
 By this the authors of the thesis mean countries, where a journalists takes big risks when taking photographs and trying to get these photographs out of the country.
 This is the point, where plausible deniability takes effect: When a new photograph is saved, it first is encrypted and then hidden on the file system, so no traces of the photographs may be found and the journalists are safe.
 
-The encryption of the data is realised with a ChaCha20 algorithm that is implemented in the used FPGA.
+The encryption of the data is realised with a ChaCha algorithm that is implemented in the used FPGA.
 For the encryption a pair of public and private keys is created outside of the SD card.
 The public key gets stored on the SD card afterwards.
 The decryption is performed outside of the SD with the use of the private key.
@@ -253,6 +253,16 @@ which ones were excluded? why?
 were there any other constraints (e.g., year of publication, particular application area, etc.)?
 
 \section{Results}
+\subsection{Security}
+As one of the crypto-algorithm which was used by us is by the NIST standardized, and still unbroken AES, and the other one is also a well tested algorithm, currently there should be no security issue regarding the cryptological strength of the used algorithm.
+However for the sake of completeness, we will describe some key aspects of the security of the different solutions.
+
+Rijandael was chosen by the NIST to be the new encryption standard, back in 2001.
+Although some modes of encryption (like the ECB mode for more than one block) are considered week and insecure, the security which is provided by the algorithm remains unbroken.
+
+As what Salsa20 and ChaCha consideres, Salsa20 was one of the finalists of the ECRYPT Stream Cipher Project. \cite{bernstein2008salsa20}
+Several papers reported, that they managed to break the encryption of Salsa20 or ChaCha if only 8 or less rounds were used. \cite{aumasson2008new, crowley2006truncated, fischer2006non, tsunoo2007differential}
+But both ChaCha and Salsa20 are capable to work with up to twenty rounds, which even after twelve years after its submission to eSTREAM remains unbroken.
 \newpage
 \section{Discussion}
 \newpage

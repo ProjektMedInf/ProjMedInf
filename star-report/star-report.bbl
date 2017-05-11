@@ -77,4 +77,24 @@ A.~Davidsson and T.~Rasmusson, ``A vhdl architecture for auto encrypting sd
 A.~Skillen and M.~Mannan, ``On implementing deniable storage encryption for
   mobile devices,'' 2013.
 
+\bibitem{aumasson2008new}
+J.-P. Aumasson, S.~Fischer, S.~Khazaei, W.~Meier, and C.~Rechberger, ``New
+  features of latin dances: analysis of salsa, chacha, and rumba,'' in {\em
+  International Workshop on Fast Software Encryption}, pp.~470--488, Springer,
+  2008.
+
+\bibitem{crowley2006truncated}
+P.~Crowley, ``Truncated differential cryptanalysis of five rounds of salsa20,''
+  {\em The State of the Art of Stream Ciphers SASC}, vol.~2006, pp.~198--202,
+  2006.
+
+\bibitem{fischer2006non}
+S.~Fischer, W.~Meier, C.~Berbain, J.-F. Biasse, and M.~J. Robshaw,
+  ``Non-randomness in estream candidates salsa20 and tsc-4,'' in {\em
+  International Conference on Cryptology in India}, pp.~2--16, Springer, 2006.
+
+\bibitem{tsunoo2007differential}
+Y.~Tsunoo, T.~Saito, H.~Kubo, T.~Suzaki, and H.~Nakashima, ``Differential
+  cryptanalysis of salsa20/8,'' in {\em Workshop Record of SASC}, 2007.
+
 \end{thebibliography}
