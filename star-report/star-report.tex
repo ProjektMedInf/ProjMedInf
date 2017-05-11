@@ -342,13 +342,33 @@ As what Salsa20 and ChaCha consideres, Salsa20 was one of the finalists of the E
 Several papers reported, that they managed to break the encryption of Salsa20 or ChaCha if only 8 or less rounds were used. \cite{aumasson2008new, crowley2006truncated, fischer2006non, tsunoo2007differential}
 But both ChaCha and Salsa20 are capable to work with up to twenty rounds, which even after twelve years after its submission to eSTREAM remains unbroken.
 
+Keeping all this in mind, we can say, that the VHDL solution by Davidsson et. al. is considered secure, as they use in their implementation ChaCha20 (this means ChaCha with 20 rounds). \cite{Davidsson2016}
+
+Skillen et. al. uses in their solution AES in XTS mode.
+XTS mode is commonly used for full disc encryption, and is also considered secure. \cite{alomari2014implementation}
+
+The CliniCam paper provides no specific information about what kind of technology is beeing used.
+The authors of the paper only say, that
+\begin{enumerate}[label={\alph*}]
+  \item "The transmitted images are signed with the unique secret key of the user."
+    This indicates, that some kind of asymmetric crypto algorithm is used.
+  \item "The images are stored temporarly in an encrypted area of the application memory."
+    This might indicate some symmetric crypto, however it would be interesting to know, where the key to this area resides.
+    It is probably also in the memory, outside of the encrypted area, in which case the encrypted area does little help.
+  \item "Secure wireless transmission"
+    The authors mention, that the transmission is only allowed through the secured WiFi network of the hospital.
+    However they don't provide any information what kind of technology is used in this case, like if it is WEP or WPA/WPA2 or something else.
+\end{enumerate}
+All in all we categorized CliniCam in the point of security "unknown", as the authors didn't provide any specifics regarding the used technologies. \cite{pmid25565678}
+
 \subsection{Plausible deniability}
 \todo{Used Keywords: deniable encryption, plausible deniability sd card}
 
-\todo{passt es überhaupt hier rein??} Denying the unauthorized access to information is relatively easy to achieve with encryption, encryption still doesn't solve the problem to hide the existence of the encrypted data.
+Denying the unauthorized access to information is relatively easy to achieve with encryption, encryption still doesn't solve the problem to hide the existence of the encrypted data.
 As prevously have been showed with choosing a strong enough key, cryptographic algorithms can act as a feasable protection, however, in some states the legistlation can oblige the individuals to disclose their keys.
 This means an advisory can often observe, that somebody tried to hide some information with the help of encryption, and maybe this advisory can even see the size or some other metadata of the file.
 As it was reported in the news the former director of the NSA and CIA said, that they kill people based on metadata. \cite{coleMetadata}
+It is worth mentioning, that plausible deniability is only important in the context of journalism and not in the field of medicine.
 
 To acchiev plausible deniability we found two methods.
 Either we solve the problem on the file system level, which mean, we take a file system that allows to be configured in a way, where plausible deniability is possible, or we use deniable encryption.
@@ -365,6 +385,9 @@ The problem is not that, that the decryption algorithm can't decrypt an informat
 The problem is, like Trachtenberg describes, to create an output with a fake key, that will convince the advisory, that he got the real output. \cite{trachtenbergsay}
 Trachtenberg in \cite{trachtenbergsay} later describes a method how to implement deniable encryption based on the \textit{set reconciliation} in the context of strings.
 However in our case this method is not really applicable, thus we have to handle specifically designed file formats, which even after decryption with a fake key should deliver a valid looking picture.
+
+Davidsson et. al. doesn't mention if there would be an option in their case to apply methods which would enable plausible deniability.
+The same applies to the solution by Skillen et. al.
 \newpage
 \section{Discussion}
 \newpage

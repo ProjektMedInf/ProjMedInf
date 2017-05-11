@@ -103,6 +103,11 @@ S.~Fischer, W.~Meier, C.~Berbain, J.-F. Biasse, and M.~J. Robshaw,
 Y.~Tsunoo, T.~Saito, H.~Kubo, T.~Suzaki, and H.~Nakashima, ``Differential
   cryptanalysis of salsa20/8,'' in {\em Workshop Record of SASC}, 2007.
 
+\bibitem{alomari2014implementation}
+M.~A. Alomari, K.~Samsudin, and A.~R. Ramli, ``Implementation of a parallel xts
+  encryption mode of operation,'' {\em Indian Journal of Science and
+  Technology}, vol.~7, no.~11, pp.~1813--1819, 2014.
+
 \bibitem{coleMetadata}
 ``David cole - "we kill people based on metadata".''
   \url{http://www.nybooks.com/daily/2014/05/10/we-kill-people-based-metadata/}.
