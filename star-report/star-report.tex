@@ -10,6 +10,7 @@
 \newcommand{\dokumenttyp}{Image Encryption in Medicine}
 \usepackage{xcolor}
 \usepackage{amsmath}
+\usepackage{siunitx}
 \newcommand\todo[1]{\textcolor{red}{#1}}
 
 \begin{document}
@@ -253,6 +254,52 @@ which ones were excluded? why?
 were there any other constraints (e.g., year of publication, particular application area, etc.)?
 
 \section{Results}
+At this point, we have obtained all the papers that are valuable for our research.
+In the following sections, the results of our research are discussed and even more importantly, compared to each other.
+The state of the art in the selected topic is described by the entirety of the gained knowledge that is compressed in these results.
+Furthermore, we will give a short overview of our comparison at the end of this chapter.
+
+\subsection{Speed}
+A critical factor for the quality of the solution is the speed of the encryption process.
+This is the time between the capture and the secure storage of the image.
+Images in the so-called RAW-format are the purest way of storing images, as the loss of quality through compression is minimized.
+The size of a RAW photograph is highly depending on the quality of the used camera but is usually between 20MB and 50MB.
+As already stated in the introduction the speed of the encryption process must be greater than the defined threshold (v\textsubscript{encryption} $\geq$ v\textsubscript{min}).
+Davidsson et. al \cite{Davidsson2016} state in their paper that the transfer speed shall be at least 10MB/s.
+As no other reliable source for the minimal speed requirement could have been found, this 10MB/s are considered state of the art.
+As a results we can state that v\textsubscript{min} is 10MB/s.
+
+We start with the analysis the approach of Davidsson et. al.
+In their paper three bottlenecks are stated that define the speed of the encryption process.
+The first one, the processor operation is stated to not affect the speed of the data transfer.
+Secondly the encryption reaches a speed of 20MB/s and is therefore non critical for the success of the implementation.
+Finally, the speed of the data transfer to the SD-card is mentioned, which does not meet our speed requirement.
+This is caused by the used SPI interface, which only supports a maximum speed of \todo{MB??? http://ieeexplore.ieee.org/abstract/document/4762946/}.
+
+Mobiflage, the solution described by Skillen et. al \cite{skillen2013implementing} is hardware dependent.
+The performance tests described in the paper were carried out on a Nexus S smartphone running Android 4.
+The test conditions were as follows: 
+Four files with sizes between 50MB and 200MB were written to the encrypted memory.
+This process was repeated 20 times per file, resulting in an average writing speed of 5288$\pm$69MB/s.
+Unfortunately, this value only reaches 50\% of the desired speed.
+
+\subsection{Universality}
+As we can state for now there are plenty of possibilities to reach the target of professional photo encryption.
+An issue that has to be aimed now is, whether the identified approaches are can easily be used across all kinds of use cases or not.
+For this reason we will now take a look at the universality of the relevant attempts.
+
+Davidsson et. al \cite{Davidsson2016} designed a solution that is based on a hardware platform.
+This hardware platform is designed as SD-Card, not only in terms of size and shape this SD-Card is capable of communicating with all kinds of devices using an Serial Peripheral Interface (SPI) Bus.
+So theoretically it would be possible to use this SD-Card in any digital camera, DSLR, PC or smartphone, that supports SD-cards.
+A big problem here is the design as SD-Card, as the standard specification for smartphones is to use micro SD-Cards in order to keep this devices compact.
+
+The approach of Skillen et. al \cite{skillen2013implementing} is the complete opposite in terms of design.
+As this solution is designed as an Android app, it is of course limited to Android smartphones, with at least one micro SD-Card slot.
+Considering that Android is the prevailing operating system for mobile devices Mobiflage is a promising application in terms of universality, at least for non-professional usage.
+Anyway, porting this application for usage on professional DSLR devices will nearly be impossible unless the DSLR is powered by an Android powered operating system.
+
+\todo{OVERVIEW/TABLE: WHICH APPROACH IS THE BEST}
+
 \subsection{Security}
 As one of the crypto-algorithm which was used by us is by the NIST standardized, and still unbroken AES, and the other one is also a well tested algorithm, currently there should be no security issue regarding the cryptological strength of the used algorithm.
 However for the sake of completeness, we will describe some key aspects of the security of the different solutions.
