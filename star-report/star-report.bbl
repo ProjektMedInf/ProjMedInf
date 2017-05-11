@@ -97,4 +97,22 @@ S.~Fischer, W.~Meier, C.~Berbain, J.-F. Biasse, and M.~J. Robshaw,
 Y.~Tsunoo, T.~Saito, H.~Kubo, T.~Suzaki, and H.~Nakashima, ``Differential
   cryptanalysis of salsa20/8,'' in {\em Workshop Record of SASC}, 2007.
 
+\bibitem{coleMetadata}
+``David cole - "we kill people based on metadata".''
+  \url{http://www.nybooks.com/daily/2014/05/10/we-kill-people-based-metadata/}.
+\newblock Online; Accessed: 11.05.2017.
+
+\bibitem{peters2015defy}
+T.~M. Peters, M.~A. Gondree, and Z.~N. Peterson, ``Defy: A deniable, encrypted
+  file system for log-structured storage,'' 2015.
+
+\bibitem{canetti1997deniable}
+R.~Canetti, C.~Dwork, M.~Naor, and R.~Ostrovsky, ``Deniable encryption,'' in
+  {\em Annual International Cryptology Conference}, pp.~90--104, Springer,
+  1997.
+
+\bibitem{trachtenbergsay}
+A.~Trachtenberg, ``Say it ain’t so-an implementation of deniable
+  encryption,''
+
 \end{thebibliography}

@@ -310,6 +310,28 @@ Although some modes of encryption (like the ECB mode for more than one block) ar
 As what Salsa20 and ChaCha consideres, Salsa20 was one of the finalists of the ECRYPT Stream Cipher Project. \cite{bernstein2008salsa20}
 Several papers reported, that they managed to break the encryption of Salsa20 or ChaCha if only 8 or less rounds were used. \cite{aumasson2008new, crowley2006truncated, fischer2006non, tsunoo2007differential}
 But both ChaCha and Salsa20 are capable to work with up to twenty rounds, which even after twelve years after its submission to eSTREAM remains unbroken.
+
+\subsection{Plausible deniability}
+\todo{passt es überhaupt hier rein??} Denying the unauthorized access to information is relatively easy to achieve with encryption, encryption still doesn't solve the problem to hide the existence of the encrypted data.
+As prevously have been showed with choosing a strong enough key, cryptographic algorithms can act as a feasable protection, however, in some states the legistlation can oblige the individuals to disclose their keys.
+This means an advisory can often observe, that somebody tried to hide some information with the help of encryption, and maybe this advisory can even see the size or some other metadata of the file.
+As it was reported in the news the former director of the NSA and CIA said, that they kill people based on metadata. \cite{coleMetadata}
+
+To acchiev plausible deniability we found two methods.
+Either we solve the problem on the file system level, which mean, we take a file system that allows to be configured in a way, where plausible deniability is possible, or we use deniable encryption.
+
+For the file system we found the by Peters et. al. presented DEFY-file system solution.
+DEFY stands for \textbf{D}eniable \textbf{E}ncrypted \textbf{F}ile System for \textbf{Y}AFFS.
+YAFFS stands for \textbf{Y}et \textbf{A}nother \textbf{F}lash \textbf{F}ile \textbf{S}ystem.
+The basic idea for DEFY is, that it defines different deniable layers, which have to be opened separatly.
+And as the whole file system is encrypted, an advisory can't find out if changes on the file system originate from some normal OS activity, or that the user tries to hide something.
+Additionally they make sure, that if something gets deleted it is going to be earsed from the drive. \cite{peters2015defy}
+
+The basic idea behind plausible encryption is, if the advisory aquires the ciphertext and obliges the user to hand over appropriate key, then the user can hand over a fake key, which will lead to a biased decryption, which doesn't include any sensitive data, however the advisory can't tell if the decrypted information is fake or real. \cite{canetti1997deniable}
+The problem is not that, that the decryption algorithm can't decrypt an information with a wrong key, because there are ways to configure the system in a way, that the algorithm doesn't check if the decrypted information is valid or not.
+The problem is, like Trachtenberg describes, to create an output with a fake key, that will convince the advisory, that he got the real output. \cite{trachtenbergsay}
+Trachtenberg in \cite{trachtenbergsay} later describes a method how to implement deniable encryption based on the \textit{set reconciliation} in the context of strings.
+However in our case this method is not really applicable, thus we have to handle specifically designed file formats, which even after decryption with a fake key should deliver a valid looking picture.
 \newpage
 \section{Discussion}
 \newpage
