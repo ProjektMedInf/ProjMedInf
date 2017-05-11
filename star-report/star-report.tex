@@ -36,7 +36,7 @@ To fulfill the requirements of privacy in photography it might be necessary to e
 \todo{background and motivation}
 Especially in the context of medicine this is very important as health data is considered the most private data. \cite{williams2013}
 Medical photographs show a patients body, they are used to document visual properties of the skin, the state of a wound or the progress of a plastic surgery. 
-All of the above mentioned photographs document very private information about an individual, which is only to be seen by authorized persons.
+All of the above mentioned photographs document very private information about an individual, which is only to be seen by authorized persons. \todo{WHAT ABOUT THEF? MENTION?}
 
 Another important application for encryption of photographs is journalism.
 Journalists are looking for possibilities to hide any traces of sensitive material on their devices, for obvious reasons.
@@ -259,6 +259,27 @@ In the following sections, the results of our research are discussed and even mo
 The state of the art in the selected topic is described by the entirety of the gained knowledge that is compressed in these results.
 Furthermore, we will give a short overview of our comparison at the end of this chapter.
 
+
+\todo{SUMMARY}
+The most outstanding work related to the topic examined in this state of the art report is titled ``A VHDL Architecture for Auto Encrypting SD Cards'' and was published by the University of Gothenburg in November 2016 \cite{Davidsson2016}.
+To summarize, the students working on this master's thesis designed an encrypted SD-card for journalists.
+The approach was based on a hardware solution.
+An SD-Card adapter was designed, that applies to the SD-card standard, in other words, the auto-encrypting SD had the size and shape of a usual SD card.
+Inside this seemingly normal SD-card there was an encryption hardware module, based around a FPGA and a publicly available intellectual property core, which was used for encryption.
+
+Another approach to this issue, especially focused on plausible deniability was developed by Adam Skillen and Mohammad Mannan at the Concordia University in Montreal, Canada \cite{skillen2013implementing}.
+This solution is basically an app (``Mobiflage'') that stores photographs on a deniable file system, which means hiding encrypted volumes within random data on the external storage of a mobile device.
+The paper was published in 2013.
+Google's Android operating system was used for the prototypic implementation of Mobiflage.
+
+Similarly to Mobiflage another paper was identified that addresses the issue of secure storage of photographs on mobile devices.
+Landman et. al \cite{pmid25565678} published a paper called ``A Mobile App for Securely Capturing and Transferring Clinical Images to the Electronic Health Record: Description and Preliminary Usability Study'' that describes an app developed for iOS devices called ``CliniCam''.
+To enhance security, this app does not save the image permanently, it rather transfers it to a secure electronic health record (EHR) in PDF format.
+The temporary storage of the photographs is handled within ``a secure temporary storage area allocated to the app'' this storage area is called sandbox.
+\todo{SUMMARY}
+
+
+
 \subsection{Speed}
 A critical factor for the quality of the solution is the speed of the encryption process.
 This is the time between the capture and the secure storage of the image.
@@ -283,6 +304,12 @@ Four files with sizes between 50MB and 200MB were written to the encrypted memor
 This process was repeated 20 times per file, resulting in an average writing speed of 5288$\pm$69MB/s.
 Unfortunately, this value only reaches 50\% of the desired speed.
 
+The analysis for CliniCam \cite{pmid25565678} is quite complex as the performance is not described in the paper.
+As the image is not directly encrypted but rather just stored in the ``secure storage area'' and the storage is a highly performing NAND-flash, we can guess that the storage is not a bottleneck of the application.
+As the image is not aimed to remain on the device, a transfer to the EHR server via WiFi is necessary.
+The issue here is that this process must be started manually, which decreases the speed of the overall operation.
+If a device with the 802.11ac stanard is used, a speed of arround 35MB/s may be reached, which is sufficient for our requirement.
+
 \subsection{Universality}
 As we can state for now there are plenty of possibilities to reach the target of professional photo encryption.
 An issue that has to be aimed now is, whether the identified approaches are can easily be used across all kinds of use cases or not.
@@ -297,6 +324,10 @@ The approach of Skillen et. al \cite{skillen2013implementing} is the complete op
 As this solution is designed as an Android app, it is of course limited to Android smartphones, with at least one micro SD-Card slot.
 Considering that Android is the prevailing operating system for mobile devices Mobiflage is a promising application in terms of universality, at least for non-professional usage.
 Anyway, porting this application for usage on professional DSLR devices will nearly be impossible unless the DSLR is powered by an Android powered operating system.
+
+Similarly as the approach of Skillen, Landman et. al \cite{pmid25565678} deal with an approach that shows disadvantages in terms of universality.
+This is caused by the single-platform design of the app CliniCam that allows it only to be executed on iOS platforms.
+Another issue is that the platform iOS is bound to a single manufacturer, which makes CliniCam even more limiting.
 
 \todo{OVERVIEW/TABLE: WHICH APPROACH IS THE BEST}
 
