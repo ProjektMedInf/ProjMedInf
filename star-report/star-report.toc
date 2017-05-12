@@ -2,12 +2,12 @@
 \contentsline {subsection}{\numberline {1.1}Encryption}{4}{subsection.1.1}
 \contentsline {subsubsection}{\numberline {1.1.1}Advanced encryption Standard}{5}{subsubsection.1.1.1}
 \contentsline {subsubsection}{\numberline {1.1.2}ChaCha}{6}{subsubsection.1.1.2}
-\contentsline {section}{\numberline {2}Related Work}{7}{section.2}
-\contentsline {section}{\numberline {3}Method}{9}{section.3}
-\contentsline {section}{\numberline {4}Results}{10}{section.4}
-\contentsline {subsection}{\numberline {4.1}Speed}{11}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Universality}{11}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Security}{12}{subsection.4.3}
-\contentsline {subsection}{\numberline {4.4}Plausible deniability}{13}{subsection.4.4}
-\contentsline {section}{\numberline {5}Discussion}{15}{section.5}
-\contentsline {section}{\numberline {6}Conclusion}{16}{section.6}
+\contentsline {section}{\numberline {2}Method}{7}{section.2}
+\contentsline {section}{\numberline {3}Results}{8}{section.3}
+\contentsline {subsection}{\numberline {3.1}Summary}{8}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Speed}{9}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Universality}{10}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Security}{10}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.5}Plausible deniability}{11}{subsection.3.5}
+\contentsline {section}{\numberline {4}Discussion}{14}{section.4}
+\contentsline {section}{\numberline {5}Conclusion}{15}{section.5}

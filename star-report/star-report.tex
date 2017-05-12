@@ -151,66 +151,6 @@ There are three differences:
 
 
 \newpage
-\section{Related Work}
-As it is likely when getting in touch with state of the art technology, the number of related scientific papers seems to be limited.
-The most important research done on this field that could have been obtained is briefly described in this section, to give readers a short introduction on the existing literature. 
-The most outstanding work related to the topic examined in this state of the art report is titled ``A VHDL Architecture for Auto Encrypting SD Cards'' and was published by the University of Gothenburg in November 2016 \cite{Davidsson2016}.
-To summarize, the students working on this master's thesis designed an encrypted SD-card for journalists.
-
-The approach was based on a hardware solution.
-An SD-Card adapter was designed, that applies to the SD-card standard, in other words, the auto-encrypting SD had the size and shape of a usual SD card.
-Inside this seemingly normal SD-card there was an encryption hardware module, based around a FPGA and a publicly available intellectual property core, which was used for encryption.
-
-A speciality about this approach is that the design aims the SD-card to be used by journalists, who work in ``destabilized areas''.
-By this the authors of the thesis mean countries, where a journalists takes big risks when taking photographs and trying to get these photographs out of the country.
-This is the point, where plausible deniability takes effect: When a new photograph is saved, it first is encrypted and then hidden on the file system, so no traces of the photographs may be found and the journalists are safe.
-
-The encryption of the data is realised with a ChaCha algorithm that is implemented in the used FPGA.
-For the encryption a pair of public and private keys is created outside of the SD card.
-The public key gets stored on the SD card afterwards.
-The decryption is performed outside of the SD with the use of the private key.
-It is important here to notice, that previewing the photographs is possible as long as the SD card is powered up. 
-
-What is missing in the described approach is a hardware implementation.
-All of the work that was done to achieve what was achieved in this project was carried out on a simulator.
-Even though the writers of this thesis achieved all of their goals it is inevitable to thoroughly test this solution as a fully developed hardware platform to proof the applicability of the proposed solution.
-
-An issue that has not been addressed completely in our opinion is the plausible deniability.
-Even though the proposed solution ``hides previously created encrypted files from the camera'', it is not assured that this file hiding is sufficient towards forensic analysis.
-
-Another approach to this issue, especially focused on plausible deniability was developed by Adam Skillen and Mohammad Mannan at the Concordia University in Montreal, Canada \cite{skillen2013implementing}.
-This solution is basically an app (``Mobiflage'') that stores photographs on a deniable file system, which means hiding encrypted volumes within random data on the external storage of a mobile device.
-The paper was published in 2013.
-
-Google's Android operating system was used for the prototypic implementation of Mobiflage.
-A precondition for the application of Mobiflage is the existence of an external memory (SD-card), as the proposed solution does not support internal memory.
-Two separate volumes are created on the volumes of the SD-card:
-\begin{enumerate}
-  \item An userdata volume, used for settings and application data
-  \item An auxillary volume, where the photos will be persisted
-\end{enumerate}
-
-Mobiflage achieves plausible deniability through plausible deniable encryption (PDE) this technique enables the output of different reasonable and innocuous plaintexts from a given ciphertext.
-The original plaintext (or the image data) is only revealed if the correct key is entered.
-This makes the decrypted data seem correct for unauthorized individuals trying to force the disclosure of the encrypted information.
-As Skillen et. al states, there is a file system for Linux called ``Rubberhose'' which features PDE.
-Mobiflage features two modes for saving images: 
-\begin{enumerate}
-  \item Standard Mode
-  In this mode the so called ``decoy'' password is entered at boot time and non-sensitive data is displayed.
-  The storage medium is mounted as Mobiflage isn't installed.
-  \item PDE mode
-  In the PDE mode the user enters the ``trust'' password at boot time and the hidden data may be accessed on the SD-card.
-\end{enumerate}
-
-The most important aspect here is that the source of the image is a smartphone or tablet and not a DSLR or any other kind of camera.
-This fact reduces the time from the capture of the image to the secure persistence on the memory drastically.
-From the other point of view it might not be sufficient enough for a journalist to take pictures with a smartphone, instead he relies on professional equipment like a DSLR to achieve the desired quality of work.
-
-What is missing in this approach is the universality of the solution.
-The clear advantage of the approach of Davidsson et. al \cite{Davidsson2016} is that the SD-card may be used in any device, regardless of DSLR or smartphone.
-
-\newpage
 \section{Method}
 The aim of this chapter is to describe the methodology used when performing the research for related literature on the topic of this paper.
 Several search strategies have been used in order to get as much relevant literature as possible.
@@ -243,15 +183,6 @@ So we can state, that watermarking addresses issues in the field of integrity bu
 
 The result of the above mentioned research is a set of relevant literature that marks the state of the art in the topic of this very scientific work.
 All in all it was possible to obtain \todo{number} papers.
-\todo{List papers somehow, but maybe not in this chapter?}
-
-describe how you arrived at the set of techniques presented in the Results section
-which journals / conference proceedings / libraries / digital libraries / search engines have been searched?
-what keywords have been used?
-how many results were obtained?
-what were the selection criteria? how were the relevant ones selected?
-which ones were excluded? why?
-were there any other constraints (e.g., year of publication, particular application area, etc.)?
 
 \section{Results}
 At this point, we have obtained all the papers that are valuable for our research.
@@ -259,8 +190,9 @@ In the following sections, the results of our research are discussed and even mo
 The state of the art in the selected topic is described by the entirety of the gained knowledge that is compressed in these results.
 Furthermore, we will give a short overview of our comparison at the end of this chapter.
 
+\subsection{Summary}
+In this section we are shortly going to summarize the approaches found with our methodology.
 
-\todo{SUMMARY}
 The most outstanding work related to the topic examined in this state of the art report is titled ``A VHDL Architecture for Auto Encrypting SD Cards'' and was published by the University of Gothenburg in November 2016 \cite{Davidsson2016}.
 To summarize, the students working on this master's thesis designed an encrypted SD-card for journalists.
 The approach was based on a hardware solution.
@@ -271,14 +203,21 @@ Another approach to this issue, especially focused on plausible deniability was 
 This solution is basically an app (``Mobiflage'') that stores photographs on a deniable file system, which means hiding encrypted volumes within random data on the external storage of a mobile device.
 The paper was published in 2013.
 Google's Android operating system was used for the prototypic implementation of Mobiflage.
+Mobiflage features two modes for saving images: 
+\begin{enumerate}
+  \item Standard Mode
+  In this mode the so called ``decoy'' password is entered at boot time and non-sensitive data is displayed.
+  The storage medium is mounted as Mobiflage isn't installed.
+  \item PDE mode
+  In the PDE mode the user enters the ``trust'' password at boot time and the hidden data may be accessed on the SD-card.
+\end{enumerate}
 
 Similarly to Mobiflage another paper was identified that addresses the issue of secure storage of photographs on mobile devices.
 Landman et. al \cite{pmid25565678} published a paper called ``A Mobile App for Securely Capturing and Transferring Clinical Images to the Electronic Health Record: Description and Preliminary Usability Study'' that describes an app developed for iOS devices called ``CliniCam''.
 To enhance security, this app does not save the image permanently, it rather transfers it to a secure electronic health record (EHR) in PDF format.
 The temporary storage of the photographs is handled within ``a secure temporary storage area allocated to the app'' this storage area is called sandbox.
-\todo{SUMMARY}
 
-
+\todo{Add Summary for Peters}
 
 \subsection{Speed}
 A critical factor for the quality of the solution is the speed of the encryption process.
@@ -308,7 +247,9 @@ The analysis for CliniCam \cite{pmid25565678} is quite complex as the performanc
 As the image is not directly encrypted but rather just stored in the ``secure storage area'' and the storage is a highly performing NAND-flash, we can guess that the storage is not a bottleneck of the application.
 As the image is not aimed to remain on the device, a transfer to the EHR server via WiFi is necessary.
 The issue here is that this process must be started manually, which decreases the speed of the overall operation.
-If a device with the 802.11ac stanard is used, a speed of arround 35MB/s may be reached, which is sufficient for our requirement.
+If a device with the 802.11ac standard is used, a speed of around 35MB/s may be reached, which is sufficient for our requirement.
+
+\todo{Add Speed for Peters}
 
 \subsection{Universality}
 As we can state for now there are plenty of possibilities to reach the target of professional photo encryption.
@@ -329,7 +270,7 @@ Similarly as the approach of Skillen, Landman et. al \cite{pmid25565678} deal wi
 This is caused by the single-platform design of the app CliniCam that allows it only to be executed on iOS platforms.
 Another issue is that the platform iOS is bound to a single manufacturer, which makes CliniCam even more limiting.
 
-\todo{OVERVIEW/TABLE: WHICH APPROACH IS THE BEST}
+\todo{Add Speed for Peters}
 
 \subsection{Security}
 As one of the crypto-algorithm which was used by us is by the NIST standardized, and still unbroken AES, and the other one is also a well tested algorithm, currently there should be no security issue regarding the cryptological strength of the used algorithm.
@@ -338,7 +279,7 @@ However for the sake of completeness, we will describe some key aspects of the s
 Rijandael was chosen by the NIST to be the new encryption standard, back in 2001.
 Although some modes of encryption (like the ECB mode for more than one block) are considered week and insecure, the security which is provided by the algorithm remains unbroken.
 
-As what Salsa20 and ChaCha consideres, Salsa20 was one of the finalists of the ECRYPT Stream Cipher Project. \cite{bernstein2008salsa20}
+As what Salsa20 and ChaCha considers, Salsa20 was one of the finalists of the ECRYPT Stream Cipher Project. \cite{bernstein2008salsa20}
 Several papers reported, that they managed to break the encryption of Salsa20 or ChaCha if only 8 or less rounds were used. \cite{aumasson2008new, crowley2006truncated, fischer2006non, tsunoo2007differential}
 But both ChaCha and Salsa20 are capable to work with up to twenty rounds, which even after twelve years after its submission to eSTREAM remains unbroken.
 
@@ -347,12 +288,12 @@ Keeping all this in mind, we can say, that the VHDL solution by Davidsson et. al
 Skillen et. al. uses in their solution AES in XTS mode.
 XTS mode is commonly used for full disc encryption, and is also considered secure. \cite{alomari2014implementation}
 
-The CliniCam paper provides no specific information about what kind of technology is beeing used.
+The CliniCam paper provides no specific information about what kind of technology is being used.
 The authors of the paper only say, that
 \begin{enumerate}[label={\alph*}]
   \item "The transmitted images are signed with the unique secret key of the user."
     This indicates, that some kind of asymmetric crypto algorithm is used.
-  \item "The images are stored temporarly in an encrypted area of the application memory."
+  \item "The images are stored temporary in an encrypted area of the application memory."
     This might indicate some symmetric crypto, however it would be interesting to know, where the key to this area resides.
     It is probably also in the memory, outside of the encrypted area, in which case the encrypted area does little help.
   \item "Secure wireless transmission"
@@ -361,16 +302,18 @@ The authors of the paper only say, that
 \end{enumerate}
 All in all we categorized CliniCam in the point of security "unknown", as the authors didn't provide any specifics regarding the used technologies. \cite{pmid25565678}
 
+\todo{Add Encryption for Peters}
+
 \subsection{Plausible deniability}
 \todo{Used Keywords: deniable encryption, plausible deniability sd card}
 
 Denying the unauthorized access to information is relatively easy to achieve with encryption, encryption still doesn't solve the problem to hide the existence of the encrypted data.
-As prevously have been showed with choosing a strong enough key, cryptographic algorithms can act as a feasable protection, however, in some states the legistlation can oblige the individuals to disclose their keys.
+As previously has been showed with choosing a strong enough key, cryptographic algorithms can act as a feasible protection, however, in some states the legislation can oblige the individuals to disclose their keys.
 This means an advisory can often observe, that somebody tried to hide some information with the help of encryption, and maybe this advisory can even see the size or some other metadata of the file.
 As it was reported in the news the former director of the NSA and CIA said, that they kill people based on metadata. \cite{coleMetadata}
 It is worth mentioning, that plausible deniability is only important in the context of journalism and not in the field of medicine.
 
-To acchiev plausible deniability we found two methods.
+To achieve plausible deniability we found two methods.
 Either we solve the problem on the file system level, which mean, we take a file system that allows to be configured in a way, where plausible deniability is possible, or we use deniable encryption.
 
 For the file system we found the by Peters et. al. presented DEFY-file system solution.
@@ -380,16 +323,62 @@ The basic idea for DEFY is, that it defines different deniable layers, which hav
 And as the whole file system is encrypted, an advisory can't find out if changes on the file system originate from some normal OS activity, or that the user tries to hide something.
 Additionally they make sure, that if something gets deleted it is going to be earsed from the drive. \cite{peters2015defy}
 
-The basic idea behind plausible encryption is, if the advisory aquires the ciphertext and obliges the user to hand over appropriate key, then the user can hand over a fake key, which will lead to a biased decryption, which doesn't include any sensitive data, however the advisory can't tell if the decrypted information is fake or real. \cite{canetti1997deniable}
+The basic idea behind plausible encryption is, if the advisory acquires the ciphertext and obliges the user to hand over appropriate key, then the user can hand over a fake key, which will lead to a biased decryption, which doesn't include any sensitive data, however the advisory can't tell if the decrypted information is fake or real. \cite{canetti1997deniable}
 The problem is not that, that the decryption algorithm can't decrypt an information with a wrong key, because there are ways to configure the system in a way, that the algorithm doesn't check if the decrypted information is valid or not.
 The problem is, like Trachtenberg describes, to create an output with a fake key, that will convince the advisory, that he got the real output. \cite{trachtenbergsay}
 Trachtenberg in \cite{trachtenbergsay} later describes a method how to implement deniable encryption based on the \textit{set reconciliation} in the context of strings.
 However in our case this method is not really applicable, thus we have to handle specifically designed file formats, which even after decryption with a fake key should deliver a valid looking picture.
 
+\todo{DAVIDSSON: PLAUSIBLE DENIABILITY}
 Davidsson et. al. doesn't mention if there would be an option in their case to apply methods which would enable plausible deniability.
-The same applies to the solution by Skillen et. al.
+\todo{Davidsson mentions :\tabularnewline
+The SD-card adapter is designed to appear as a generic
+SD-card adapter with the exception that it encrypts the data and hides any changes in the file system.\tabularnewline
+• The device should hide encrypted files from previous sessions.\tabularnewline
+The modification clusters are used to store alterations to the preallocated
+folders where the tools have specified to hide encrypted files after power down.\tabularnewline
+the system hides previously created encrypted files from the
+camera.\tabularnewline
+}
+
+\todo{SKILLEN: PLAUSIBLE DENIABILITY}
+Mobiflage stores photographs on a deniable file system, which means hiding encrypted volumes within random data on the external storage of a mobile device.
+Mobiflage achieves plausible deniability through plausible deniable encryption (PDE) this technique enables the output of different reasonable and innocuous plaintexts from a given ciphertext.
+The original plaintext (or the image data) is only revealed if the correct key is entered.
+This makes the decrypted data seem correct for unauthorized individuals trying to force the disclosure of the encrypted information.
+As Skillen et. al states, there is a file system for Linux called ``Rubberhose'' which features PDE.
+
+Two separate volumes are created on the volumes of the SD-card:
+\begin{enumerate}
+  \item An userdata volume, used for settings and application data
+  \item An auxillary volume, where the photos will be persisted
+\end{enumerate}
+
+
 \newpage
 \section{Discussion}
+
+\todo{DAVIDSSON}
+What is missing in the described approach is a hardware implementation.
+All of the work that was done to achieve what was achieved in this project was carried out on a simulator.
+Even though the writers of this thesis achieved all of their goals it is inevitable to thoroughly test this solution as a fully developed hardware platform to proof the applicability of the proposed solution.
+
+An issue that has not been addressed completely in our opinion is the plausible deniability.
+Even though the proposed solution ``hides previously created encrypted files from the camera'', it is not assured that this file hiding is sufficient towards forensic analysis.
+
+\todo{DAVIDSSON}
+
+\todo{SKILLEN}
+A precondition for the application of Mobiflage is the existence of an external memory (SD-card), as the proposed solution does not support internal memory.
+
+The most important aspect here is that the source of the image is a smartphone or tablet and not a DSLR or any other kind of camera.
+This fact reduces the time from the capture of the image to the secure persistence on the memory drastically.
+From the other point of view it might not be sufficient enough for a journalist to take pictures with a smartphone, instead he relies on professional equipment like a DSLR to achieve the desired quality of work.
+
+What is missing in this approach is the universality of the solution.
+The clear advantage of the approach of Davidsson et. al \cite{Davidsson2016} is that the SD-card may be used in any device, regardless of DSLR or smartphone.
+
+\todo{SKILLEN}
 \newpage
 \section{Conclusion}
 \newpage
