@@ -19,6 +19,12 @@ wget "https://builds.magiclantern.fm/jenkins/job/io_crypt/lastBuild/artifact/mod
 wget "https://builds.magiclantern.fm/jenkins/job/ime_base/lastBuild/artifact/modules/ime_base/ime_base.mo"
 wget "https://builds.magiclantern.fm/jenkins/job/ime_base/lastBuild/artifact/modules/ime_rot/ime_rot.mo"
 
+cd $HOME
+until [ -z "$(lsof $MNT_POINT_SD_CARD)" ]
+do
+  echo "stuff"
+  sleep 1
+done
 umount "$MNT_POINT_SD_CARD"
 echo "Installation is done"
 exit 0
