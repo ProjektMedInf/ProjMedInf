@@ -302,7 +302,11 @@ The authors of the paper only say, that
 \end{enumerate}
 All in all we categorized CliniCam in the point of security "unknown", as the authors didn't provide any specifics regarding the used technologies. \cite{pmid25565678}
 
-\todo{Add Encryption for Peters}
+In the following subsection we describe more detailled, how the solution by Peters et. al. works.
+In this subsection we only consider what encryption scheme it uses.
+They use AES-CTR (AES in counter mode), which means as intitialization vector a counter will be used.
+In and of itself CTR is a secure mode, however as they describe they use a hash based message authentication code (HMAC-SHA256) on the ciphertext. \cite{peters2015defy}
+However they could have use the GCM (Galois/Counter Mode), which builds upon the CTR mode and includes an HMAC. \cite{mcgrew2004security}
 
 \subsection{Plausible deniability}
 \todo{Used Keywords: deniable encryption, plausible deniability sd card}
@@ -329,17 +333,8 @@ The problem is, like Trachtenberg describes, to create an output with a fake key
 Trachtenberg in \cite{trachtenbergsay} later describes a method how to implement deniable encryption based on the \textit{set reconciliation} in the context of strings.
 However in our case this method is not really applicable, thus we have to handle specifically designed file formats, which even after decryption with a fake key should deliver a valid looking picture.
 
-\todo{DAVIDSSON: PLAUSIBLE DENIABILITY}
-Davidsson et. al. doesn't mention if there would be an option in their case to apply methods which would enable plausible deniability.
-\todo{Davidsson mentions :\tabularnewline
-The SD-card adapter is designed to appear as a generic
-SD-card adapter with the exception that it encrypts the data and hides any changes in the file system.\tabularnewline
-• The device should hide encrypted files from previous sessions.\tabularnewline
-The modification clusters are used to store alterations to the preallocated
-folders where the tools have specified to hide encrypted files after power down.\tabularnewline
-the system hides previously created encrypted files from the
-camera.\tabularnewline
-}
+Davidsson et. al. provides plausible deniability by hiding the encrypted files withing the file system.
+This is reached by overlaying the original folder which stores the encrypted data with a copy within the FAT32 cluster sub region. \cite{Davidsson2016}
 
 \todo{SKILLEN: PLAUSIBLE DENIABILITY}
 Mobiflage stores photographs on a deniable file system, which means hiding encrypted volumes within random data on the external storage of a mobile device.
