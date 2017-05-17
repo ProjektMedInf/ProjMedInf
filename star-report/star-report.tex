@@ -11,6 +11,7 @@
 \usepackage{xcolor}
 \usepackage{amsmath}
 \usepackage{siunitx}
+\usepackage{float}
 \newcommand\todo[1]{\textcolor{red}{#1}}
 
 \begin{document}
@@ -40,7 +41,7 @@ All of the above mentioned photographs document very private information about a
 
 Another important application for encryption of photographs is journalism.
 Journalists are looking for possibilities to hide any traces of sensitive material on their devices, for obvious reasons.
-This is called ``plausible deniability'', or to be more precise, according to the Oxford dictionary, plausible deniability is ``the possibility of denying a fact, especially a discreditable action without arousing suspicion''.\cite{OxforddictPlausibleDen}
+This is called ``plausible deniability (pd)'', or to be more precise, according to the Oxford dictionary, plausible deniability is ``the possibility of denying a fact, especially a discreditable action without arousing suspicion''.\cite{OxforddictPlausibleDen}
 Journalists take big risks on them when taking precarious pictures in countries with authoritarian governments, where such actions are considered as act of crime and punished with imprisonment or even death penalty \cite{Amnesty2016}.
 So it could be possible that encryption would not be enough to keep the journalists safe, as a trace of encrypted images could already lead to punishments.
 Encryption is a first step to achieve this level of privacy.
@@ -234,13 +235,14 @@ In their paper three bottlenecks are stated that define the speed of the encrypt
 The first one, the processor operation is stated to not affect the speed of the data transfer.
 Secondly the encryption reaches a speed of 20MB/s and is therefore non critical for the success of the implementation.
 Finally, the speed of the data transfer to the SD-card is mentioned, which does not meet our speed requirement.
-This is caused by the used SPI interface, which only supports a maximum speed of \todo{MB??? http://ieeexplore.ieee.org/abstract/document/4762946/}.
+This is caused by the used SPI interface, which has no official speed limit, but is said to `` often go over 10 Mb/s''\cite{leens2009introduction}.
+So we can state that a bottleneck is in the best possible case >10Mb/s.
 
 Mobiflage, the solution described by Skillen et. al \cite{skillen2013implementing} is hardware dependent.
 The performance tests described in the paper were carried out on a Nexus S smartphone running Android 4.
 The test conditions were as follows: 
 Four files with sizes between 50MB and 200MB were written to the encrypted memory.
-This process was repeated 20 times per file, resulting in an average writing speed of 5288$\pm$69MB/s.
+This process was repeated 20 times per file, resulting in an average writing speed of 5288$\pm$69KB/s.
 Unfortunately, this value only reaches 50\% of the desired speed.
 
 The analysis for CliniCam \cite{pmid25565678} is quite complex as the performance is not described in the paper.
@@ -249,7 +251,10 @@ As the image is not aimed to remain on the device, a transfer to the EHR server 
 The issue here is that this process must be started manually, which decreases the speed of the overall operation.
 If a device with the 802.11ac standard is used, a speed of around 35MB/s may be reached, which is sufficient for our requirement.
 
-\todo{Add Speed for Peters}
+Peters\cite{peters2015defy} provides two benchmarks for the speed analysis of DEFY: IOZone and FFSB.
+The results of IOZone are displayed in Peters' figure 5.2, where we can see that DEFY reaches \begin{math} 10^{4}-10^{5}\end{math} KB/s (or 10-100 MB/s) for write operation.
+According to the results of the FFSB benchmark, shown in Peters' figure 5.1 DEFY manages a write operation speed of about 2500KB/s (2.5MB/s).
+Unfortunately, these results are not very precise and fully disjunct, as Mobiflage has a similar approach, the 2.5MB/s seem more realistic for a mobile devices memory.
 
 \subsection{Universality}
 As we can state for now there are plenty of possibilities to reach the target of professional photo encryption.
@@ -270,7 +275,7 @@ Similarly as the approach of Skillen, Landman et. al \cite{pmid25565678} deal wi
 This is caused by the single-platform design of the app CliniCam that allows it only to be executed on iOS platforms.
 Another issue is that the platform iOS is bound to a single manufacturer, which makes CliniCam even more limiting.
 
-\todo{Add Speed for Peters}
+\todo{Add Universality for Peters}
 
 \subsection{Security}
 As one of the crypto-algorithm which was used by us is by the NIST standardized, and still unbroken AES, and the other one is also a well tested algorithm, currently there should be no security issue regarding the cryptological strength of the used algorithm.
@@ -352,6 +357,69 @@ Two separate volumes are created on the volumes of the SD-card:
 
 \newpage
 \section{Discussion}
+In this section we are going to compare all of the detected approaches by the above defined parameters.
+Table \ref{tb:overview} shows a short comparison of all approaches compared to each other.
+Furthermore we are going to discuss advantages and disadvantages of the described methods.
+Additionally we will point out which solution is commonly used and which is considered best practise for our problem statement.
+
+\begin{table}[H]
+   \begin{center}
+     \begin{tabular}{| l | c | p{3cm} | c | c |}
+     \hline
+      \textbf{Approach}   & \textbf{Speed} & \textbf{Universality}                         & \textbf{Security} & \textbf{PD}                    \\  \hline
+      Davidsson (FPGA SD) & >1.25MB/s      & all devices supporting SD cards               & ChaCha20          & \checkmark                     \\  \hline
+      Skillen (Mobiflage) & app. 5.288MB/s & Android devices supporting SD cards           & AES-XTS           & \checkmark                     \\  \hline
+      Landman (CliniCam)  & n/a            & iOS devices                                   & n/a               & X                              \\  \hline
+      Peters (DEFY)       & >2.5MB/s       & all memory devices support flash file systems & AES-CTR           & \checkmark                     \\  \hline
+     \end{tabular}
+   \end{center}
+\caption{Overview of all examined approaches.}
+\label{tb:overview}
+\end{table}
+
+\subsection{Speed}
+As we can see in the overview table Davdisson reaches comparably lower speed.
+This is because of the bottleneck on the SPI bus.
+The SPI bus was chosen despite the speed limit to reach the desired size of the hardware implementation.
+Anyway, a change of the used protocol could likely provide a significant increase of speed.
+
+Skillen provided the most detailed research on the speed transfer, at the importance of the speed was known to the authors.
+The 5MB/s are even though the best value of all researched approaches.
+
+No benchmarking information for the speed of the overall process (including wifi transmission) was given by Clinicam.
+We can only state that the speed of the transmission is highly dependent on the capabilities of the wifi connection.
+
+A significant disadvantage in the discussion of Peters' approach is the completely different benchmark results.
+This was not discussed in Peters' thesis, which is quite unfortunate as such an issue should be addressed further.
+
+\subsection{Universality}
+Roughly we can differentiate two approaches to our problem statement defined in the state of the art.
+Firstly there are the app solutions by Skillen and Landman, which only work on Android respectively iOS.
+Even though both operating systems are widespread it would be a big advantage to see an universal approach for this issue to enhance portability.
+Unfortunately Clinicam does not support any kind of external images source, so storing professional images of DSLRs is not possible.
+Concerning Mobiflage it is possible to import images manually and store them securely, so it would be possible to take the photograph with a DSLR and encrypt them.
+
+The clear advantage of the approach of Davidsson et. al \cite{Davidsson2016} is that the SD-card may be used in any device, regardless of DSLR or smartphone.
+As most DSLRs support SD cards this is a big advantage for the encryption on any kind of device, independent of the manufacturer.
+Anyway, as Davidsson uses the SD-card standard and not the micro SD-card standard it is unlikely that it can be used on a smartphone device.
+
+Finally we can discuss Peters' approach.
+The big advantage of DEFY is its design as a file system, which creates the possibility for it to be used on any kind of flash storage.
+On the downside, the manufacturer of the devices on which such a storage is used must assure support of DEFY, which is very unlikely for DSLR manufacturers to do.
+Even if DEFY would be able to be ran on a DSLR it is very unlikely that there is support for providing multiple encryption passwords.
+
+\subsection{Security}
+commonly used?
+Davidsson
+Skillen
+Clinicam
+Peters
+\subsection{Plausible deniability}
+commonly used?
+Davidsson
+Skillen
+Clinicam
+Peters
 
 \todo{DAVIDSSON}
 What is missing in the described approach is a hardware implementation.
@@ -371,7 +439,7 @@ This fact reduces the time from the capture of the image to the secure persisten
 From the other point of view it might not be sufficient enough for a journalist to take pictures with a smartphone, instead he relies on professional equipment like a DSLR to achieve the desired quality of work.
 
 What is missing in this approach is the universality of the solution.
-The clear advantage of the approach of Davidsson et. al \cite{Davidsson2016} is that the SD-card may be used in any device, regardless of DSLR or smartphone.
+
 
 \todo{SKILLEN}
 \newpage

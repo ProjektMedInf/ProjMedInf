@@ -6,8 +6,12 @@
 \contentsline {section}{\numberline {3}Results}{8}{section.3}
 \contentsline {subsection}{\numberline {3.1}Summary}{8}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}Speed}{9}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}Universality}{9}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.3}Universality}{10}{subsection.3.3}
 \contentsline {subsection}{\numberline {3.4}Security}{10}{subsection.3.4}
 \contentsline {subsection}{\numberline {3.5}Plausible deniability}{11}{subsection.3.5}
-\contentsline {section}{\numberline {4}Discussion}{13}{section.4}
-\contentsline {section}{\numberline {5}Conclusion}{14}{section.5}
+\contentsline {section}{\numberline {4}Discussion}{14}{section.4}
+\contentsline {subsection}{\numberline {4.1}Speed}{14}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Universality}{14}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Security}{15}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Plausible deniability}{15}{subsection.4.4}
+\contentsline {section}{\numberline {5}Conclusion}{17}{section.5}
