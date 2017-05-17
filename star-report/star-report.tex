@@ -126,7 +126,7 @@ Without beeing too detaild, we are shortly going to introduce the ChaCha encrypt
 
 ChaCha is a derivate of the Salsa20 algorithm family. 
 The Salsa20 algorithm is a stream cipher, so according to our previous deffinition by Menzenes et al. in \cite{menezes1996handbook} we are talking about a cipher where the blocksize is one byte.
-However according to Bernstein, Salsa20 "generates the stream in 64-byte blocks". \cite{bernstein2008salsa20}
+However according to Bernstein, Salsa20 ``generates the stream in 64-byte blocks''. \cite{bernstein2008salsa20}
 
 But without beeing cought up too long with the categorization of an algorithm lets jump to the description of how Salsa20 and ChaCha work.
 Salsa20 uses a 256-bytes key, which will be expanded with a 64-bit unique message number to a \begin{math} 2^{70} \end{math}-bytes stream.
@@ -143,7 +143,7 @@ There are three differences:
   \item Due to performance effects the order of the words within the output block are permutated.
   \item The initial matrix which is used during the encryption and decryption is built in a slightly different way.
     In the case of Salsa20 the user inputs are scattered within the matrix, wheres in ChaCha these reside in the last row of the matrix.
-  \item "ChaCha sweeps through the rows in the same order in every round."
+  \item ``ChaCha sweeps through the rows in the same order in every round.''
 \end{enumerate}
 \cite{bernstein2008chacha}
 
@@ -171,6 +171,7 @@ The following keywords were used in order to get relevant search results:
   To receive search results that stand in relation to journalism these keywords may be used.
   \item \textbf{camera, digital camera, dslr}
   As lots of papers discuss the encryption of images on convenient PCs, these keywords are necessary to filter for the application of cryptography on such devices.
+\item \todo{MORE KEYWORDS}
 \end{enumerate}
 
 In the context of medicine it was important to filter out results that are only related to medical imaging techniques like MRI.
@@ -291,16 +292,16 @@ XTS mode is commonly used for full disc encryption, and is also considered secur
 The CliniCam paper provides no specific information about what kind of technology is being used.
 The authors of the paper only say, that
 \begin{enumerate}[label={\alph*}]
-  \item "The transmitted images are signed with the unique secret key of the user."
+  \item ``The transmitted images are signed with the unique secret key of the user.''
     This indicates, that some kind of asymmetric crypto algorithm is used.
-  \item "The images are stored temporary in an encrypted area of the application memory."
+  \item ``The images are stored temporary in an encrypted area of the application memory.''
     This might indicate some symmetric crypto, however it would be interesting to know, where the key to this area resides.
     It is probably also in the memory, outside of the encrypted area, in which case the encrypted area does little help.
-  \item "Secure wireless transmission"
+  \item ``Secure wireless transmission''
     The authors mention, that the transmission is only allowed through the secured WiFi network of the hospital.
     However they don't provide any information what kind of technology is used in this case, like if it is WEP or WPA/WPA2 or something else.
 \end{enumerate}
-All in all we categorized CliniCam in the point of security "unknown", as the authors didn't provide any specifics regarding the used technologies. \cite{pmid25565678}
+All in all we categorized CliniCam in the point of security ``unknown'', as the authors didn't provide any specifics regarding the used technologies. \cite{pmid25565678}
 
 In the following subsection we describe more detailled, how the solution by Peters et. al. works.
 In this subsection we only consider what encryption scheme it uses.
