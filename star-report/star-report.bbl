@@ -135,4 +135,9 @@ D.~A. McGrew and J.~Viega, ``The security and performance of the galois/counter
   mode (gcm) of operation,'' in {\em International Conference on Cryptology in
   India}, pp.~343--355, Springer, 2004.
 
+\bibitem{swissbit2017}
+``swissbit secure micro sd.''
+  \url{https://www.swissbit.com/products/security-products/micro-sd-memory-cards/ps-100u-se/}.
+\newblock Online; Accessed: 07.05.2017.
+
 \end{thebibliography}

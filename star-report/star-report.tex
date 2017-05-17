@@ -428,12 +428,33 @@ As we in the results sections already mentioned in case of medical applications 
 In Davidssons work an issue that has not been addressed completely in our opinion is the plausible deniability.
 Even though the proposed solution ``hides previously created encrypted files from the camera'', it is not assured that this file hiding is sufficient towards forensic analysis.
 
-As what the remaining two conserns, we can state the both provide a sufficient level of plausible deniability.
-The strategy is mainly diffrerent in these solutions, as Peters tries to disguise the data on different layers, wheres Skillen returns faked data in case of providing a wrong key.
+As what the remaining two concerns, we can state the both provide a sufficient level of plausible deniability.
+The strategy is mainly different in these solutions, as Peters tries to disguise the data on different layers, whereas Skillen returns faked data in case of providing a wrong key.
 It is relatively hard to decide which of the two is better in practical usage.
 
 \newpage
 \section{Conclusion}
+At the end of this scientific work we can state, that there are different approaches existing in literature that aim to address the issue described in our problem statement.
+What is lacking is a universal solution that features a full pipeline from support of all photography devices (DSLRs, digital cameras, smartphones, ...) to the securely and hidden storing the data on the memory.
+A high performing solution must be developed in order to fulfil the defined speed requirements as this is critical for the practicability of the solution in real life application.
+Even though the problem statement is not new and the demand in the public domain and the scientific community has been existing for years now, it is only now that the industry turns towards this problem scenario.
+For example, an interesting approach was developed by a company called swissbit, where a very similar approach to Davidsson was implemented in the size of a micro SD card \cite{swissbit2017}, so it would fit in a smartphone as much as in a DSLR.
+
+As what concerns the best practise that could be established in the industry, it is our belief that there is no other way as including an encryption feature in the firmware of cameras.
+As high the demand for such a feature in the photography community may be it is, in our opinion, inevitable to provide a standardized approach for it.
+This is the only way a secure and widespread standard can establish.
+It must also be addressed how the encryption feature can be set up on a camera, where no full keyboard is available.
+
+What we have learned in the course of our research is, that plausible deniability is everything but trivial.
+There are several approaches from completley hiding the sensitive information to returning fake information if needed.
+It is to be decided which approach is more applicable in a real life scenario.
+Further research should be carried out in order to address this issue.
+Another possible research field about this problem is to evaluate whether or not there is a possibility to create an open platform for flash memory encryption like Google's project vault.
+
+\newpage
+
+\listoftables
+
 \newpage
 
 % Add a bibliography.
