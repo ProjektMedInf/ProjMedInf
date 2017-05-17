@@ -1,17 +1,17 @@
-\contentsline {section}{\numberline {1}Introduction}{3}{section.1}
-\contentsline {subsection}{\numberline {1.1}Encryption}{4}{subsection.1.1}
-\contentsline {subsubsection}{\numberline {1.1.1}Advanced encryption Standard}{5}{subsubsection.1.1.1}
-\contentsline {subsubsection}{\numberline {1.1.2}ChaCha}{6}{subsubsection.1.1.2}
-\contentsline {section}{\numberline {2}Method}{7}{section.2}
-\contentsline {section}{\numberline {3}Results}{8}{section.3}
-\contentsline {subsection}{\numberline {3.1}Summary}{8}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Speed}{9}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}Universality}{10}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}Security}{10}{subsection.3.4}
-\contentsline {subsection}{\numberline {3.5}Plausible deniability}{11}{subsection.3.5}
+\contentsline {section}{\numberline {1}Introduction}{4}{section.1}
+\contentsline {subsection}{\numberline {1.1}Encryption}{5}{subsection.1.1}
+\contentsline {subsubsection}{\numberline {1.1.1}Advanced encryption Standard}{6}{subsubsection.1.1.1}
+\contentsline {subsubsection}{\numberline {1.1.2}ChaCha}{7}{subsubsection.1.1.2}
+\contentsline {section}{\numberline {2}Method}{8}{section.2}
+\contentsline {section}{\numberline {3}Results}{9}{section.3}
+\contentsline {subsection}{\numberline {3.1}Summary}{9}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Speed}{10}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Universality}{11}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Security}{11}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.5}Plausible deniability}{12}{subsection.3.5}
 \contentsline {section}{\numberline {4}Discussion}{14}{section.4}
 \contentsline {subsection}{\numberline {4.1}Speed}{14}{subsection.4.1}
 \contentsline {subsection}{\numberline {4.2}Universality}{14}{subsection.4.2}
 \contentsline {subsection}{\numberline {4.3}Security}{15}{subsection.4.3}
-\contentsline {subsection}{\numberline {4.4}Plausible deniability}{15}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.4}Plausible deniability}{16}{subsection.4.4}
 \contentsline {section}{\numberline {5}Conclusion}{17}{section.5}

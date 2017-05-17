@@ -116,11 +116,6 @@ M.~A. Alomari, K.~Samsudin, and A.~R. Ramli, ``Implementation of a parallel xts
   encryption mode of operation,'' {\em Indian Journal of Science and
   Technology}, vol.~7, no.~11, pp.~1813--1819, 2014.
 
-\bibitem{mcgrew2004security}
-D.~A. McGrew and J.~Viega, ``The security and performance of the galois/counter
-  mode (gcm) of operation,'' in {\em International Conference on Cryptology in
-  India}, pp.~343--355, Springer, 2004.
-
 \bibitem{coleMetadata}
 ``David cole - "we kill people based on metadata".''
   \url{http://www.nybooks.com/daily/2014/05/10/we-kill-people-based-metadata/}.
@@ -134,5 +129,10 @@ R.~Canetti, C.~Dwork, M.~Naor, and R.~Ostrovsky, ``Deniable encryption,'' in
 \bibitem{trachtenbergsay}
 A.~Trachtenberg, ``Say it ain’t so-an implementation of deniable
   encryption,''
+
+\bibitem{mcgrew2004security}
+D.~A. McGrew and J.~Viega, ``The security and performance of the galois/counter
+  mode (gcm) of operation,'' in {\em International Conference on Cryptology in
+  India}, pp.~343--355, Springer, 2004.
 
 \end{thebibliography}
