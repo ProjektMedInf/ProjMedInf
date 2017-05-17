@@ -43,7 +43,8 @@ To fulfil the requirements of privacy in photography it might be necessary to en
 \todo{background and motivation}
 Especially in the context of medicine this is very important as health data is considered the most private data. \cite{williams2013}
 Medical photographs show a patients body, they are used to document visual properties of the skin, the state of a wound or the progress of a plastic surgery. 
-All of the above mentioned photographs document very private information about an individual, which is only to be seen by authorized persons. \todo{WHAT ABOUT THEF? MENTION?}
+All of the above mentioned photographs document very private information about an individual, which is only to be seen by authorized persons.
+Theft of such photographs would have a dramatic impact on the patients privacy.
 
 Another important application for encryption of photographs is journalism.
 Journalists are looking for possibilities to hide any traces of sensitive material on their devices, for obvious reasons.
@@ -77,8 +78,6 @@ To ensure a specific degree of performance it is necessary that the evaluated so
 An important information which is not known to us for now: whether or not it is better to perform encryption on DSLRs with software or hardware.
 In the first place, this is a performance related topic, but it has big impact on portability.
 
-
-
 Our final goal is to create a method which can evolve to a best practice, which gives the medical and journalist community the possibility to protect their data with the help of encryption.
 A best practice solution should fulfil the following requirements in the best possible way.
 \begin{enumerate}
@@ -88,74 +87,68 @@ A best practice solution should fulfil the following requirements in the best po
   \item Plausible deniability must be assured.
 \end{enumerate}
 
-\todo{explanation of fundamental terms and basic definitions}
-PD
-
 \subsection{Encryption}
 As in this document we are going to write about solutions, which use encryption, we think it would be good to provide the reader some basic information about encryption.
 According to the Oxford Dictionary encryption is the process of converting information or data into a code with the goal to prevent unauthorized access. \cite{OxforddictEncrypt}
 
 In the field of cryptography there are two ways to encrypt something.
 Either asymmetric or symmetric encryption algorithms can be used.
-The main difference in the two methods are, that in case of the asymmetric encryption two keys are beeing used.
+The main difference in the two methods are, that in case of the asymmetric encryption two keys are being used.
 One for the encryption and a second one for the decryption.
-On the other hand in case of the symmetric encryption there is onlye one key used both for the de- and encryption.
+On the other hand in case of the symmetric encryption there is only one key used both for the de- and encryption.
 As we, during our project, mostly used symmetric-key schemes, we are going to focus on this, and we will not write about public-key schemes.
 
 There are two major groups of symmetric encryption algorithms.
-These are the block- and streamciphers.
-Blockcipher algorithms devide the data into equal size blocks, and with the help of the encryption-key they perform the encryption on each blocks individually.
-Streamciphers are a special kind of blockcipher, where the blocksize is one byte. \cite{menezes1996handbook}
-Further classification of block- and streamciphers will not be included, as it would go beyond the scope of this paper.
+These are the block- and stream ciphers.
+Block cipher algorithms divide the data into equal size blocks, and with the help of the encryption-key they perform the encryption on each blocks individually.
+Stream ciphers are a special kind of block cipher, where the block size is one byte. \cite{menezes1996handbook}
+Further classification of block- and stream ciphers will not be included, as it would go beyond the scope of this paper.
 
 \subsubsection{Advanced encryption Standard}
-The currently used algorithm for encryption is the Advanced encryption standard (AES), which was defined in 2000, to replace the previous one, which were considered unsecure.
+The currently used algorithm for encryption is the Advanced encryption standard (AES), which was defined in 2000, to replace the previous one, which were considered insecure.
 
 AES uses the Rijndael algorithm with some restrictions.
 Rijndael was invented by Daemen et. al. \cite{daemen2013design}
 
-As Rijndael is a blockcipher the round transformations will be applied on the datablocks in round number (N\textsubscript{r}) of times, which can either be plaintextblocks or cipherblocks.
-The input for the algorithm is the key and the plaintextblock, and the output is the cipherblock, or the cipherblock with the key, and the output is in this case the plaintextblock. \cite{daemen2013design}
+As Rijndael is a block cipher the round transformations will be applied on the data blocks in round number (N\textsubscript{r}) of times, which can either be plain text blocks or cipher blocks.
+The input for the algorithm is the key and the plain text block, and the output is the cipher block, or the cipher block with the key, and the output is in this case the plain text block. \cite{daemen2013design}
 
-First the algorithm derives the round key from the userkey, which will be used during the inital key addition.
-After this, the round tranformations will be applied N\textsubscript{r}-1 times, and finally during the final round the encryption considered done.
-One round consits of four trandformations,
+First the algorithm derives the round key from the user key, which will be used during the initial key addition.
+After this, the round transformations will be applied N\textsubscript{r}-1 times, and finally during the final round the encryption considered done.
+One round consits of four transformations,
 \begin{labeling}{AddRoundkey}
 \item [SubBytes] This is the only non-linear transformation of the algorithm. Every byte will be mapped on an other with the help of a Substitution-Box (S-Box).
-\item [ShiftRows] During this step every row of the state (which is a 2D-array representation of the block) will be shifted cycliically over different offsets.
-\item [MixColumns] In this step every column will be multipied by the following polynome \begin{math} c(x) = 03 * x^3 + 01 * x^2 + 01 * x + 02 \mod x^4 + 1 \end{math}
-\item [AddRoundkey] In this final step we apply bitwise XOR to the current block with the roundkey.
+\item [ShiftRows] During this step every row of the state (which is a 2D-array representation of the block) will be shifted cyclically over different offsets.
+\item [MixColumns] In this step every column will be multiplied by the following polynomial \begin{math} c(x) = 03 * x^3 + 01 * x^2 + 01 * x + 02 \mod x^4 + 1 \end{math}
+\item [AddRoundkey] In this final step we apply bitwise XOR to the current block with the round key.
 \end{labeling}
 The decryption uses the inverse of the round transformation, which means they do the same, only in the other direction. \cite{daemen2013design}
 
 \subsubsection{ChaCha}
-Without beeing too detaild, we are shortly going to introduce the ChaCha encryption algorithm, as we are going to use it later.
+Without being too details, we are shortly going to introduce the ChaCha encryption algorithm, as we are going to use it later.
 
-ChaCha is a derivate of the Salsa20 algorithm family. 
-The Salsa20 algorithm is a stream cipher, so according to our previous deffinition by Menzenes et al. in \cite{menezes1996handbook} we are talking about a cipher where the blocksize is one byte.
+ChaCha is a derivative of the Salsa20 algorithm family. 
+The Salsa20 algorithm is a stream cipher, so according to our previous definition by Menzenes et al. in \cite{menezes1996handbook} we are talking about a cipher where the block size is one byte.
 However according to Bernstein, Salsa20 ``generates the stream in 64-byte blocks''. \cite{bernstein2008salsa20}
 
-But without beeing cought up too long with the categorization of an algorithm lets jump to the description of how Salsa20 and ChaCha work.
+But without being caught up too long with the categorization of an algorithm lets jump to the description of how Salsa20 and ChaCha work.
 Salsa20 uses a 256-bytes key, which will be expanded with a 64-bit unique message number to a \begin{math} 2^{70} \end{math}-bytes stream.
-To encrypt \textit{b}-byte of plaintext it takes the first \textit{b}-bytes of the stream and xors it with the plaintext.
+To encrypt \textit{b}-byte of plain text it takes the first \textit{b}-bytes of the stream and XORs it with the plain text.
 The rest of the stream will not be used.
 The decryption works just like the encryption.
 Salsa20 works only with 3 kind of operations on 32-bit words.
-These are addition of two numbers modulo \begin{math} 2^{32} \end{math}, xoring two numbers and rotating a number by some constant bits.
+These are addition of two numbers modulo \begin{math} 2^{32} \end{math}, XORing two numbers and rotating a number by some constant bits.
 These three operations can be run on every CPU very efficiently, without needing and dedicated hardware like in the case of AES. \cite{bernstein2008salsa20}
 
-ChaCha, as mentioned before is a derivate of the Salsa20-family.
+ChaCha, as mentioned before is a derivative of the Salsa20-family.
 There are three differences:
 \begin{enumerate}
-  \item Due to performance effects the order of the words within the output block are permutated.
+  \item Due to performance effects the order of the words within the output block are permuted.
   \item The initial matrix which is used during the encryption and decryption is built in a slightly different way.
-    In the case of Salsa20 the user inputs are scattered within the matrix, wheres in ChaCha these reside in the last row of the matrix.
+    In the case of Salsa20 the user inputs are scattered within the matrix, whereas in ChaCha these reside in the last row of the matrix.
   \item ``ChaCha sweeps through the rows in the same order in every round.''
 \end{enumerate}
 \cite{bernstein2008chacha}
-
-\todo{outline of the manuscript}
-
 
 \newpage
 \section{Method}
@@ -163,11 +156,11 @@ The aim of this chapter is to describe the methodology used when performing the 
 Several search strategies have been used in order to get as much relevant literature as possible.
 Relevant literature includes all kinds of scientific papers, conference proceedings, master's and bachelor's thesis covering topics around encrypting and hiding photographs.
 
-\todo{A constraint that was applied is that the papers, shall not be older than XXX, as encryption related topics should always be investigated up-to-date, for obvious reasons.}
+\todo{A constraint that was applied is that the papers, shall not be older than 10 years, as encryption related topics should always be investigated up-to-date, for obvious reasons.}
 The most handy tool in order to filter out relevant literature was Google scholar. 
 Also Institute of Electrical and Electronics Engineers (IEEE) Xplore turned out to be a good and reliable source for state of the art literature in the selected field.
 To satisfy the medical aspect of the problem statement it was inevitable to use the pubmed database search engine of the National Center for Biotechnology Information (NCBI).
-Furthermore, the CatalogPlus of the TU Wien, turned out to be a reliable tool when it comes to filtering out scientific valueable content.
+Furthermore, the CatalogPlus of the TU Wien, turned out to be a reliable tool when it comes to filtering out scientific valuable content.
 The following keywords were used in order to get relevant search results:
 \begin{enumerate}
   \item  \textbf{encryption, cryptography, crypto}
@@ -176,7 +169,7 @@ The following keywords were used in order to get relevant search results:
   As the search results may include application in the field of medicine these keywords can be used.
   \item  \textbf{journalist, journalism}
   To receive search results that stand in relation to journalism these keywords may be used.
-  \item \textbf{camera, digital camera, dslr}
+  \item \textbf{camera, digital camera, DSLR}
   As lots of papers discuss the encryption of images on convenient PCs, these keywords are necessary to filter for the application of cryptography on such devices.
 \item \todo{MORE KEYWORDS}
 \end{enumerate}
@@ -190,7 +183,7 @@ Watermarking, in this context, describes the process of modifying an image so it
 So we can state, that watermarking addresses issues in the field of integrity but does not provide any advantage in terms of confidentiality, as it is required by the topic of this paper.
 
 The result of the above mentioned research is a set of relevant literature that marks the state of the art in the topic of this very scientific work.
-All in all it was possible to obtain \todo{number} papers.
+All in all it was possible to obtain for papers that mark the state of the art.
 
 \newpage
 \section{Results}
@@ -315,51 +308,45 @@ The authors of the paper only say, that
 \end{enumerate}
 All in all we categorized CliniCam in the point of security ``unknown'', as the authors didn't provide any specifics regarding the used technologies. \cite{pmid25565678}
 
-In the following subsection we describe more detailled, how the solution by Peters et. al. works.
-In this subsection we only consider what encryption scheme it uses.
-They use AES-CTR (AES in counter mode), which means as intitialization vector a counter will be used. \cite{peters2015defy}
-
-\subsection{Plausible deniability}
-\todo{Used Keywords: deniable encryption, plausible deniability sd card}
-
-Denying the unauthorized access to information is relatively easy to achieve with encryption, encryption still doesn't solve the problem to hide the existence of the encrypted data.
-As previously has been showed with choosing a strong enough key, cryptographic algorithms can act as a feasible protection, however, in some states the legislation can oblige the individuals to disclose their keys.
-This means an advisory can often observe, that somebody tried to hide some information with the help of encryption, and maybe this advisory can even see the size or some other metadata of the file.
-As it was reported in the news the former director of the NSA and CIA said, that they kill people based on metadata. \cite{coleMetadata}
-It is worth mentioning, that plausible deniability is only important in the context of journalism and not in the field of medicine.
-
-To achieve plausible deniability we found two methods.
-Either we solve the problem on the file system level, which mean, we take a file system that allows to be configured in a way, where plausible deniability is possible, or we use deniable encryption.
-
 For the file system we found the by Peters et. al. presented DEFY-file system solution.
 DEFY stands for \textbf{D}eniable \textbf{E}ncrypted \textbf{F}ile System for \textbf{Y}AFFS.
 YAFFS stands for \textbf{Y}et \textbf{A}nother \textbf{F}lash \textbf{F}ile \textbf{S}ystem.
 The basic idea for DEFY is, that it defines different deniable layers, which have to be opened separatly.
 And as the whole file system is encrypted, an advisory can't find out if changes on the file system originate from some normal OS activity, or that the user tries to hide something.
-Additionally they make sure, that if something gets deleted it is going to be earsed from the drive. \cite{peters2015defy}
+Additionally they make sure, that if something gets deleted it is going to be erased from the drive. \cite{peters2015defy}
 
-The basic idea behind plausible encryption is, if the advisory acquires the ciphertext and obliges the user to hand over appropriate key, then the user can hand over a fake key, which will lead to a biased decryption, which doesn't include any sensitive data, however the advisory can't tell if the decrypted information is fake or real. \cite{canetti1997deniable}
+In the following subsection we describe more detailed, how the solution by Peters et. al. works.
+In this subsection we only consider what encryption scheme it uses.
+They use AES-CTR (AES in counter mode), which means as initialization vector a counter will be used. \cite{peters2015defy}
+
+\subsection{Plausible deniability}
+Denying the unauthorized access to information is relatively easy to achieve with encryption, encryption still doesn't solve the problem to hide the existence of the encrypted data.
+As previously has been showed with choosing a strong enough key, cryptographic algorithms can act as a feasible protection, however, in some states the legislation can oblige the individuals to disclose their keys.
+This means an advisory can often observe, that somebody tried to hide some information with the help of encryption, and maybe this advisory can even see the size or some other meta data of the file.
+As it was reported in the news the former director of the NSA and CIA said, that they kill people based on meta data. \cite{coleMetadata}
+It is worth mentioning, that plausible deniability is only important in the context of journalism and not in the field of medicine.
+
+To achieve plausible deniability we found two methods.
+Either we solve the problem on the file system level, which mean, we take a file system that allows to be configured in a way, where plausible deniability is possible, or we use deniable encryption.
+
+The basic idea behind plausible encryption is, if the advisory acquires the cipher text and obliges the user to hand over appropriate key, then the user can hand over a fake key, which will lead to a biased decryption, which doesn't include any sensitive data, however the advisory can't tell if the decrypted information is fake or real. \cite{canetti1997deniable}
 The problem is not that, that the decryption algorithm can't decrypt an information with a wrong key, because there are ways to configure the system in a way, that the algorithm doesn't check if the decrypted information is valid or not.
 The problem is, like Trachtenberg describes, to create an output with a fake key, that will convince the advisory, that he got the real output. \cite{trachtenbergsay}
 Trachtenberg in \cite{trachtenbergsay} later describes a method how to implement deniable encryption based on the \textit{set reconciliation} in the context of strings.
 However in our case this method is not really applicable, thus we have to handle specifically designed file formats, which even after decryption with a fake key should deliver a valid looking picture.
 
-Davidsson et. al. provides plausible deniability by hiding the encrypted files withing the file system.
-This is reached by overlaying the original folder which stores the encrypted data with a copy within the FAT32 cluster sub region. \cite{Davidsson2016}
+Davidsson et. al. provides plausible deniability by hiding the encrypted files within the file system.
+This is performed by overlaying the original folder which stores the encrypted data with a copy within the FAT32 cluster sub region. \cite{Davidsson2016}
 
-\todo{SKILLEN: PLAUSIBLE DENIABILITY}
 Mobiflage stores photographs on a deniable file system, which means hiding encrypted volumes within random data on the external storage of a mobile device.
-Mobiflage achieves plausible deniability through plausible deniable encryption (PDE) this technique enables the output of different reasonable and innocuous plaintexts from a given ciphertext.
-The original plaintext (or the image data) is only revealed if the correct key is entered.
+Mobiflage achieves plausible deniability through plausible deniable encryption (PDE) this technique enables the output of different reasonable and innocuous plain texts from a given cipher text.
+The original plain text (or the image data) is only revealed if the correct key is entered.
 This makes the decrypted data seem correct for unauthorized individuals trying to force the disclosure of the encrypted information.
 As Skillen et. al states, there is a file system for Linux called ``Rubberhose'' which features PDE.
 
-Two separate volumes are created on the volumes of the SD-card:
-\begin{enumerate}
-  \item An userdata volume, used for settings and application data
-  \item An auxillary volume, where the photos will be persisted
-\end{enumerate}
+Landman et. al \cite{pmid25565678} does not address the issue of plausible deniability at all, as this is out of scope for them.
 
+\todo{How does Peters do Plausible Deniability?}
 
 \newpage
 \section{Discussion}
@@ -420,12 +407,12 @@ The only information is, that their implementation the Health Insurance Portabil
 In order to discuss the security of this application more detailed, we would have needed additional technical information.
 
 The remaining three proposed solutions in our results can be categorized as secure, as they all use unbroken and secure algorithms.
-In case of the FPGA SD solution by Davidsson the use of ChaCha (stream chiper) is advantageus, becaus in this way they don't need any caching, which would have lead to additional hardware.
-Peters as we already mentioned uses AES-CTR and addtionally he uses a hash based message authetnication code with the hash function SHA256 (HMAC-SHA256).
-However it woould have been more beneficial if they have used AES in GCM (Galois/Counter Mode), which builds upon the CTR mode and already includes an HMAC. \cite{mcgrew2004security}
+In case of the FPGA SD solution by Davidsson the use of ChaCha (stream cipher) is advantageous, because in this way they don't need any caching, which would have lead to additional hardware.
+Peters as we already mentioned uses AES-CTR and additionally he uses a hash based message authentication code with the hash function SHA256 (HMAC-SHA256).
+However it would have been more beneficial if they have used AES in GCM (Galois/Counter Mode), which builds upon the CTR mode and already includes an HMAC. \cite{mcgrew2004security}
 Skillen et. al. used AES-XTS, which is favourable for whole disc encryption.
 
-All and all the last three solutions considered secure, however the AES variants can be disadvantageus if there is no hardware support for AES, in which case this algorithm is very slow.
+All and all the last three solutions considered secure, however the AES variants can be disadvantageous if there is no hardware support for AES, in which case this algorithm is very slow.
 
 \subsection{Plausible deniability}
 As we in the results sections already mentioned in case of medical applications PD considered irrelevant, we won't discuss the CliniCam solution.
@@ -442,6 +429,7 @@ It is relatively hard to decide which of the two is better in practical usage.
 At the end of this scientific work we can state, that there are different approaches existing in literature that aim to address the issue described in our problem statement.
 What is lacking is a universal solution that features a full pipeline from support of all photography devices (DSLRs, digital cameras, smartphones, ...) to the securely and hidden storing the data on the memory.
 A high performing solution must be developed in order to fulfil the defined speed requirements as this is critical for the practicability of the solution in real life application.
+
 Even though the problem statement is not new and the demand in the public domain and the scientific community has been existing for years now, it is only now that the industry turns towards this problem scenario.
 For example, an interesting approach was developed by a company called swissbit, where a very similar approach to Davidsson was implemented in the size of a micro SD card \cite{swissbit2017}, so it would fit in a smartphone as much as in a DSLR.
 
@@ -451,7 +439,7 @@ This is the only way a secure and widespread standard can establish.
 It must also be addressed how the encryption feature can be set up on a camera, where no full keyboard is available.
 
 What we have learned in the course of our research is, that plausible deniability is everything but trivial.
-There are several approaches from completley hiding the sensitive information to returning fake information if needed.
+There are several approaches from completely hiding the sensitive information to returning fake information if needed.
 It is to be decided which approach is more applicable in a real life scenario.
 Further research should be carried out in order to address this issue.
 Another possible research field about this problem is to evaluate whether or not there is a possibility to create an open platform for flash memory encryption like Google's project vault.
