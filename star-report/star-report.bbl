@@ -83,13 +83,13 @@ A.~Landman, S.~Emani, N.~Carlile, D.~I. Rosenthal, S.~Semakov, D.~J. Pallin,
   clinical images to the electronic health record: description and preliminary
   usability study},'' {\em JMIR Mhealth Uhealth}, vol.~3, p.~e1, Jan 2015.
 
-\bibitem{leens2009introduction}
-F.~Leens, ``An introduction to i 2 c and spi protocols,'' {\em IEEE
-  Instrumentation \& Measurement Magazine}, vol.~12, no.~1, pp.~8--13, 2009.
-
 \bibitem{peters2015defy}
 T.~M. Peters, M.~A. Gondree, and Z.~N. Peterson, ``Defy: A deniable, encrypted
   file system for log-structured storage,'' 2015.
+
+\bibitem{leens2009introduction}
+F.~Leens, ``An introduction to i 2 c and spi protocols,'' {\em IEEE
+  Instrumentation \& Measurement Magazine}, vol.~12, no.~1, pp.~8--13, 2009.
 
 \bibitem{aumasson2008new}
 J.-P. Aumasson, S.~Fischer, S.~Khazaei, W.~Meier, and C.~Rechberger, ``New

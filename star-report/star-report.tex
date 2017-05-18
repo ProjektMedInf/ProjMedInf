@@ -22,11 +22,11 @@
 \newpage
 
 \section*{Abstract}
-In this paper we analyse the problem which arises from the lack of security and privacy provided by DSLR cameras.
+In this paper we analyze the problem which arises from the lack of security and privacy provided by DSLR cameras.
 Especially in the fields of medicine and journalism a high level of the previously mentioned properties is required.
 This state of the art report provides a detailed overview of the current approaches in science.
-We analyse the approaches by specific properties defined in this paper and compare them in order to find a best practise in the state of the art.
-Our research results in a direction of where a best practise approach could lead to in the future.
+We analyze the approaches by specific properties defined in this paper and compare them in order to find a best practice in the state of the art.
+Our research results in a direction of where a best practice approach could lead to in the future.
 
 \newpage
 \section{Introduction}
@@ -37,7 +37,7 @@ Numerous regulations and laws \cite{EHG2015, DSG2000, ELGA2012, EuropeanParliame
 A well known way to achieve privacy is through encryption, which means encoding an information in such a way that only authorized parties can access it. 
 Hardly any efforts on implementing encryption can be found in photography, which is a remarkable finding, keeping in mind that photographs are generally among the most private media.
 This statement becomes even more astonishing considering the year, when the first patent for such a solution was registered: 1999. \cite{steinberg1999method}
-To fulfil the requirements of privacy in photography it might be necessary to encrypt photographs right after they are taken.
+To fulfill the requirements of privacy in photography it might be necessary to encrypt photographs right after they are taken.
 
 Especially in the context of medicine this is very important as health data is considered the most private data. \cite{williams2013}
 Medical photographs show a patients body, they are used to document visual properties of the skin, the state of a wound or the progress of a plastic surgery. 
@@ -76,7 +76,7 @@ An important information which is not known to us for now: whether or not it is 
 In the first place, this is a performance related topic, but it has big impact on portability.
 
 Our final goal is to create a method which can evolve to a best practice, which gives the medical and journalist community the possibility to protect their data with the help of encryption.
-A best practice solution should fulfil the following requirements in the best possible way.
+A best practice solution should fulfill the following requirements in the best possible way.
 \begin{enumerate}
   \item The speed of the encryption process must be greater than the defined threshold (v\textsubscript{encryption} $\geq$ v\textsubscript{min});
   \item The used encryption algorithm must be considered safe.
@@ -112,12 +112,12 @@ The input for the algorithm is the key and the plain text block, and the output 
 
 First the algorithm derives the round key from the user key, which will be used during the initial key addition.
 After this, the round transformations will be applied N\textsubscript{r}-1 times, and finally during the final round the encryption considered done.
-One round consits of four transformations,
+One round consists of four transformations,
 \begin{labeling}{AddRoundkey}
 \item [SubBytes] This is the only non-linear transformation of the algorithm. Every byte will be mapped on an other with the help of a Substitution-Box (S-Box).
 \item [ShiftRows] During this step every row of the state (which is a 2D-array representation of the block) will be shifted cyclically over different offsets.
 \item [MixColumns] In this step every column will be multiplied by the following polynomial \begin{math} c(x) = 03 * x^3 + 01 * x^2 + 01 * x + 02 \mod x^4 + 1 \end{math}
-\item [AddRoundkey] In this final step we apply bitwise XOR to the current block with the round key.
+\item [AddRoundkey] In this final step we apply bit-wise XOR to the current block with the round key.
 \end{labeling}
 The decryption uses the inverse of the round transformation, which means they do the same, only in the other direction. \cite{daemen2013design}
 
@@ -168,7 +168,8 @@ The following keywords were used in order to get relevant search results:
   To receive search results that stand in relation to journalism these keywords may be used.
   \item \textbf{camera, digital camera, DSLR}
   As lots of papers discuss the encryption of images on convenient PCs, these keywords are necessary to filter for the application of cryptography on such devices.
-\item \todo{MORE KEYWORDS}
+  \item \textbf{deniable encryption, plausible deniability sd card}
+    There were considerably lower amount of papers related to plausible deniability in case of flash drives, that we had suspected.
 \end{enumerate}
 
 In the context of medicine it was important to filter out results that are only related to medical imaging techniques like MRI.
@@ -201,7 +202,7 @@ Inside this seemingly normal SD-card there was an encryption hardware module, ba
 Another approach to this issue, especially focused on plausible deniability was developed by Adam Skillen and Mohammad Mannan at the Concordia University in Montreal, Canada \cite{skillen2013implementing}.
 This solution is basically an app (``Mobiflage'') that stores photographs on a deniable file system, which means hiding encrypted volumes within random data on the external storage of a mobile device.
 The paper was published in 2013.
-Google's Android operating system was used for the prototypic implementation of Mobiflage.
+Google's Android operating system was used for the prototype implementation of Mobiflage.
 Mobiflage features two modes for saving images: 
 \begin{enumerate}
   \item Standard Mode
@@ -219,7 +220,7 @@ The temporary storage of the photographs is handled within ``a secure temporary 
 For the file system we found the by Peters et. al. presented DEFY-file system solution.
 DEFY stands for \textbf{D}eniable \textbf{E}ncrypted \textbf{F}ile System for \textbf{Y}AFFS.
 YAFFS stands for \textbf{Y}et \textbf{A}nother \textbf{F}lash \textbf{F}ile \textbf{S}ystem.
-The basic idea for DEFY is, that it defines different deniable layers, which have to be opened separatly.
+The basic idea for DEFY is, that it defines different deniable layers, which have to be opened separately.
 And as the whole file system is encrypted, an advisory can't find out if changes on the file system originate from some normal OS activity, or that the user tries to hide something.
 Additionally they make sure, that if something gets deleted it is going to be erased from the drive. \cite{peters2015defy}
 
@@ -257,7 +258,7 @@ If a device with the 802.11ac standard is used, a speed of around 35MB/s may be 
 Peters\cite{peters2015defy} provides two benchmarks for the speed analysis of DEFY: IOZone and FFSB.
 The results of IOZone are displayed in Peters' figure 5.2, where we can see that DEFY reaches \begin{math} 10^{4}-10^{5}\end{math} KB/s (or 10-100 MB/s) for write operation.
 According to the results of the FFSB benchmark, shown in Peters' figure 5.1 DEFY manages a write operation speed of about 2500KB/s (2.5MB/s).
-Unfortunately, these results are not very precise and fully disjunct, as Mobiflage has a similar approach, the 2.5MB/s seem more realistic for a mobile devices memory.
+Unfortunately, these results are not very precise and fully disjunctive, as Mobiflage has a similar approach, the 2.5MB/s seem more realistic for a mobile devices memory.
 
 \subsection{Universality}
 As we can state for now there are plenty of possibilities to reach the target of professional photo encryption.
@@ -286,7 +287,7 @@ What this means for DSLRs or smartphones will be discussed in the upcoming secti
 As one of the crypto-algorithm which was used by us is by the NIST standardized, and still unbroken AES, and the other one is also a well tested algorithm, currently there should be no security issue regarding the cryptological strength of the used algorithm.
 However for the sake of completeness, we will describe some key aspects of the security of the different solutions.
 
-Rijandael was chosen by the NIST to be the new encryption standard, back in 2001.
+Rijndael was chosen by the NIST to be the new encryption standard, back in 2001.
 Although some modes of encryption (like the ECB mode for more than one block) are considered week and insecure, the security which is provided by the algorithm remains unbroken.
 
 As what Salsa20 and ChaCha considers, Salsa20 was one of the finalists of the ECRYPT Stream Cipher Project. \cite{bernstein2008salsa20}
@@ -341,14 +342,16 @@ As Skillen et. al states, there is a file system for Linux called ``Rubberhose''
 
 Landman et. al \cite{pmid25565678} does not address the issue of plausible deniability at all, as this is out of scope for them.
 
-\todo{How does Peters do Plausible Deniability?}
+As we already mentioned DEFY uses different multiple layers embedded into the file system.
+This means each layer is encrypted with a different key, and the next layer is only disguised if the previous one got decrypted.
+Additionally they use cryptographic deletion, which means, instead of actually deleting the encrypted block, they just permanently delete the key to it, which makes impossible to retrieve the data. \cite{peters2015defy}
 
 \newpage
 \section{Discussion}
 In this section we are going to compare all of the detected approaches by the above defined parameters.
 Table \ref{tb:overview} shows a short comparison of all approaches compared to each other.
 Furthermore we are going to discuss advantages and disadvantages of the described methods.
-Additionally we will point out which solution is commonly used and which is considered best practise for our problem statement.
+Additionally we will point out which solution is commonly used and which is considered best practice for our problem statement.
 
 \begin{table}[H]
    \begin{center}
@@ -374,8 +377,8 @@ Anyway, a change of the used protocol could likely provide a significant increas
 Skillen provided the most detailed research on the speed transfer, at the importance of the speed was known to the authors.
 The 5MB/s are even though the best value of all researched approaches.
 
-No benchmarking information for the speed of the overall process (including wifi transmission) was given by Clinicam.
-We can only state that the speed of the transmission is highly dependent on the capabilities of the wifi connection.
+No benchmarking information for the speed of the overall process (including WiFi transmission) was given by Clinicam.
+We can only state that the speed of the transmission is highly dependent on the capabilities of the WiFi connection.
 
 A significant disadvantage in the discussion of Peters' approach is the completely different benchmark results.
 This was not discussed in Peters' thesis, which is quite unfortunate as such an issue should be addressed further.
@@ -405,7 +408,7 @@ The remaining three proposed solutions in our results can be categorized as secu
 In case of the FPGA SD solution by Davidsson the use of ChaCha (stream cipher) is advantageous, because in this way they don't need any caching, which would have lead to additional hardware.
 Peters as we already mentioned uses AES-CTR and additionally he uses a hash based message authentication code with the hash function SHA256 (HMAC-SHA256).
 However it would have been more beneficial if they have used AES in GCM (Galois/Counter Mode), which builds upon the CTR mode and already includes an HMAC. \cite{mcgrew2004security}
-Skillen et. al. used AES-XTS, which is favourable for whole disc encryption.
+Skillen et. al. used AES-XTS, which is favorable for whole disc encryption.
 
 All and all the last three solutions considered secure, however the AES variants can be disadvantageous if there is no hardware support for AES, in which case this algorithm is very slow.
 
@@ -423,12 +426,12 @@ It is relatively hard to decide which of the two is better in practical usage.
 \section{Conclusion}
 At the end of this scientific work we can state, that there are different approaches existing in literature that aim to address the issue described in our problem statement.
 What is lacking is a universal solution that features a full pipeline from support of all photography devices (DSLRs, digital cameras, smartphones, ...) to the securely and hidden storing the data on the memory.
-A high performing solution must be developed in order to fulfil the defined speed requirements as this is critical for the practicability of the solution in real life application.
+A high performing solution must be developed in order to fulfill the defined speed requirements as this is critical for the practicability of the solution in real life application.
 
 Even though the problem statement is not new and the demand in the public domain and the scientific community has been existing for years now, it is only now that the industry turns towards this problem scenario.
 For example, an interesting approach was developed by a company called swissbit, where a very similar approach to Davidsson was implemented in the size of a micro SD card \cite{swissbit2017}, so it would fit in a smartphone as much as in a DSLR.
 
-As what concerns the best practise that could be established in the industry, it is our belief that there is no other way as including an encryption feature in the firmware of cameras.
+As what concerns the best practice that could be established in the industry, it is our belief that there is no other way as including an encryption feature in the firmware of cameras.
 As high the demand for such a feature in the photography community may be it is, in our opinion, inevitable to provide a standardized approach for it.
 This is the only way a secure and widespread standard can establish.
 It must also be addressed how the encryption feature can be set up on a camera, where no full keyboard is available.
