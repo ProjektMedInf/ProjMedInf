@@ -7,8 +7,8 @@
 \contentsline {subsection}{\numberline {3.1}Summary}{9}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}Speed}{10}{subsection.3.2}
 \contentsline {subsection}{\numberline {3.3}Universality}{11}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}Security}{11}{subsection.3.4}
-\contentsline {subsection}{\numberline {3.5}Plausible deniability}{12}{subsection.3.5}
+\contentsline {subsection}{\numberline {3.4}Security}{12}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.5}Plausible deniability}{13}{subsection.3.5}
 \contentsline {section}{\numberline {4}Discussion}{14}{section.4}
 \contentsline {subsection}{\numberline {4.1}Speed}{14}{subsection.4.1}
 \contentsline {subsection}{\numberline {4.2}Universality}{14}{subsection.4.2}

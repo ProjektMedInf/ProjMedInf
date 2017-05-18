@@ -31,7 +31,6 @@ Our research results in a direction of where a best practise approach could lead
 \newpage
 \section{Introduction}
 
-\todo{introduction to the general topic}
 Privacy is one of the key issues of the information age.
 Especially in the post-Snowden era this fact has become clear to the most individuals around the globe. 
 Numerous regulations and laws \cite{EHG2015, DSG2000, ELGA2012, EuropeanParliament2016, EuropeanCourtofHumanRights2010} require it across all kinds of use cases and industries.
@@ -40,7 +39,6 @@ Hardly any efforts on implementing encryption can be found in photography, which
 This statement becomes even more astonishing considering the year, when the first patent for such a solution was registered: 1999. \cite{steinberg1999method}
 To fulfil the requirements of privacy in photography it might be necessary to encrypt photographs right after they are taken.
 
-\todo{background and motivation}
 Especially in the context of medicine this is very important as health data is considered the most private data. \cite{williams2013}
 Medical photographs show a patients body, they are used to document visual properties of the skin, the state of a wound or the progress of a plastic surgery. 
 All of the above mentioned photographs document very private information about an individual, which is only to be seen by authorized persons.
@@ -54,7 +52,6 @@ So it could be possible that encryption would not be enough to keep the journali
 Encryption is a first step to achieve this level of privacy.
 For this reason 150 journalists wrote an open letter to camera manufacturers, asking them to implement such a feature, in December 2016.\cite{fp2016}
 
-\todo{description of the addressed scientific problem}
 So we can state that there is a demand for digital single-lens reflex (DSLR) photo encryption feature which is not (yet) satisfied by state of the art devices.
 This fact may lead physicians or journalists to take their private devices, which support encryption, for taking photographs, which is no real option for neither professional privacy nor professional image quality.
 
@@ -219,7 +216,12 @@ Landman et. al \cite{pmid25565678} published a paper called ``A Mobile App for S
 To enhance security, this app does not save the image permanently, it rather transfers it to a secure electronic health record (EHR) in PDF format.
 The temporary storage of the photographs is handled within ``a secure temporary storage area allocated to the app'' this storage area is called sandbox.
 
-\todo{Add Summary for Peters}
+For the file system we found the by Peters et. al. presented DEFY-file system solution.
+DEFY stands for \textbf{D}eniable \textbf{E}ncrypted \textbf{F}ile System for \textbf{Y}AFFS.
+YAFFS stands for \textbf{Y}et \textbf{A}nother \textbf{F}lash \textbf{F}ile \textbf{S}ystem.
+The basic idea for DEFY is, that it defines different deniable layers, which have to be opened separatly.
+And as the whole file system is encrypted, an advisory can't find out if changes on the file system originate from some normal OS activity, or that the user tries to hide something.
+Additionally they make sure, that if something gets deleted it is going to be erased from the drive. \cite{peters2015defy}
 
 \subsection{Speed}
 A critical factor for the quality of the solution is the speed of the encryption process.
@@ -276,7 +278,9 @@ Similarly as the approach of Skillen, Landman et. al \cite{pmid25565678} deal wi
 This is caused by the single-platform design of the app CliniCam that allows it only to be executed on iOS platforms.
 Another issue is that the platform iOS is bound to a single manufacturer, which makes CliniCam even more limiting.
 
-\todo{Add Universality for Peters}
+As Peters approach \cite{peters2015defy} aims to design a file system, we can consider the universality to scale up for any kind of flash storage device.
+On the other side, this file system must be supported by the given device.
+What this means for DSLRs or smartphones will be discussed in the upcoming sections.
 
 \subsection{Security}
 As one of the crypto-algorithm which was used by us is by the NIST standardized, and still unbroken AES, and the other one is also a well tested algorithm, currently there should be no security issue regarding the cryptological strength of the used algorithm.
@@ -308,16 +312,7 @@ The authors of the paper only say, that
 \end{enumerate}
 All in all we categorized CliniCam in the point of security ``unknown'', as the authors didn't provide any specifics regarding the used technologies. \cite{pmid25565678}
 
-For the file system we found the by Peters et. al. presented DEFY-file system solution.
-DEFY stands for \textbf{D}eniable \textbf{E}ncrypted \textbf{F}ile System for \textbf{Y}AFFS.
-YAFFS stands for \textbf{Y}et \textbf{A}nother \textbf{F}lash \textbf{F}ile \textbf{S}ystem.
-The basic idea for DEFY is, that it defines different deniable layers, which have to be opened separatly.
-And as the whole file system is encrypted, an advisory can't find out if changes on the file system originate from some normal OS activity, or that the user tries to hide something.
-Additionally they make sure, that if something gets deleted it is going to be erased from the drive. \cite{peters2015defy}
-
-In the following subsection we describe more detailed, how the solution by Peters et. al. works.
-In this subsection we only consider what encryption scheme it uses.
-They use AES-CTR (AES in counter mode), which means as initialization vector a counter will be used. \cite{peters2015defy}
+To achieve encryption, Peters et. al use AES-CTR (AES in counter mode), which means as initialization vector a counter will be used. \cite{peters2015defy}
 
 \subsection{Plausible deniability}
 Denying the unauthorized access to information is relatively easy to achieve with encryption, encryption still doesn't solve the problem to hide the existence of the encrypted data.
