@@ -3,15 +3,15 @@
 \contentsline {subsubsection}{\numberline {1.1.1}Advanced encryption Standard}{6}{subsubsection.1.1.1}
 \contentsline {subsubsection}{\numberline {1.1.2}ChaCha}{7}{subsubsection.1.1.2}
 \contentsline {section}{\numberline {2}Method}{8}{section.2}
-\contentsline {section}{\numberline {3}Results}{10}{section.3}
-\contentsline {subsection}{\numberline {3.1}Summary}{10}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Speed}{11}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}Universality}{12}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}Security}{13}{subsection.3.4}
-\contentsline {subsection}{\numberline {3.5}Plausible deniability}{14}{subsection.3.5}
-\contentsline {section}{\numberline {4}Discussion}{16}{section.4}
-\contentsline {subsection}{\numberline {4.1}Speed}{16}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Universality}{16}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Security}{17}{subsection.4.3}
-\contentsline {subsection}{\numberline {4.4}Plausible deniability}{18}{subsection.4.4}
-\contentsline {section}{\numberline {5}Conclusion}{19}{section.5}
+\contentsline {section}{\numberline {3}Results}{9}{section.3}
+\contentsline {subsection}{\numberline {3.1}Summary}{9}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Speed}{10}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Universality}{11}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Security}{12}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.5}Plausible deniability}{13}{subsection.3.5}
+\contentsline {section}{\numberline {4}Discussion}{15}{section.4}
+\contentsline {subsection}{\numberline {4.1}Speed}{15}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Universality}{15}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Security}{16}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Plausible deniability}{17}{subsection.4.4}
+\contentsline {section}{\numberline {5}Conclusion}{18}{section.5}
