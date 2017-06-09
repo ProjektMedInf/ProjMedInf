@@ -85,7 +85,7 @@ A best practice solution should fulfill the following requirements in the best p
 \end{enumerate}
 
 \subsection{Encryption}
-As in this document we are going to write about solutions, which use encryption, we think it would be good to provide the reader some basic information about encryption.
+As in this document we write about solutions, which use encryption, that is why we provide the reader some basic information about encryption.
 According to the Oxford Dictionary encryption is the process of converting information or data into a code with the goal to prevent unauthorized access. \cite{OxforddictEncrypt}
 
 In the field of cryptography there are two ways to encrypt something.
@@ -93,16 +93,16 @@ Either asymmetric or symmetric encryption algorithms can be used.
 The main difference in the two methods are, that in case of the asymmetric encryption two keys are being used.
 One for the encryption and a second one for the decryption.
 On the other hand in case of the symmetric encryption there is only one key used both for the de- and encryption.
-As we, during our project, mostly used symmetric-key schemes, we are going to focus on this, and we will not write about public-key schemes.
+As we, during our project, mostly used symmetric-key schemes, we focus on this, and we will not write about public-key schemes.
 
 There are two major groups of symmetric encryption algorithms.
 These are the block- and stream ciphers.
-Block cipher algorithms divide the data into equal size blocks, and with the help of the encryption-key they perform the encryption on each blocks individually.
+Block cipher algorithms divide the data into equal size blocks, and with the help of the encryption-key they perform the encryption on each block individually.
 Stream ciphers are a special kind of block cipher, where the block size is one byte. \cite{menezes1996handbook}
 Further classification of block- and stream ciphers will not be included, as it would go beyond the scope of this paper.
 
 \subsubsection{Advanced encryption Standard}
-The currently used algorithm for encryption is the Advanced encryption standard (AES), which was defined in 2000, to replace the previous one, which were considered insecure.
+The currently wildly used algorithm for encryption is the Advanced encryption standard (AES), which was defined in 2000, to replace the previous one, which was considered insecure.
 
 AES uses the Rijndael algorithm with some restrictions.
 Rijndael was invented by Daemen et. al. \cite{daemen2013design}
@@ -111,7 +111,7 @@ As Rijndael is a block cipher the round transformations will be applied on the d
 The input for the algorithm is the key and the plain text block, and the output is the cipher block, or the cipher block with the key, and the output is in this case the plain text block. \cite{daemen2013design}
 
 First the algorithm derives the round key from the user key, which will be used during the initial key addition.
-After this, the round transformations will be applied N\textsubscript{r}-1 times, and finally during the final round the encryption considered done.
+After this, the round transformations will be applied N\textsubscript{r}-1 times, and finally during the final round the encryption is considered done.
 One round consists of four transformations,
 \begin{labeling}{AddRoundkey}
 \item [SubBytes] This is the only non-linear transformation of the algorithm. Every byte will be mapped on an other with the help of a Substitution-Box (S-Box).
@@ -122,7 +122,7 @@ One round consists of four transformations,
 The decryption uses the inverse of the round transformation, which means they do the same, only in the other direction. \cite{daemen2013design}
 
 \subsubsection{ChaCha}
-Without being too details, we are shortly going to introduce the ChaCha encryption algorithm, as we are going to use it later.
+Without going into too much detail, we are shortly going to introduce the ChaCha encryption algorithm, as we are going to use it later.
 
 ChaCha is a derivative of the Salsa20 algorithm family. 
 The Salsa20 algorithm is a stream cipher, so according to our previous definition by Menzenes et al. in \cite{menezes1996handbook} we are talking about a cipher where the block size is one byte.
@@ -293,9 +293,9 @@ As what Salsa20 and ChaCha considers, Salsa20 was one of the finalists of the EC
 Several papers reported, that they managed to break the encryption of Salsa20 or ChaCha if only 8 or less rounds were used. \cite{aumasson2008new, crowley2006truncated, fischer2006non, tsunoo2007differential}
 But both ChaCha and Salsa20 are capable to work with up to twenty rounds, which even after twelve years after its submission to eSTREAM remains unbroken.
 
-Keeping all this in mind, we can say, that the VHDL solution by Davidsson et. al. is considered secure, as they use in their implementation ChaCha20 (this means ChaCha with 20 rounds). \cite{Davidsson2016}
+Keeping all this in mind, we can say, that the VHDL solution by Davidsson et. al. is considered secure, as they use a ChaCha20 implementation (this means ChaCha with 20 rounds). \cite{Davidsson2016}
 
-Skillen et. al. uses in their solution AES in XTS mode.
+In their solution Skillen et. al. uses AES in XTS mode.
 XTS mode is commonly used for full disc encryption, and is also considered secure. \cite{alomari2014implementation}
 
 The CliniCam paper provides no specific information about what kind of technology is being used.
@@ -305,7 +305,7 @@ The authors of the paper only say, that
     This indicates, that some kind of asymmetric crypto algorithm is used.
   \item ``The images are stored temporary in an encrypted area of the application memory.''
     This might indicate some symmetric crypto, however it would be interesting to know, where the key to this area resides.
-    It is probably also in the memory, outside of the encrypted area, in which case the encrypted area does little help.
+    It is probably also in the memory, outside of the encrypted area, which makes the encryption area obsolete.
   \item ``Secure wireless transmission''
     The authors mention, that the transmission is only allowed through the secured WiFi network of the hospital.
     However they don't provide any information what kind of technology is used in this case, like if it is WEP or WPA/WPA2 or something else.
@@ -324,8 +324,8 @@ It is worth mentioning, that plausible deniability is only important in the cont
 To achieve plausible deniability we found two methods.
 Either we solve the problem on the file system level, which mean, we take a file system that allows to be configured in a way, where plausible deniability is possible, or we use deniable encryption.
 
-The basic idea behind plausible encryption is, if the advisory acquires the cipher text and obliges the user to hand over appropriate key, then the user can hand over a fake key, which will lead to a biased decryption, which doesn't include any sensitive data, however the advisory can't tell if the decrypted information is fake or real. \cite{canetti1997deniable}
-The problem is not that, that the decryption algorithm can't decrypt an information with a wrong key, because there are ways to configure the system in a way, that the algorithm doesn't check if the decrypted information is valid or not.
+The basic idea behind deniable encryption is, if the advisory acquires the cipher text and obliges the user to hand over appropriate key, then the user can hand over a fake key, which will lead to a biased decryption, which doesn't include any sensitive data, however the advisory can't tell if the decrypted information is fake or real. \cite{canetti1997deniable}
+The problem is not that the decryption algorithm can't decrypt an information with a wrong key, because there are ways to configure the system in a way, that the algorithm doesn't check if the decrypted information is valid or not.
 The problem is, like Trachtenberg describes, to create an output with a fake key, that will convince the advisory, that he got the real output. \cite{trachtenbergsay}
 Trachtenberg in \cite{trachtenbergsay} later describes a method how to implement deniable encryption based on the \textit{set reconciliation} in the context of strings.
 However in our case this method is not really applicable, thus we have to handle specifically designed file formats, which even after decryption with a fake key should deliver a valid looking picture.
@@ -387,7 +387,7 @@ Roughly we can differentiate two approaches to our problem statement defined in 
 Firstly there are the app solutions by Skillen and Landman, which only work on Android respectively iOS.
 Even though both operating systems are widespread it would be a big advantage to see an universal approach for this issue to enhance portability.
 Unfortunately Clinicam does not support any kind of external images source, so storing professional images of DSLRs is not possible.
-Concerning Mobiflage it is possible to import images manually and store them securely, so it would be possible to take the photograph with a DSLR and encrypt them.
+Concerning Mobiflage it is possible to import images manually and store them securely, so it would be possible to take the photograph with a DSLR and encrypt it.
 
 The clear advantage of the approach of Davidsson et. al \cite{Davidsson2016} is that the SD-card may be used in any device, regardless of DSLR or smartphone.
 As most DSLRs support SD cards this is a big advantage for the encryption on any kind of device, independent of the manufacturer.
@@ -396,11 +396,11 @@ Anyway, as Davidsson uses the SD-card standard and not the micro SD-card standar
 Finally we can discuss Peters' approach.
 The big advantage of DEFY is its design as a file system, which creates the possibility for it to be used on any kind of flash storage.
 On the downside, the manufacturer of the devices on which such a storage is used must assure support of DEFY, which is very unlikely for DSLR manufacturers to do.
-Even if DEFY would be able to be ran on a DSLR it is very unlikely that there is support for providing multiple encryption passwords.
+Even if DEFY would be able to be run on a DSLR it is very unlikely that there is support for providing multiple encryption passwords.
 
 \subsection{Security}
 Although Landman et. al. describes an application which transports highly sensitive data, they don't provide any specific technical information, what kind of algorithm or technology they used.
-The only information is, that their implementation the Health Insurance Portability and Accountability Act (HIPAA) conform is.
+The only information is, that their implementation is conform to the Health Insurance Protability and Accountability Act (HIPAA).
 In order to discuss the security of this application more detailed, we would have needed additional technical information.
 
 The remaining three proposed solutions in our results can be categorized as secure, as they all use unbroken and secure algorithms.
@@ -409,7 +409,7 @@ Peters as we already mentioned uses AES-CTR and additionally he uses a hash base
 However it would have been more beneficial if they have used AES in GCM (Galois/Counter Mode), which builds upon the CTR mode and already includes an HMAC. \cite{mcgrew2004security}
 Skillen et. al. used AES-XTS, which is favorable for whole disc encryption.
 
-All and all the last three solutions considered secure, however the AES variants can be disadvantageous if there is no hardware support for AES, in which case this algorithm is very slow.
+All in all the last three solutions considered secure, however the AES variants can be disadvantageous if there is no hardware support for AES, in which case this algorithm is very slow.
 
 \subsection{Plausible deniability}
 As we in the results sections already mentioned in case of medical applications PD considered irrelevant, we won't discuss the CliniCam solution.
