@@ -25,8 +25,10 @@
 In this paper we analyze the problem which arises from the lack of security and privacy provided by DSLR cameras.
 Especially in the fields of medicine and journalism a high level of the previously mentioned properties is required.
 This state of the art report provides a detailed overview of the current approaches in science.
-We analyze the approaches by specific properties defined in this paper and compare them in order to find a best practice in the state of the art.
-Our research results in a direction of where a best practice approach could lead to in the future.
+We analyze the approaches by four specific properties defined in this paper: the speed of the encryption in MB/s, the universality how the solution may be used, the quality of the implemented encryption algorithm and the possibility of plausible deniability.
+These properties are compared in order to determine the best practice in the state of the art.
+Our research results in four different approaches for the statement problem, where none satisfies all of our requirements.
+In the discussion, we aim to give a direction of where a best practice approach could lead to in the future.
 
 \newpage
 \section{Introduction}
@@ -322,7 +324,7 @@ As it was reported in the news the former director of the NSA and CIA said, that
 It is worth mentioning, that plausible deniability is only important in the context of journalism and not in the field of medicine.
 
 To achieve plausible deniability we found two methods.
-Either we solve the problem on the file system level, which mean, we take a file system that allows to be configured in a way, where plausible deniability is possible, or we use deniable encryption.
+Either we solve the problem on the file system level, which means, we take a file system that allows to be configured in a way, where plausible deniability is possible, or we use deniable encryption.
 
 The basic idea behind deniable encryption is, if the advisory acquires the cipher text and obliges the user to hand over appropriate key, then the user can hand over a fake key, which will lead to a biased decryption, which doesn't include any sensitive data, however the advisory can't tell if the decrypted information is fake or real. \cite{canetti1997deniable}
 The problem is not that the decryption algorithm can't decrypt an information with a wrong key, because there are ways to configure the system in a way, that the algorithm doesn't check if the decrypted information is valid or not.
