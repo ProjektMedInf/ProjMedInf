@@ -98,7 +98,7 @@ On the other hand in case of the symmetric encryption there is only one key used
 As we, during our project, mostly used symmetric-key schemes, we focus on this, and we will not write about public-key schemes.
 
 There are two major groups of symmetric encryption algorithms.
-These are the block- and stream ciphers.
+These are the block- and stream ciphers, where cipher refers to an algorithm to perform encryption or decryption.
 Block cipher algorithms divide the data into equal size blocks, and with the help of the encryption-key they perform the encryption on each block individually.
 Stream ciphers are a special kind of block cipher, where the block size is one byte. \cite{menezes1996handbook}
 Further classification of block- and stream ciphers will not be included, as it would go beyond the scope of this paper.
@@ -132,7 +132,7 @@ However according to Bernstein, Salsa20 ``generates the stream in 64-byte blocks
 
 But without being caught up too long with the categorization of an algorithm lets jump to the description of how Salsa20 and ChaCha work.
 Salsa20 uses a 256-bytes key, which will be expanded with a 64-bit unique message number to a \begin{math} 2^{70} \end{math}-bytes stream.
-To encrypt \textit{b}-byte of plain text it takes the first \textit{b}-bytes of the stream and XORs it with the plain text.
+To encrypt \textit{b}-byte of plain text (where b is an integer) it takes the first \textit{b}-bytes of the stream and XORs it with the plain text.
 The rest of the stream will not be used.
 The decryption works just like the encryption.
 Salsa20 works only with 3 kind of operations on 32-bit words.
@@ -182,7 +182,7 @@ Watermarking, in this context, describes the process of modifying an image so it
 So we can state, that watermarking addresses issues in the field of integrity but does not provide any advantage in terms of confidentiality, as it is required by the topic of this paper.
 
 The result of the above mentioned research is a set of relevant literature that marks the state of the art in the topic of this very scientific work.
-All in all it was possible to obtain for papers that mark the state of the art.
+All in all it was possible to obtain four papers that mark the state of the art.
 
 \newpage
 \section{Results}
@@ -229,7 +229,7 @@ Additionally they make sure, that if something gets deleted it is going to be er
 A critical factor for the quality of the solution is the speed of the encryption process.
 This is the time between the capture and the secure storage of the image.
 Images in the so-called RAW-format are the purest way of storing images, as the loss of quality through compression is minimized.
-The size of a RAW photograph is highly depending on the quality of the used camera but is usually between 20MB and 50MB.
+The size of a RAW photograph is highly depending on the quality of the used camera but is usually between 20MB and 50MB, so it might be necessary to wait quite a while for the encryption.
 As already stated in the introduction the speed of the encryption process must be greater than the defined threshold (v\textsubscript{encryption} $\geq$ v\textsubscript{min}).
 Davidsson et. al \cite{Davidsson2016} state in their paper that the transfer speed shall be at least 10MB/s.
 As no other reliable source for the minimal speed requirement could have been found, this 10MB/s are considered state of the art.
@@ -241,7 +241,7 @@ The first one, the processor operation is stated to not affect the speed of the 
 Secondly the encryption reaches a speed of 20MB/s and is therefore non critical for the success of the implementation.
 Finally, the speed of the data transfer to the SD-card is mentioned, which does not meet our speed requirement.
 This is caused by the used SPI interface, which has no official speed limit, but is said to `` often go over 10 Mb/s''\cite{leens2009introduction}.
-So we can state that a bottleneck is in the best possible case >10Mb/s.
+So we can state that a bottleneck is in the best possible case slightly better than 10Mb/s which is way below our requirement of 10MB/s.
 
 Mobiflage, the solution described by Skillen et. al \cite{skillen2013implementing} is hardware dependent.
 The performance tests described in the paper were carried out on a Nexus S smartphone running Android 4.
@@ -257,9 +257,19 @@ The issue here is that this process must be started manually, which decreases th
 If a device with the 802.11ac standard is used, a speed of around 35MB/s may be reached, which is sufficient for our requirement.
 
 Peters\cite{peters2015defy} provides two benchmarks for the speed analysis of DEFY: IOZone and FFSB.
-The results of IOZone are displayed in Peters' figure 5.2, where we can see that DEFY reaches \begin{math} 10^{4}-10^{5}\end{math} KB/s (or 10-100 MB/s) for write operation.
-According to the results of the FFSB benchmark, shown in Peters' figure 5.1 DEFY manages a write operation speed of about 2500KB/s (2.5MB/s).
+The results of IOZone are displayed by Peters in figure~\ref{fig:iozone} where we can see that DEFY reaches \begin{math} 10^{4}-10^{5}\end{math} KB/s (or 10-100 MB/s) for write operation.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth/9*8]{defy_figure_5_2.png}
+  \caption{The performance of a number of file systems as measured by IOZone (note the log scale) \cite{peters2015defy}.} \label{fig:iozone}
+\end{figure}
+According to the results of the FFSB benchmark, shown by Peters in figure~\ref{fig:ffsb} DEFY manages a write operation speed of about 2500KB/s (2.5MB/s).
 Unfortunately, these results are not very precise and fully disjunctive, as Mobiflage has a similar approach, the 2.5MB/s seem more realistic for a mobile devices memory.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth/9*8]{defy_figure_5_1.png}
+  \caption{ The performance of a number of file systems as measured by FFSB\cite{peters2015defy}.} \label{fig:ffsb}
+\end{figure}
 
 \subsection{Universality}
 As we can state for now there are plenty of possibilities to reach the target of professional photo encryption.
@@ -320,7 +330,7 @@ To achieve encryption, Peters et. al use AES-CTR (AES in counter mode), which me
 Denying the unauthorized access to information is relatively easy to achieve with encryption, encryption still doesn't solve the problem to hide the existence of the encrypted data.
 As previously has been showed with choosing a strong enough key, cryptographic algorithms can act as a feasible protection, however, in some states the legislation can oblige the individuals to disclose their keys.
 This means an advisory can often observe, that somebody tried to hide some information with the help of encryption, and maybe this advisory can even see the size or some other meta data of the file.
-As it was reported in the news the former director of the NSA and CIA said, that they kill people based on meta data. \cite{coleMetadata}
+As it was reported in the news the former director of the NSA and CIA said, that they ``kill people based on meta data''. \cite{coleMetadata}
 It is worth mentioning, that plausible deniability is only important in the context of journalism and not in the field of medicine.
 
 To achieve plausible deniability we found two methods.
@@ -328,8 +338,8 @@ Either we solve the problem on the file system level, which means, we take a fil
 
 The basic idea behind deniable encryption is, if the advisory acquires the cipher text and obliges the user to hand over appropriate key, then the user can hand over a fake key, which will lead to a biased decryption, which doesn't include any sensitive data, however the advisory can't tell if the decrypted information is fake or real. \cite{canetti1997deniable}
 The problem is not that the decryption algorithm can't decrypt an information with a wrong key, because there are ways to configure the system in a way, that the algorithm doesn't check if the decrypted information is valid or not.
-The problem is, like Trachtenberg describes, to create an output with a fake key, that will convince the advisory, that he got the real output. \cite{trachtenbergsay}
-Trachtenberg in \cite{trachtenbergsay} later describes a method how to implement deniable encryption based on the \textit{set reconciliation} in the context of strings.
+The problem is, like Trachtenberg describes, to create an output with a fake key, that will convince the advisory, that he got the real output.
+Trachtenberg later describes in \cite{trachtenbergsay} a method how to implement deniable encryption based on the \textit{set reconciliation} in the context of strings.
 However in our case this method is not really applicable, thus we have to handle specifically designed file formats, which even after decryption with a fake key should deliver a valid looking picture.
 
 Davidsson et. al. provides plausible deniability by hiding the encrypted files within the file system.
@@ -442,6 +452,10 @@ There are several approaches from completely hiding the sensitive information to
 It is to be decided which approach is more applicable in a real life scenario.
 Further research should be carried out in order to address this issue.
 Another possible research field about this problem is to evaluate whether or not there is a possibility to create an open platform for flash memory encryption like Google's project vault.
+
+\newpage
+
+\listoffigures
 
 \newpage
 
